@@ -1,88 +1,11 @@
-import { useEffect, useState } from 'react'
-import { supabase } from './supabase'
+import { useState } from 'react'
+import { ALBUM_FOTOS_URL, UNIDADES as unidadesInfo, WHATSAPP_DIRETORIA } from './clube'
+import PainelSecretaria from './components/PainelSecretaria'
 import './App.css'
 
 function App() {
   const [paginaAtual, setPaginaAtual] = useState('home') // 'home', 'sobre', 'unidades', 'fotos', 'contato', 'secretaria'
   const [unidadeSelecionada, setUnidadeSelecionada] = useState('Suruí')
-
-  // Estados do Backend (Painel da Secretaria)
-  const [membros, setMembros] = useState([])
-  const [nome, setNome] = useState('')
-  const [unidade, setUnidade] = useState('Suruí')
-  const [cargo, setCargo] = useState('Desbravador')
-  const [telefone, setTelefone] = useState('')
-  const [idEditando, setIdEditando] = useState(null)
-
-  const buscarMembros = async () => {
-    const { data, error } = await supabase
-      .from('membros')
-      .select('*')
-      .order('criado_em', { ascending: false })
-
-    if (error) console.error('Erro ao buscar:', error)
-    else setMembros(data)
-  }
-
-  useEffect(() => {
-    buscarMembros()
-  }, [])
-
-  const handleSubmit = async (e) => {
-    e.preventDefault()
-    if (!nome || !unidade) {
-      alert('Preencha o nome e a unidade!')
-      return
-    }
-
-    if (idEditando) {
-      const { error } = await supabase
-        .from('membros')
-        .update({ nome, unidade, cargo, telefone })
-        .eq('id', idEditando)
-
-      if (error) alert('Erro ao atualizar membro.')
-      else {
-        alert('Membro atualizado com sucesso!')
-        setIdEditando(null)
-      }
-    } else {
-      const { error } = await supabase
-        .from('membros')
-        .insert([{ nome, unidade, cargo, telefone }])
-
-      if (error) alert('Erro ao cadastrar membro.')
-      else alert('Membro cadastrado com sucesso!')
-    }
-
-    setNome('')
-    setUnidade('Suruí')
-    setTelefone('')
-    buscarMembros()
-  }
-
-  const iniciarEdicao = (membro) => {
-    setIdEditando(membro.id)
-    setNome(membro.nome)
-    setUnidade(membro.unidade)
-    setCargo(membro.cargo)
-    setTelefone(membro.telefone || '')
-  }
-
-  const excluirMembro = async (id) => {
-    if (window.confirm('Tem certeza que deseja remover este membro?')) {
-      const { error } = await supabase.from('membros').delete().eq('id', id)
-      if (!error) buscarMembros()
-    }
-  }
-
-  // Dados das Unidades do Clube
-  const unidadesInfo = {
-    Suruí: { cor: '#2E7D32', desc: 'Unidade com identidade em Branco e Verde. Focada em bravura, superação e harmonia com a natureza.' },
-    Suyá: { cor: '#1565C0', desc: 'Unidade com identidade em Azul-marinho, detalhes em amarelo e vermelho. Espírito de liderança e união.' },
-    Xavantes: { cor: '#C62828', desc: 'Unidade com identidade Preta e detalhes marcantes em Vermelho. Força, energia e determinação.' },
-    'Ye\'kwana': { cor: '#6A1B9A', desc: 'Unidade com identidade Roxa/Lilás e detalhes em branco. Criatividade, foco e companheirismo.' }
-  }
 
   // Se estiver na Home (Capa inicial)
   if (paginaAtual === 'home') {
@@ -238,7 +161,7 @@ function App() {
               Veja todos os acampamentos, caminhadas, eventos e reuniões do Clube Amazônia organizados no nosso álbum oficial.
             </p>
             <a 
-              href="https://photos.google.com" 
+              href={ALBUM_FOTOS_URL} 
               target="_blank" 
               rel="noopener noreferrer"
               style={{
@@ -266,7 +189,7 @@ function App() {
             </p>
             <div style={{ marginTop: '30px', display: 'flex', gap: '20px' }}>
               <a 
-                href="https://wa.me/5511999999999" 
+                href={`https://wa.me/${WHATSAPP_DIRETORIA}`} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 style={{
@@ -287,100 +210,9 @@ function App() {
           </div>
         )}
 
-        {/* ABA SECRETARIA / PAINEL ADMINISTRATIVO */}
+        {/* ABA SECRETARIA / PAINEL ADMINISTRATIVO (exige login) */}
         {paginaAtual === 'secretaria' && (
-          <div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #333', paddingBottom: '10px' }}>
-              <h2 style={{ color: '#C5A059' }}>🔐 Painel da Secretaria</h2>
-              <button onClick={() => setPaginaAtual('sobre')} style={{ background: '#333', color: '#fff', border: 'none', padding: '6px 12px', borderRadius: '4px', cursor: 'pointer' }}>
-                Voltar ao Site
-              </button>
-            </div>
-            <p style={{ color: '#aaa', marginTop: '10px' }}>Gerencie rapidamente os membros, unidades e contatos do clube.</p>
-
-            {/* Formulário */}
-            <form onSubmit={handleSubmit} style={{ background: '#1a1a1a', padding: '20px', borderRadius: '8px', margin: '20px 0', border: '1px solid #333' }}>
-              <h3 style={{ color: '#fff', marginBottom: '15px' }}>{idEditando ? '✏️ Editar Membro' : '➕ Novo Cadastro'}</h3>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
-                <input 
-                  type="text" 
-                  placeholder="Nome Completo" 
-                  value={nome} 
-                  onChange={(e) => setNome(e.target.value)} 
-                  style={{ padding: '10px', background: '#222', border: '1px solid #444', color: '#fff', borderRadius: '4px' }}
-                />
-                <select value={unidade} onChange={(e) => setUnidade(e.target.value)} style={{ padding: '10px', background: '#222', border: '1px solid #444', color: '#fff', borderRadius: '4px' }}>
-                  <option value="Suruí">Unidade Suruí</option>
-                  <option value="Suyá">Unidade Suyá</option>
-                  <option value="Xavantes">Unidade Xavantes</option>
-                  <option value="Ye'kwana">Unidade Ye'kwana</option>
-                </select>
-              </div>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '15px', marginBottom: '15px' }}>
-                <select value={cargo} onChange={(e) => setCargo(e.target.value)} style={{ padding: '10px', background: '#222', border: '1px solid #444', color: '#fff', borderRadius: '4px' }}>
-                  <option value="Desbravador">Desbravador</option>
-                  <option value="Conselheiro">Conselheiro</option>
-                  <option value="Diretor">Diretor</option>
-                  <option value="Diretora Associada">Diretora Associada</option>
-                </select>
-                <input 
-                  type="text" 
-                  placeholder="Telefone / Contato" 
-                  value={telefone} 
-                  onChange={(e) => setTelefone(e.target.value)} 
-                  style={{ padding: '10px', background: '#222', border: '1px solid #444', color: '#fff', borderRadius: '4px' }}
-                />
-              </div>
-              <div style={{ display: 'flex', gap: '10px' }}>
-                <button type="submit" style={{ background: idEditando ? '#d32f2f' : '#2E7D32', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' }}>
-                  {idEditando ? 'Salvar Alterações' : 'Cadastrar Membro'}
-                </button>
-                {idEditando && (
-                  <button type="button" onClick={() => { setIdEditando(null); setNome(''); setTelefone(''); }} style={{ background: '#555', color: '#fff', border: 'none', padding: '10px 20px', borderRadius: '4px', cursor: 'pointer' }}>
-                    Cancelar
-                  </button>
-                )}
-              </div>
-            </form>
-
-            {/* Tabela de Membros */}
-            <h3 style={{ marginTop: '30px' }}>Membros Cadastrados ({membros.length})</h3>
-            <table style={{ width: '100%', borderCollapse: 'collapse', marginTop: '10px', background: '#1a1a1a', borderRadius: '8px', overflow: 'hidden' }}>
-              <thead>
-                <tr style={{ background: '#2E7D32', color: '#fff', textAlign: 'left' }}>
-                  <th style={{ padding: '12px' }}>Nome</th>
-                  <th style={{ padding: '12px' }}>Unidade</th>
-                  <th style={{ padding: '12px' }}>Cargo</th>
-                  <th style={{ padding: '12px' }}>Telefone</th>
-                  <th style={{ padding: '12px', textAlign: 'center' }}>Ações</th>
-                </tr>
-              </thead>
-              <tbody>
-                {membros.length === 0 ? (
-                  <tr>
-                    <td colSpan="5" style={{ padding: '20px', textAlign: 'center', color: '#777' }}>Nenhum membro cadastrado ainda.</td>
-                  </tr>
-                ) : (
-                  membros.map((membro) => (
-                    <tr key={membro.id} style={{ borderBottom: '1px solid #222' }}>
-                      <td style={{ padding: '12px' }}>{membro.nome}</td>
-                      <td style={{ padding: '12px' }}>{membro.unidade}</td>
-                      <td style={{ padding: '12px' }}>{membro.cargo}</td>
-                      <td style={{ padding: '12px' }}>{membro.telefone || '-'}</td>
-                      <td style={{ padding: '12px', textAlign: 'center' }}>
-                        <button onClick={() => iniciarEdicao(membro)} style={{ background: '#1976D2', color: '#fff', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer', marginRight: '5px' }}>
-                          Editar
-                        </button>
-                        <button onClick={() => excluirMembro(membro.id)} style={{ background: '#C62828', color: '#fff', border: 'none', padding: '5px 10px', borderRadius: '4px', cursor: 'pointer' }}>
-                          Excluir
-                        </button>
-                      </td>
-                    </tr>
-                  ))
-                )}
-              </tbody>
-            </table>
-          </div>
+          <PainelSecretaria onVoltar={() => setPaginaAtual('sobre')} />
         )}
 
       </div>
