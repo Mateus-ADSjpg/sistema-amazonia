@@ -48,10 +48,22 @@
 }
 
 .chamada h2 {
-  font-size: clamp(2rem, 5vw, 4rem);
+  font-size: clamp(1.6rem, 7vw, 4rem);
   text-transform: uppercase;
   font-stretch: 125%;
   max-width: 12ch;
+}
+
+@media (max-width: 560px) {
+  .chamada {
+    padding: 28px 22px;
+  }
+
+  .chamada h2 {
+    font-stretch: 110%;
+    /* no celular quem limita é a largura do cartão, não o número de letras */
+    max-width: none;
+  }
 }
 
 .chamada p {

@@ -18,6 +18,13 @@
   padding: 0;
 }
 
+.unidade-capa__publico {
+  background: var(--u2) !important;
+  color: var(--noite);
+  font-weight: 800 !important;
+  border-color: var(--u2) !important;
+}
+
 .unidade-capa__valores li {
   padding: 8px 16px;
   border-radius: 999px;
@@ -171,12 +178,6 @@
   display: block;
   margin-top: 10px;
   font-size: 0.95rem;
-}
-
-.identidade__cor small {
-  font-family: ui-monospace, Consolas, monospace;
-  color: var(--texto-3);
-  font-size: 0.78rem;
 }
 
 .identidade__lema {

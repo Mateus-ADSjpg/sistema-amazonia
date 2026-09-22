@@ -437,6 +437,11 @@
 }
 
 @media (max-width: 640px) {
+  .capa__titulo {
+    max-width: none;
+    font-size: clamp(2rem, 8.6vw, 3.4rem);
+  }
+
   .capa__titulo--gigante {
     font-size: 14.2vw;
     font-stretch: 112%;

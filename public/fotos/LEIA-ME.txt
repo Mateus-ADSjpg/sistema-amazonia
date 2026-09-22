@@ -1,5 +1,5 @@
 ==========================================================
- FOTOS DO SITE — onde colocar cada uma
+ FOTOS DO SITE — onde colocar cada uma  (76 no total)
 ==========================================================
 
 Como funciona:
@@ -11,16 +11,19 @@ Enquanto a foto não existe, o site mostra um espaço colorido no
 lugar. Rodando "npm run dev" no seu computador, esse espaço mostra
 também o caminho do arquivo que ele está esperando.
 
+DEPOIS DE COLOCAR AS FOTOS, RODE NO TERMINAL:  npm run fotos
+Esse comando reduz e comprime tudo automaticamente, para o site não
+ficar pesado no celular. Pode rodar quantas vezes quiser.
+
 Destaques da capa (página inicial):
-  Os 3 destaques usam a mesma foto (capa.jpg) com enquadramentos
+  Os 3 destaques usam a mesma foto (clube/capa.jpg) com enquadramentos
   diferentes. Para usar outra foto em um destaque, salve por exemplo
   clube/capa-2.jpg e troque o campo "foto" em src/conteudo/inicio.js.
 
 Dicas:
   - Use .jpg para fotos e .png só para logo/emblemas.
-  - Tamanho ideal: até 1920 px de largura para capas e 1200 px para
-    as outras. Fotos muito pesadas deixam o site lento no celular
-    (use squoosh.app ou tinypng.com para reduzir).
+  - Pode colocar a foto original do celular: o comando acima ajusta
+    o tamanho (capas até 1920 px, demais até 1400 px).
   - Nomes sem acento e sem espaço (ex.: 1.jpg, capa.jpg).
   - Quer mais fotos numa galeria? Aumente a lista no arquivo de
     conteúdo correspondente (src/conteudo/galeria.js ou unidades.js)
@@ -29,67 +32,69 @@ Dicas:
     responsáveis.
 
 
-public/fotos/clube/   — Fotos gerais do clube
-    capa.jpg                JÁ INCLUÍDA: foto do grupo, fundo dos destaques da capa
-    contato-capa.jpg        capa da página Contato
-    logo.png                JÁ INCLUÍDO: logo do clube (PNG com fundo transparente)
+public/fotos/clube/   — Fotos gerais do clube  [7 foto(s)]
+    capa.jpg                JÁ INCLUÍDA: foto do grupo
+    contato-capa.jpg        capa da página Contato (horizontal)
+    logo.png                JÁ INCLUÍDO: logo do clube
     quem-somos-1.jpg        colagem "Quem somos" da página inicial
     quem-somos-2.jpg        colagem "Quem somos" da página inicial
     quem-somos-3.jpg        colagem "Quem somos" da página inicial
-    sobre-capa.jpg          capa da página Sobre
+    sobre-capa.jpg          capa da página Sobre (horizontal)
 
-public/fotos/historia/   — Fotos da página "Sobre" (linha do tempo)
-    fundacao.jpg            foto antiga do começo do clube (vertical)
+public/fotos/historia/   — Fotos da página "Sobre" (linha do tempo)  [5 foto(s)]
+    fundacao.jpg            foto do começo do clube (vertical)
     marco-1.jpg             linha do tempo, marco 1 (horizontal)
     marco-2.jpg             linha do tempo, marco 2 (horizontal)
     marco-3.jpg             linha do tempo, marco 3 (horizontal)
     marco-4.jpg             linha do tempo, marco 4 (horizontal)
 
-public/fotos/diretoria/   — Diretoria (fotos quadradas, rosto no centro)
+public/fotos/diretoria/   — Diretoria (fotos quadradas, rosto no centro)  [6 foto(s)]
+    capelao.jpg             foto quadrada
     diretor.jpg             foto quadrada
     diretora-associada.jpg  foto quadrada
+    instrutor.jpg           foto quadrada
     secretaria.jpg          foto quadrada
     tesoureiro.jpg          foto quadrada
 
-public/fotos/unidades/   — Capa da página Unidades
+public/fotos/unidades/   — Capa da página Unidades  [1 foto(s)]
     capa.jpg                capa (horizontal, fica apagada atrás do título)
 
-public/fotos/unidades/surui/   — Unidade Suruí
+public/fotos/unidades/surui/   — Unidade Suruí (meninos, 13 a 15 anos)  [10 foto(s)]
     capa.jpg                capa (horizontal, fica apagada atrás do título)
-    conselheiro.jpg         conselheiro(a) (quadrada)
-    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    conselheiro.jpg         conselheiro(a) da unidade (quadrada)
+    emblema.png             emblema da unidade (PNG com fundo transparente)
     tribo.jpg               foto sobre o povo indígena (vertical)
     1.jpg até 6.jpg         fotos da galeria (6 fotos)
 
-public/fotos/unidades/suya/   — Unidade Suyá
+public/fotos/unidades/suya/   — Unidade Suyá (meninas, 13 a 15 anos)  [10 foto(s)]
     capa.jpg                capa (horizontal, fica apagada atrás do título)
-    conselheiro.jpg         conselheiro(a) (quadrada)
-    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    conselheiro.jpg         conselheiro(a) da unidade (quadrada)
+    emblema.png             emblema da unidade (PNG com fundo transparente)
     tribo.jpg               foto sobre o povo indígena (vertical)
     1.jpg até 6.jpg         fotos da galeria (6 fotos)
 
-public/fotos/unidades/xavantes/   — Unidade Xavantes
+public/fotos/unidades/xavantes/   — Unidade Xavantes (meninos, 10 a 12 anos)  [10 foto(s)]
     capa.jpg                capa (horizontal, fica apagada atrás do título)
-    conselheiro.jpg         conselheiro(a) (quadrada)
-    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    conselheiro.jpg         conselheiro(a) da unidade (quadrada)
+    emblema.png             emblema da unidade (PNG com fundo transparente)
     tribo.jpg               foto sobre o povo indígena (vertical)
     1.jpg até 6.jpg         fotos da galeria (6 fotos)
 
-public/fotos/unidades/yekwana/   — Unidade Ye'kwana
+public/fotos/unidades/yekwana/   — Unidade Ye'kwana (meninas, 10 a 12 anos)  [10 foto(s)]
     capa.jpg                capa (horizontal, fica apagada atrás do título)
-    conselheiro.jpg         conselheiro(a) (quadrada)
-    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    conselheiro.jpg         conselheiro(a) da unidade (quadrada)
+    emblema.png             emblema da unidade (PNG com fundo transparente)
     tribo.jpg               foto sobre o povo indígena (vertical)
     1.jpg até 6.jpg         fotos da galeria (6 fotos)
 
-public/fotos/galeria/   — Capa da página Galeria
+public/fotos/galeria/   — Capa da página Galeria  [1 foto(s)]
     capa.jpg                capa (horizontal, fica apagada atrás do título)
 
-public/fotos/galeria/acampamentos/   — Álbum Acampamentos
+public/fotos/galeria/acampamentos/   — Álbum Acampamentos  [6 foto(s)]
     1.jpg até 6.jpg         fotos da galeria (6 fotos)
 
-public/fotos/galeria/eventos/   — Álbum Eventos
+public/fotos/galeria/eventos/   — Álbum Eventos  [6 foto(s)]
     1.jpg até 6.jpg         fotos da galeria (6 fotos)
 
-public/fotos/galeria/investiduras/   — Álbum Investiduras
+public/fotos/galeria/investiduras/   — Álbum Investiduras  [4 foto(s)]
     1.jpg até 4.jpg         fotos da galeria (4 fotos)

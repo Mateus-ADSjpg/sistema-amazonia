@@ -62,7 +62,8 @@ O site foi montado para que o conteúdo seja trocado **sem mexer no layout**:
 
 - **Textos:** edite os arquivos de `src/conteudo/`. Cada campo tem um comentário explicando onde aparece.
 - **Fotos:** coloque os arquivos em `public/fotos/` com os nomes listados em [`public/fotos/LEIA-ME.txt`](public/fotos/LEIA-ME.txt). Enquanto uma foto não existe, o site mostra um espaço colorido no lugar.
-- **Campos pendentes:** textos que começam com `PREENCHER` (lema, grito de guerra, respostas etc.) **não aparecem no site publicado**. Rodando `npm run dev`, eles aparecem destacados com borda tracejada, e cada espaço de foto mostra o caminho do arquivo esperado.
+- **Espaços reservados:** textos entre parênteses, como `(História do clube)`, aparecem no site em cinza e itálico, mostrando o que ainda falta escrever. Textos que começam com `PREENCHER` somem do site publicado. Rodando `npm run dev`, os dois aparecem com borda tracejada, e cada espaço de foto mostra o caminho do arquivo esperado.
+- **Peso das fotos:** depois de colocar fotos novas, rode `npm run fotos`. O comando reduz e comprime tudo que está em `public/fotos` (capas até 1920 px, demais fotos até 1400 px). O site já carrega cada foto só quando ela chega na tela.
 - **Destaques da capa:** ficam em `DESTAQUES`, no arquivo `src/conteudo/inicio.js` (texto, botões, foto e enquadramento de cada um).
 - **Cores:** a paleta geral (amarelo, preto, verde-petróleo e laranja do logo) fica no início de `src/index.css`; as cores de cada unidade ficam em `src/conteudo/unidades.js` e pintam a página inteira da unidade.
 - **Mais fotos numa galeria:** aumente a quantidade em `src/conteudo/unidades.js` (`fotosDaUnidade('surui', 10)`) ou adicione itens ao álbum em `src/conteudo/galeria.js`.
@@ -88,6 +89,7 @@ Depois é só rodar:
 ```bash
 npm run dev      # servidor de desenvolvimento em http://localhost:5173
 npm run build    # gera a versão de produção em dist/
+npm run fotos    # comprime as fotos de public/fotos (rode sempre que adicionar fotos)
 npm run lint     # verifica o código
 ```
 

@@ -94,12 +94,24 @@
 
 .linha-unidade__nome {
   margin-top: 22px;
-  font-size: clamp(2.8rem, 7vw, 5.6rem);
+  font-size: clamp(2.2rem, 8vw, 5.6rem);
   font-weight: 900;
   font-stretch: 125%;
   text-transform: uppercase;
   line-height: 0.95;
   color: var(--u2);
+}
+
+.linha-unidade__publico {
+  display: inline-block;
+  margin-top: 14px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--u2) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--u2) 45%, transparent);
+  color: var(--u2);
+  font-size: 0.85rem;
+  font-weight: 700;
 }
 
 .linha-unidade__povo {

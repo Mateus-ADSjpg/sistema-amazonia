@@ -9,36 +9,33 @@ export const CAPA_SOBRE = {
 }
 
 export const HISTORIA = {
-  // PREENCHER: texto de abertura da história do clube.
-  introducao: [
-    'Escreva aqui como o clube começou: em que ano, em qual igreja, quem teve a ideia e quem foram os primeiros desbravadores.',
-    'Conte também por que o nome Amazônia foi escolhido e o que o clube representa para a comunidade de Barueri.',
-  ],
+  // Texto entre parênteses = espaço reservado (aparece discreto no site).
+  introducao: ['(História do clube: como começou, quem fundou e o significado do nome)'],
   foto: '/fotos/historia/fundacao.jpg',
   // Linha do tempo. Adicione, remova ou reordene os marcos à vontade.
   marcos: [
     {
       ano: '20XX',
       titulo: 'A fundação',
-      texto: 'Descreva o primeiro ano do clube: a primeira reunião, o primeiro diretor e quantos desbravadores começaram.',
+      texto: '(O começo do clube)',
       foto: '/fotos/historia/marco-1.jpg',
     },
     {
       ano: '20XX',
       titulo: 'As primeiras unidades',
-      texto: 'Conte quando surgiram as unidades Suruí, Suyá, Xavantes e Ye\'kwana e como os nomes foram escolhidos.',
+      texto: '(Como surgiram as unidades)',
       foto: '/fotos/historia/marco-2.jpg',
     },
     {
       ano: '20XX',
       titulo: 'Um acampamento marcante',
-      texto: 'Registre um acampamento, campori ou evento que marcou a história do clube.',
+      texto: '(Um acampamento marcante)',
       foto: '/fotos/historia/marco-3.jpg',
     },
     {
       ano: '20XX',
       titulo: 'Hoje',
-      texto: 'Mostre como o clube está hoje: quantos membros, conquistas recentes e planos para o futuro.',
+      texto: '(O clube hoje)',
       foto: '/fotos/historia/marco-4.jpg',
     },
   ],
@@ -55,12 +52,16 @@ export const ATIVIDADES = [
   { icone: 'coracao', titulo: 'Fé e amizade', texto: 'Valores cristãos vividos no dia a dia do clube.' },
 ]
 
-// PREENCHER: nomes e fotos da diretoria (foto quadrada, rosto centralizado).
+// Diretoria: troque os nomes e coloque as fotos em public/fotos/diretoria/
+// (foto quadrada, rosto centralizado). Pode acrescentar quantas pessoas quiser,
+// copiando uma linha e criando a foto com o mesmo nome de arquivo.
 export const DIRETORIA = [
-  { nome: 'Nome do Diretor', cargo: 'Diretor', foto: '/fotos/diretoria/diretor.jpg' },
-  { nome: 'Nome da Diretora Associada', cargo: 'Diretora Associada', foto: '/fotos/diretoria/diretora-associada.jpg' },
-  { nome: 'Nome da Secretária', cargo: 'Secretária', foto: '/fotos/diretoria/secretaria.jpg' },
-  { nome: 'Nome do Tesoureiro', cargo: 'Tesoureiro', foto: '/fotos/diretoria/tesoureiro.jpg' },
+  { nome: '(Nome do diretor)', cargo: 'Diretor', foto: '/fotos/diretoria/diretor.jpg' },
+  { nome: '(Nome da diretora associada)', cargo: 'Diretora Associada', foto: '/fotos/diretoria/diretora-associada.jpg' },
+  { nome: '(Nome da secretária)', cargo: 'Secretária', foto: '/fotos/diretoria/secretaria.jpg' },
+  { nome: '(Nome do tesoureiro)', cargo: 'Tesoureiro', foto: '/fotos/diretoria/tesoureiro.jpg' },
+  { nome: '(Nome do capelão)', cargo: 'Capelão', foto: '/fotos/diretoria/capelao.jpg' },
+  { nome: '(Nome do instrutor)', cargo: 'Instrutor', foto: '/fotos/diretoria/instrutor.jpg' },
 ]
 
 // Ideais oficiais dos Desbravadores (fonte: adventistas.org/pt/desbravadores/ideais).

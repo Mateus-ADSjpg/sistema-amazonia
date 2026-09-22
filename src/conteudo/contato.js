@@ -12,15 +12,18 @@ export const CAPA_CONTATO = {
 export const PERGUNTAS = [
   {
     pergunta: 'Quem pode participar?',
-    resposta: 'O Clube de Desbravadores é voltado para crianças e adolescentes de 10 a 15 anos. Confirme com a diretoria as idades aceitas no clube.',
+    resposta:
+      'Todo mundo é bem-vindo. Crianças e adolescentes de 10 a 15 anos entram nas unidades, de acordo com a idade. A partir dos 16 anos, a participação é como parte da diretoria do clube.',
   },
   {
-    pergunta: 'Precisa ser adventista?',
-    resposta: 'PREENCHER: explique se o clube recebe crianças de qualquer religião.',
+    pergunta: 'Como as unidades são divididas?',
+    resposta:
+      'Por idade e por grupo: Xavantes (meninos de 10 a 12 anos), Suruí (meninos de 13 a 15), Ye\'kwana (meninas de 10 a 12) e Suyá (meninas de 13 a 15).',
   },
   {
-    pergunta: 'Quanto custa?',
-    resposta: 'PREENCHER: informe se há mensalidade, taxa de inscrição e custo do uniforme.',
+    pergunta: 'Onde e quando são as reuniões?',
+    resposta:
+      'Na IASD Central de Barueri, na R. Antônio Chalupe, 95 - Vila Boa Vista. Confirme o dia e o horário com a diretoria pelo WhatsApp.',
   },
   {
     pergunta: 'Como faço a inscrição?',
@@ -28,6 +31,6 @@ export const PERGUNTAS = [
   },
   {
     pergunta: 'Os pais podem participar?',
-    resposta: 'PREENCHER: conte como os pais podem ajudar (apoio em eventos, voluntariado, aconselhamento).',
+    resposta: '(Como os pais podem ajudar no clube)',
   },
 ]

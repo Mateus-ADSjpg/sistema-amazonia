@@ -1,10 +1,12 @@
 import { ATIVIDADES, CAPA_SOBRE, DIRETORIA, HISTORIA, IDEAIS } from '../conteudo/sobre'
+import { classeModelo } from '../conteudo/util'
 import { useTitulo } from '../hooks/useTitulo'
 import CapaPagina from '../components/ui/CapaPagina'
 import Chamada from '../components/ui/Chamada'
 import Foto from '../components/ui/Foto'
 import Icone from '../components/ui/Icone'
 import Revelar from '../components/ui/Revelar'
+import Texto from '../components/ui/Texto'
 import './Sobre.css'
 
 export default function Sobre() {
@@ -31,7 +33,7 @@ export default function Sobre() {
             </Revelar>
             <div className="sobre-intro__texto">
               {HISTORIA.introducao.map((p, i) => (
-                <Revelar as="p" key={i} className="texto-grande" atraso={160 + i * 80}>
+                <Revelar as="p" key={i} className={`texto-grande ${classeModelo(p)}`} atraso={160 + i * 80}>
                   {p}
                 </Revelar>
               ))}
@@ -66,7 +68,7 @@ export default function Sobre() {
                 <Revelar className="linha-tempo__texto" atraso={120}>
                   <span className="linha-tempo__ano">{m.ano}</span>
                   <h3>{m.titulo}</h3>
-                  <p>{m.texto}</p>
+                  <Texto as="p" valor={m.texto} />
                 </Revelar>
               </li>
             ))}
@@ -122,7 +124,7 @@ export default function Sobre() {
             {DIRETORIA.map((p, i) => (
               <Revelar key={p.nome + i} className="pessoa" atraso={i * 90}>
                 <Foto src={p.foto} alt={p.nome} proporcao="quadrada" />
-                <h3>{p.nome}</h3>
+                <Texto as="h3" valor={p.nome} />
                 <p>{p.cargo}</p>
               </Revelar>
             ))}

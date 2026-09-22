@@ -48,7 +48,11 @@ export default function Contato() {
               </li>
               <li>
                 <Icone nome="local" tamanho={18} />
-                {CONTATO.reunioes.local}
+                <span>
+                  <strong>{CONTATO.reunioes.igreja}</strong>
+                  <br />
+                  {CONTATO.reunioes.local}
+                </span>
               </li>
             </ul>
             {CONTATO.reunioes.mapa && (
@@ -62,7 +66,7 @@ export default function Contato() {
             <span className="contato-cartao__icone">
               <Icone nome="camera" tamanho={26} />
             </span>
-            <h2>Redes e e-mail</h2>
+            <h2>Redes sociais</h2>
             <ul className="contato-cartao__lista">
               {CONTATO.instagram && (
                 <li>

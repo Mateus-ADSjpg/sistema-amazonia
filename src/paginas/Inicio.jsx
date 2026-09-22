@@ -132,6 +132,9 @@ export default function Inicio() {
                 <span className="painel-unidade__numero">{String(i + 1).padStart(2, '0')}</span>
                 <div className="painel-unidade__conteudo">
                   <h3 className="painel-unidade__nome">{u.nome}</h3>
+                  <p className="painel-unidade__publico">
+                    {u.publico} · {u.idade}
+                  </p>
                   <div className="painel-unidade__detalhes">
                     <p>{u.resumo}</p>
                     <ul>

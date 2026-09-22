@@ -52,6 +52,9 @@ export default function Unidades() {
                   <span className="linha-unidade__numero">Unidade {String(i + 1).padStart(2, '0')}</span>
                 </div>
                 <h2 className="linha-unidade__nome">{u.nome}</h2>
+                <p className="linha-unidade__publico">
+                  {u.publico} · {u.idade}
+                </p>
                 <p className="linha-unidade__povo">Inspirada no povo {u.povo}</p>
                 <p className="linha-unidade__resumo">{u.resumo}</p>
                 <div className="linha-unidade__cores" aria-label="Cores da unidade">

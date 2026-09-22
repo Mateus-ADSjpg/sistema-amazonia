@@ -29,7 +29,7 @@
   /* Tipografia */
   --fonte: 'Archivo Variable', system-ui, 'Segoe UI', Roboto, sans-serif;
   --titulo-xl: clamp(2.6rem, 11vw, 9.5rem);
-  --titulo-l: clamp(2rem, 5.2vw, 4.2rem);
+  --titulo-l: clamp(1.7rem, 6vw, 4.2rem);
   --titulo-m: clamp(1.5rem, 3vw, 2.3rem);
 
   /* Espaços e medidas */
@@ -102,6 +102,7 @@ h3,
 h4 {
   margin: 0;
   line-height: 1.05;
+  overflow-wrap: break-word;
   font-weight: 800;
   font-stretch: 118%;
   letter-spacing: -0.015em;
@@ -361,7 +362,16 @@ p {
   flex: 1;
 }
 
-/* ---------- Texto ainda não preenchido (só aparece em desenvolvimento) ---------- */
+/* ---------- Espaços reservados ---------- */
+
+/* Texto entre parênteses: aparece discreto, esperando o conteúdo real */
+.modelo {
+  color: var(--texto-3);
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Marcação extra só enquanto o site roda no seu computador */
 
 .pendente {
   outline: 1.5px dashed color-mix(in srgb, var(--ouro) 60%, transparent);

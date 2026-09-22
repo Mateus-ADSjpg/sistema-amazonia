@@ -1,6 +1,6 @@
 import { Link, useParams } from 'react-router'
 import { buscarUnidade, UNIDADES } from '../conteudo/unidades'
-import { deveMostrar } from '../conteudo/util'
+import { classeModelo, deveMostrar } from '../conteudo/util'
 import { useTitulo } from '../hooks/useTitulo'
 import CapaPagina from '../components/ui/CapaPagina'
 import Chamada from '../components/ui/Chamada'
@@ -46,6 +46,9 @@ export default function Unidade() {
         <div className="unidade-capa__extras">
           <Emblema src={u.emblema} alt={`Emblema da unidade ${u.nome}`} letra={u.nome[0]} cor={u.tema.claro} tamanho={72} />
           <ul className="unidade-capa__valores">
+            <li className="unidade-capa__publico">
+              {u.publico} · {u.idade}
+            </li>
             {u.valores.map((v) => (
               <li key={v}>{v}</li>
             ))}
@@ -76,7 +79,7 @@ export default function Unidade() {
             </Revelar>
             <div className="unidade-tribo__texto">
               {u.tribo.paragrafos.map((p, i) => (
-                <Revelar as="p" key={i} className="texto-grande" atraso={140 + i * 70}>
+                <Revelar as="p" key={i} className={`texto-grande ${classeModelo(p)}`} atraso={140 + i * 70}>
                   {p}
                 </Revelar>
               ))}
@@ -111,7 +114,7 @@ export default function Unidade() {
               </Revelar>
               <div className="unidade-historia__texto">
                 {u.historia.map((p, i) => (
-                  <Revelar as="p" key={i} className="texto-grande" atraso={140 + i * 70}>
+                  <Revelar as="p" key={i} className={`texto-grande ${classeModelo(p)}`} atraso={140 + i * 70}>
                     {p}
                   </Revelar>
                 ))}
@@ -125,16 +128,9 @@ export default function Unidade() {
                   <div key={c.nome} className="identidade__cor">
                     <span style={{ background: c.hex }} />
                     <strong>{c.nome}</strong>
-                    <small>{c.hex}</small>
                   </div>
                 ))}
               </div>
-              {deveMostrar(u.lema) && (
-                <div className="identidade__lema">
-                  <span>Lema</span>
-                  <Texto as="p" valor={u.lema} />
-                </div>
-              )}
             </Revelar>
           </div>
 
@@ -169,7 +165,7 @@ export default function Unidade() {
               {u.conselheiros.map((p, i) => (
                 <Revelar key={p.nome + i} className="pessoa" atraso={i * 90}>
                   <Foto src={p.foto} alt={p.nome} proporcao="quadrada" tom={u.tema.principal} />
-                  <h3>{p.nome}</h3>
+                  <Texto as="h3" valor={p.nome} />
                   <p>{p.cargo}</p>
                 </Revelar>
               ))}

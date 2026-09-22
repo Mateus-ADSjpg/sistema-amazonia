@@ -240,6 +240,13 @@
   white-space: nowrap;
 }
 
+.painel-unidade__publico {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--u2);
+}
+
 .painel-unidade__detalhes {
   max-height: 0;
   overflow: hidden;
