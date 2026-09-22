@@ -1,0 +1,95 @@
+==========================================================
+ FOTOS DO SITE — onde colocar cada uma
+==========================================================
+
+Como funciona:
+  1. Coloque a foto na pasta indicada, com EXATAMENTE o nome da lista.
+  2. Pronto: o site mostra a foto no lugar do espaço reservado.
+     Não precisa mexer em código.
+
+Enquanto a foto não existe, o site mostra um espaço colorido no
+lugar. Rodando "npm run dev" no seu computador, esse espaço mostra
+também o caminho do arquivo que ele está esperando.
+
+Destaques da capa (página inicial):
+  Os 3 destaques usam a mesma foto (capa.jpg) com enquadramentos
+  diferentes. Para usar outra foto em um destaque, salve por exemplo
+  clube/capa-2.jpg e troque o campo "foto" em src/conteudo/inicio.js.
+
+Dicas:
+  - Use .jpg para fotos e .png só para logo/emblemas.
+  - Tamanho ideal: até 1920 px de largura para capas e 1200 px para
+    as outras. Fotos muito pesadas deixam o site lento no celular
+    (use squoosh.app ou tinypng.com para reduzir).
+  - Nomes sem acento e sem espaço (ex.: 1.jpg, capa.jpg).
+  - Quer mais fotos numa galeria? Aumente a lista no arquivo de
+    conteúdo correspondente (src/conteudo/galeria.js ou unidades.js)
+    e siga a numeração (7.jpg, 8.jpg...).
+  - Cuidado com fotos de crianças: publique só com autorização dos
+    responsáveis.
+
+
+public/fotos/clube/   — Fotos gerais do clube
+    capa.jpg                JÁ INCLUÍDA: foto do grupo, fundo dos destaques da capa
+    contato-capa.jpg        capa da página Contato
+    logo.png                JÁ INCLUÍDO: logo do clube (PNG com fundo transparente)
+    quem-somos-1.jpg        colagem "Quem somos" da página inicial
+    quem-somos-2.jpg        colagem "Quem somos" da página inicial
+    quem-somos-3.jpg        colagem "Quem somos" da página inicial
+    sobre-capa.jpg          capa da página Sobre
+
+public/fotos/historia/   — Fotos da página "Sobre" (linha do tempo)
+    fundacao.jpg            foto antiga do começo do clube (vertical)
+    marco-1.jpg             linha do tempo, marco 1 (horizontal)
+    marco-2.jpg             linha do tempo, marco 2 (horizontal)
+    marco-3.jpg             linha do tempo, marco 3 (horizontal)
+    marco-4.jpg             linha do tempo, marco 4 (horizontal)
+
+public/fotos/diretoria/   — Diretoria (fotos quadradas, rosto no centro)
+    diretor.jpg             foto quadrada
+    diretora-associada.jpg  foto quadrada
+    secretaria.jpg          foto quadrada
+    tesoureiro.jpg          foto quadrada
+
+public/fotos/unidades/   — Capa da página Unidades
+    capa.jpg                capa (horizontal, fica apagada atrás do título)
+
+public/fotos/unidades/surui/   — Unidade Suruí
+    capa.jpg                capa (horizontal, fica apagada atrás do título)
+    conselheiro.jpg         conselheiro(a) (quadrada)
+    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    tribo.jpg               foto sobre o povo indígena (vertical)
+    1.jpg até 6.jpg         fotos da galeria (6 fotos)
+
+public/fotos/unidades/suya/   — Unidade Suyá
+    capa.jpg                capa (horizontal, fica apagada atrás do título)
+    conselheiro.jpg         conselheiro(a) (quadrada)
+    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    tribo.jpg               foto sobre o povo indígena (vertical)
+    1.jpg até 6.jpg         fotos da galeria (6 fotos)
+
+public/fotos/unidades/xavantes/   — Unidade Xavantes
+    capa.jpg                capa (horizontal, fica apagada atrás do título)
+    conselheiro.jpg         conselheiro(a) (quadrada)
+    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    tribo.jpg               foto sobre o povo indígena (vertical)
+    1.jpg até 6.jpg         fotos da galeria (6 fotos)
+
+public/fotos/unidades/yekwana/   — Unidade Ye'kwana
+    capa.jpg                capa (horizontal, fica apagada atrás do título)
+    conselheiro.jpg         conselheiro(a) (quadrada)
+    emblema.png             emblema da unidade (PNG quadrado, fundo transparente)
+    tribo.jpg               foto sobre o povo indígena (vertical)
+    1.jpg até 6.jpg         fotos da galeria (6 fotos)
+
+public/fotos/galeria/   — Capa da página Galeria
+    capa.jpg                capa (horizontal, fica apagada atrás do título)
+
+public/fotos/galeria/acampamentos/   — Álbum Acampamentos
+    1.jpg até 6.jpg         fotos da galeria (6 fotos)
+
+public/fotos/galeria/eventos/   — Álbum Eventos
+    1.jpg até 6.jpg         fotos da galeria (6 fotos)
+
+public/fotos/galeria/investiduras/   — Álbum Investiduras
+    1.jpg até 4.jpg         fotos da galeria (4 fotos)

@@ -1,0 +1,28 @@
+.emblema {
+  display: inline-grid;
+  place-items: center;
+  width: var(--tamanho);
+  height: var(--tamanho);
+  flex-shrink: 0;
+}
+
+.emblema img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.emblema__letra {
+  display: grid;
+  place-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid var(--cor-emblema);
+  color: var(--cor-emblema);
+  font-weight: 800;
+  font-stretch: 125%;
+  font-size: calc(var(--tamanho) * 0.42);
+  line-height: 1;
+  background: radial-gradient(circle at 30% 25%, color-mix(in srgb, var(--cor-emblema) 25%, transparent), transparent 70%);
+}

@@ -1,0 +1,87 @@
+.galeria-fotos {
+  columns: var(--colunas) 150px;
+  column-gap: clamp(10px, 1.6vw, 20px);
+}
+
+.galeria-fotos__item {
+  break-inside: avoid;
+  margin-bottom: clamp(10px, 1.6vw, 20px);
+}
+
+.galeria-fotos__botao {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  border-radius: var(--raio-p);
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+.galeria-fotos__botao .foto img,
+.galeria-fotos__botao .foto__vazia {
+  transition: transform 0.8s var(--suave), filter 0.5s;
+}
+
+.galeria-fotos__botao:hover .foto img,
+.galeria-fotos__botao:hover .foto__vazia {
+  transform: scale(1.06);
+}
+
+.galeria-fotos__botao::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.55));
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.galeria-fotos__botao:hover::after,
+.galeria-fotos__botao:focus-visible::after {
+  opacity: 1;
+}
+
+.galeria-fotos__icone {
+  position: absolute;
+  z-index: 1;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--ouro);
+  color: var(--noite);
+  opacity: 0;
+  transform: scale(0.6) rotate(-90deg);
+  transition: all 0.4s var(--suave);
+}
+
+.galeria-fotos__botao:hover .galeria-fotos__icone,
+.galeria-fotos__botao:focus-visible .galeria-fotos__icone {
+  opacity: 1;
+  transform: none;
+}
+
+.galeria-fotos__legenda {
+  position: absolute;
+  z-index: 1;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+  text-align: left;
+  font-size: 0.9rem;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.4s var(--suave);
+}
+
+.galeria-fotos__botao:hover .galeria-fotos__legenda {
+  opacity: 1;
+  transform: none;
+}

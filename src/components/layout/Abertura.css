@@ -1,0 +1,98 @@
+.abertura {
+  position: fixed;
+  inset: 0;
+  z-index: 500;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: var(--noite);
+  cursor: pointer;
+  overflow: hidden;
+  transition:
+    opacity var(--saida) ease,
+    visibility var(--saida);
+}
+
+.abertura--saindo {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* Raios girando atrás do logo (lembram os raios do brasão) */
+.abertura__raios {
+  position: absolute;
+  width: 140vmax;
+  aspect-ratio: 1;
+  background: repeating-conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--ouro) 10%, transparent) 0deg 6deg,
+    transparent 6deg 18deg
+  );
+  mask-image: radial-gradient(circle, #000 0%, transparent 55%);
+  animation: abertura-girar 14s linear infinite;
+}
+
+.abertura__logo {
+  position: relative;
+  width: clamp(120px, 22vw, 180px);
+  height: auto;
+  animation: abertura-logo 1s var(--suave) both;
+  filter: drop-shadow(0 20px 40px rgba(245, 200, 26, 0.25));
+}
+
+.abertura__texto {
+  position: relative;
+  font-size: clamp(1rem, 3vw, 1.5rem);
+  font-weight: 900;
+  font-stretch: 125%;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ouro);
+  animation: capa-subir 0.8s 0.35s var(--suave) both;
+}
+
+.abertura__barra {
+  position: relative;
+  width: 160px;
+  height: 3px;
+  border-radius: 3px;
+  background: var(--linha-forte);
+  overflow: hidden;
+}
+
+.abertura__barra span {
+  position: absolute;
+  inset: 0;
+  background: var(--ouro);
+  transform-origin: left;
+  animation: progresso-abertura var(--duracao) ease-in-out both;
+}
+
+.abertura--saindo .abertura__logo {
+  transform: scale(1.08);
+  transition: transform var(--saida) ease;
+}
+
+@keyframes abertura-logo {
+  from {
+    opacity: 0;
+    transform: scale(0.7) rotate(-8deg);
+  }
+}
+
+@keyframes abertura-girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes progresso-abertura {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}

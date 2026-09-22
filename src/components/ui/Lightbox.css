@@ -1,0 +1,118 @@
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  display: grid;
+  place-items: center;
+  padding: 72px var(--margem) 40px;
+  background: rgba(6, 7, 5, 0.94);
+  backdrop-filter: blur(10px);
+  animation: lightbox-entrar 0.35s var(--suave);
+}
+
+.lightbox__topo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px var(--margem);
+}
+
+.lightbox__contagem {
+  font-weight: 700;
+  font-stretch: 120%;
+  letter-spacing: 0.1em;
+  color: var(--texto-2);
+}
+
+.lightbox__botao {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid var(--linha-forte);
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.lightbox__botao:hover {
+  background: var(--ouro);
+  border-color: var(--ouro);
+  color: var(--noite);
+}
+
+.lightbox__figura {
+  margin: 0;
+  width: min(1100px, 100%);
+  max-height: calc(100svh - 140px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: lightbox-foto 0.45s var(--suave);
+}
+
+.lightbox__figura .foto {
+  width: 100%;
+  max-height: calc(100svh - 170px);
+  border-radius: var(--raio-p);
+}
+
+.lightbox__figura .foto:not(.foto--moldura) img {
+  max-height: calc(100svh - 170px);
+  width: auto;
+  margin-inline: auto;
+}
+
+.lightbox__figura .foto:not(.foto--moldura) {
+  background: transparent;
+}
+
+.lightbox__figura .foto--moldura {
+  max-width: min(100%, calc((100svh - 170px) * 1.33));
+}
+
+.lightbox__figura figcaption {
+  margin-top: 14px;
+  color: var(--texto-2);
+  text-align: center;
+}
+
+.lightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.lightbox__nav--anterior {
+  left: var(--margem);
+}
+
+.lightbox__nav--proxima {
+  right: var(--margem);
+}
+
+@media (max-width: 700px) {
+  .lightbox__nav {
+    top: auto;
+    bottom: 20px;
+    transform: none;
+  }
+}
+
+@keyframes lightbox-entrar {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes lightbox-foto {
+  from {
+    opacity: 0;
+    transform: scale(0.97);
+  }
+}

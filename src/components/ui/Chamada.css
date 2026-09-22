@@ -1,0 +1,95 @@
+.secao-chamada {
+  padding-top: 0;
+}
+
+.chamada {
+  --tom-chamada: var(--mata);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  align-items: end;
+  gap: 40px;
+  padding: clamp(32px, 6vw, 80px);
+  border-radius: clamp(20px, 3vw, 32px);
+  background: linear-gradient(135deg, color-mix(in srgb, var(--tom-chamada) 70%, var(--noite)) 0%, var(--noite-2) 75%);
+  border: 1px solid var(--linha);
+}
+
+.chamada__aurora {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.chamada__aurora span {
+  position: absolute;
+  width: 60%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: 0.55;
+  animation: aurora-flutuar 16s ease-in-out infinite alternate;
+}
+
+.chamada__aurora span:first-child {
+  background: var(--ouro);
+  top: -40%;
+  right: -15%;
+  opacity: 0.35;
+}
+
+.chamada__aurora span:last-child {
+  background: var(--tom-chamada);
+  bottom: -50%;
+  left: -10%;
+  animation-delay: -6s;
+}
+
+.chamada h2 {
+  font-size: clamp(2rem, 5vw, 4rem);
+  text-transform: uppercase;
+  font-stretch: 125%;
+  max-width: 12ch;
+}
+
+.chamada p {
+  margin-top: 18px;
+  max-width: 520px;
+  color: color-mix(in srgb, var(--texto) 80%, transparent);
+  font-size: 1.1rem;
+}
+
+.chamada__infos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+}
+
+.chamada__infos li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--linha);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.chamada__botoes {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (max-width: 860px) {
+  .chamada {
+    grid-template-columns: 1fr;
+  }
+}

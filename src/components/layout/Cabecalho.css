@@ -1,0 +1,328 @@
+.cabecalho {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 100;
+  transition:
+    transform 0.45s var(--suave),
+    background 0.4s,
+    border-color 0.4s;
+  border-bottom: 1px solid transparent;
+}
+
+.cabecalho--solido {
+  background: color-mix(in srgb, var(--noite) 82%, transparent);
+  backdrop-filter: blur(14px) saturate(1.3);
+  -webkit-backdrop-filter: blur(14px) saturate(1.3);
+  border-color: var(--linha);
+}
+
+.cabecalho--escondido {
+  transform: translateY(-100%);
+}
+
+/* Sem blur/transform com o menu aberto: senão o menu (position: fixed)
+   ficaria preso dentro do cabeçalho. */
+.cabecalho--menu-aberto {
+  background: var(--noite);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transform: none;
+}
+
+.cabecalho__barra {
+  height: var(--cabecalho);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* ---------- Marca ---------- */
+
+.cabecalho__marca {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  margin-right: auto;
+}
+
+.cabecalho__nome {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.cabecalho__nome strong {
+  font-size: 1.15rem;
+  font-weight: 800;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.cabecalho__nome small {
+  margin-top: 5px;
+  font-size: 0.66rem;
+  font-weight: 600;
+  font-stretch: 125%;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--ouro);
+}
+
+/* ---------- Navegação (computador) ---------- */
+
+.cabecalho__nav ul {
+  display: flex;
+  gap: 6px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cabecalho__nav li {
+  position: relative;
+}
+
+.cabecalho__link {
+  display: block;
+  padding: 10px 14px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--texto-2);
+  transition: color 0.3s;
+  position: relative;
+}
+
+.cabecalho__link::after {
+  content: '';
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 4px;
+  height: 2px;
+  background: var(--ouro);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s var(--suave);
+}
+
+.cabecalho__link:hover,
+.cabecalho__link.active {
+  color: var(--texto);
+}
+
+.cabecalho__link:hover::after,
+.cabecalho__link.active::after {
+  transform: scaleX(1);
+}
+
+.cabecalho__submenu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  min-width: 220px;
+  padding: 10px;
+  border-radius: var(--raio);
+  background: var(--noite-2);
+  border: 1px solid var(--linha);
+  box-shadow: 0 24px 60px -20px rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 10px);
+  transition: all 0.3s var(--suave);
+}
+
+.cabecalho__com-submenu:hover .cabecalho__submenu,
+.cabecalho__com-submenu:focus-within .cabecalho__submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+.cabecalho__submenu a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  border-radius: var(--raio-p);
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.25s, color 0.25s;
+}
+
+.cabecalho__submenu a:hover {
+  background: color-mix(in srgb, var(--cor-unidade) 16%, transparent);
+  color: var(--cor-unidade);
+}
+
+.cabecalho__ponto {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--cor-unidade);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cor-unidade) 22%, transparent);
+  flex-shrink: 0;
+}
+
+/* ---------- Ações ---------- */
+
+.cabecalho__acoes {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.cabecalho__secretaria {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--texto-2);
+  border-radius: 999px;
+  transition: color 0.3s, background 0.3s;
+}
+
+.cabecalho__secretaria:hover {
+  color: var(--texto);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.cabecalho__participar {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 0.88rem;
+}
+
+.cabecalho__hamburguer {
+  display: none;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  border-radius: 50%;
+  border: 1px solid var(--linha-forte);
+  background: rgba(255, 255, 255, 0.04);
+  cursor: pointer;
+}
+
+/* ---------- Menu de tela cheia (celular) ---------- */
+
+.menu-celular {
+  position: fixed;
+  inset: var(--cabecalho) 0 0;
+  overflow-y: auto;
+  background:
+    radial-gradient(80% 50% at 100% 0%, color-mix(in srgb, var(--mata) 35%, transparent), transparent 70%),
+    radial-gradient(70% 40% at 0% 100%, color-mix(in srgb, var(--ouro) 18%, transparent), transparent 70%),
+    var(--noite);
+  padding-block: 24px 40px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.35s,
+    visibility 0.35s;
+}
+
+.cabecalho--menu-aberto .menu-celular {
+  opacity: 1;
+  visibility: visible;
+}
+
+.menu-celular__lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.menu-celular__lista li {
+  border-bottom: 1px solid var(--linha);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.5s var(--suave);
+  transition-delay: calc(var(--i) * 60ms + 80ms);
+}
+
+.cabecalho--menu-aberto .menu-celular__lista li {
+  opacity: 1;
+  transform: none;
+}
+
+.menu-celular__lista a {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  padding: 14px 0;
+  font-size: clamp(2rem, 9vw, 3.2rem);
+  font-weight: 800;
+  font-stretch: 125%;
+  text-transform: uppercase;
+  text-decoration: none;
+  line-height: 1.05;
+}
+
+.menu-celular__lista a.active {
+  color: var(--ouro);
+}
+
+.menu-celular__numero {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--ouro);
+  letter-spacing: 0.1em;
+}
+
+.menu-celular__unidades {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 28px;
+}
+
+.menu-celular__unidades a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 14px;
+  border-radius: var(--raio-p);
+  border: 1px solid var(--linha);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.menu-celular__rodape {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 28px;
+}
+
+.menu-celular__rodape .botao {
+  flex: 1 1 200px;
+}
+
+@media (max-width: 1080px) {
+  .cabecalho__nav,
+  .cabecalho__secretaria {
+    display: none;
+  }
+
+  .cabecalho__hamburguer {
+    display: grid;
+  }
+}
+
+@media (max-width: 560px) {
+  .cabecalho__participar {
+    display: none;
+  }
+}
+
+@media (min-width: 1081px) {
+  .menu-celular {
+    display: none;
+  }
+}

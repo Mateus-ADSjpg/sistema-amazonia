@@ -6,9 +6,13 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 
 ## Funcionalidades
 
-**Portal público**
-- Capa de apresentação do clube
-- Páginas **Sobre**, **Unidades** (identidade e cores de cada unidade), **Fotos** (álbum oficial) e **Contato** (WhatsApp da diretoria)
+**Portal público** (funciona bem no computador e no celular)
+- **Abertura:** animação com o logo e a #AmazôniaMeMove na primeira página da visita
+- **Início:** capa com destaques que se revezam (foto do clube apagada sob as cores da paleta, barras de progresso, setas e deslizar no celular), faixa animada com as unidades, "Quem somos", números do clube, painéis das unidades, trilha da história, galeria, Voto do Desbravador e chamada para participar
+- **Sobre:** história com linha do tempo, atividades, diretoria e os ideais (Voto, Lei, Alvo, Lema e Objetivo)
+- **Unidades:** visão geral e uma página para cada unidade (`/unidades/surui`, `/unidades/suya`, `/unidades/xavantes`, `/unidades/yekwana`), com as cores da unidade, a tribo que a inspira, história, grito de guerra, conselheiros e galeria
+- **Galeria:** álbuns com filtro e visualizador em tela cheia
+- **Contato:** WhatsApp, reuniões, redes e perguntas frequentes
 
 **Painel da Secretaria (acesso restrito)**
 - Login com e-mail e senha (Supabase Auth)
@@ -19,7 +23,7 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 
 | Camada | Ferramenta |
 | --- | --- |
-| Front-end | [React](https://react.dev) + [Vite](https://vite.dev) |
+| Front-end | [React](https://react.dev) + [Vite](https://vite.dev) + [React Router](https://reactrouter.com) |
 | Back-end / banco | [Supabase](https://supabase.com) (PostgreSQL, Auth e Row Level Security) |
 | Hospedagem | [Vercel](https://vercel.com) |
 | Lint | [oxlint](https://oxc.rs) |
@@ -27,25 +31,45 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 ## Estrutura do projeto
 
 ```
-├── public/                    # Arquivos estáticos (ícones)
+├── public/
+│   └── fotos/                 # TODAS as fotos do site (veja fotos/LEIA-ME.txt)
 ├── src/
-│   ├── App.jsx                # Portal: capa, menu e páginas públicas
-│   ├── clube.js               # Conteúdo do clube: unidades, cargos, contato e álbum
-│   ├── supabase.js            # Conexão com o Supabase
-│   └── components/
-│       ├── PainelSecretaria.jsx   # Controle de sessão e permissão do painel
-│       ├── LoginSecretaria.jsx    # Tela de login
-│       ├── GerenciarMembros.jsx   # Cadastro e lista de membros
-│       └── estilosPainel.js       # Estilos compartilhados do painel
+│   ├── conteudo/              # TEXTOS do site: é aqui que você edita o conteúdo
+│   │   ├── clube.js           #   nome, contato, WhatsApp, reuniões, álbum
+│   │   ├── inicio.js          #   página inicial
+│   │   ├── sobre.js           #   história, atividades, diretoria, ideais
+│   │   ├── unidades.js        #   as 4 unidades (cores, tribo, história, grito...)
+│   │   ├── galeria.js         #   álbuns de fotos
+│   │   └── contato.js         #   perguntas frequentes
+│   ├── paginas/               # Uma página por arquivo (Inicio, Sobre, Unidade...)
+│   ├── components/
+│   │   ├── layout/            # Cabeçalho, menu do celular e rodapé
+│   │   ├── ui/                # Peças reutilizáveis (Foto, Galeria, Capa...)
+│   │   └── secretaria/        # Painel da Secretaria (login e membros)
+│   ├── hooks/                 # Animações ao rolar, título da aba etc.
+│   ├── index.css              # Cores, fontes e estilos gerais do site
+│   ├── App.jsx                # Endereços (rotas) das páginas
+│   └── supabase.js            # Conexão com o Supabase
 ├── supabase/
 │   └── seguranca.sql          # Tabelas, RLS e políticas de acesso
 ├── .env.example               # Modelo das variáveis de ambiente
 └── vercel.json                # Rotas da Vercel
 ```
 
+## Editando textos e fotos
+
+O site foi montado para que o conteúdo seja trocado **sem mexer no layout**:
+
+- **Textos:** edite os arquivos de `src/conteudo/`. Cada campo tem um comentário explicando onde aparece.
+- **Fotos:** coloque os arquivos em `public/fotos/` com os nomes listados em [`public/fotos/LEIA-ME.txt`](public/fotos/LEIA-ME.txt). Enquanto uma foto não existe, o site mostra um espaço colorido no lugar.
+- **Campos pendentes:** textos que começam com `PREENCHER` (lema, grito de guerra, respostas etc.) **não aparecem no site publicado**. Rodando `npm run dev`, eles aparecem destacados com borda tracejada, e cada espaço de foto mostra o caminho do arquivo esperado.
+- **Destaques da capa:** ficam em `DESTAQUES`, no arquivo `src/conteudo/inicio.js` (texto, botões, foto e enquadramento de cada um).
+- **Cores:** a paleta geral (amarelo, preto, verde-petróleo e laranja do logo) fica no início de `src/index.css`; as cores de cada unidade ficam em `src/conteudo/unidades.js` e pintam a página inteira da unidade.
+- **Mais fotos numa galeria:** aumente a quantidade em `src/conteudo/unidades.js` (`fotosDaUnidade('surui', 10)`) ou adicione itens ao álbum em `src/conteudo/galeria.js`.
+
 ## Rodando localmente
 
-Pré-requisitos: [Node.js](https://nodejs.org) 18 ou superior e uma conta no Supabase.
+Pré-requisitos: [Node.js](https://nodejs.org) 20 ou superior e uma conta no Supabase.
 
 ```bash
 git clone https://github.com/Mateus-ADSjpg/sistema-amazonia.git

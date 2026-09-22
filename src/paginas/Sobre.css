@@ -1,0 +1,304 @@
+/* ---------- Introdução ---------- */
+
+.sobre-intro {
+  display: grid;
+  grid-template-columns: 0.8fr 1fr;
+  gap: clamp(40px, 7vw, 100px);
+  align-items: center;
+}
+
+.sobre-intro__foto .foto {
+  border-radius: var(--raio);
+}
+
+.sobre-intro__texto {
+  margin-top: 28px;
+}
+
+@media (max-width: 860px) {
+  .sobre-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .sobre-intro__foto {
+    max-width: 420px;
+  }
+}
+
+/* ---------- Linha do tempo ---------- */
+
+.sobre-linha {
+  background:
+    radial-gradient(50% 40% at 0% 30%, color-mix(in srgb, var(--mata) 16%, transparent), transparent 70%),
+    var(--noite-2);
+}
+
+.linha-tempo {
+  position: relative;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: clamp(48px, 7vw, 96px);
+}
+
+.linha-tempo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, var(--ouro), color-mix(in srgb, var(--ouro) 5%, transparent));
+}
+
+.linha-tempo__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(48px, 8vw, 120px);
+  align-items: center;
+}
+
+.linha-tempo__item:nth-child(even) .linha-tempo__foto {
+  order: 2;
+}
+
+.linha-tempo__foto .foto {
+  border-radius: var(--raio);
+}
+
+.linha-tempo__ponto {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 22px;
+  height: 22px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: var(--noite-2);
+  border: 3px solid var(--ouro);
+  box-shadow: 0 0 0 8px color-mix(in srgb, var(--ouro) 14%, transparent);
+}
+
+.linha-tempo__ano {
+  display: block;
+  font-size: clamp(2.8rem, 6vw, 4.8rem);
+  font-weight: 900;
+  font-stretch: 125%;
+  line-height: 1;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--ouro);
+}
+
+.linha-tempo__texto h3 {
+  margin-top: 14px;
+  font-size: var(--titulo-m);
+  text-transform: uppercase;
+}
+
+.linha-tempo__texto p {
+  margin-top: 14px;
+  color: var(--texto-2);
+  max-width: 460px;
+}
+
+@media (max-width: 800px) {
+  .linha-tempo::before {
+    left: 10px;
+  }
+
+  .linha-tempo__item {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding-left: 44px;
+  }
+
+  .linha-tempo__item:nth-child(even) .linha-tempo__foto {
+    order: 0;
+  }
+
+  .linha-tempo__ponto {
+    left: 11px;
+    top: 0;
+    transform: translate(-50%, 0);
+  }
+}
+
+/* ---------- Atividades ---------- */
+
+.atividades {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--linha);
+  border: 1px solid var(--linha);
+  border-radius: var(--raio);
+  overflow: hidden;
+}
+
+.atividade {
+  position: relative;
+  padding: clamp(28px, 3.4vw, 44px);
+  background: var(--noite);
+  transition: background 0.4s;
+}
+
+.atividade:hover {
+  background: var(--noite-2);
+}
+
+.atividade__icone {
+  display: grid;
+  place-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 16px;
+  color: var(--ouro);
+  background: color-mix(in srgb, var(--ouro) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ouro) 30%, transparent);
+  transition: transform 0.5s var(--suave), background 0.4s, color 0.4s;
+}
+
+.atividade:hover .atividade__icone {
+  transform: rotate(-8deg) scale(1.08);
+  background: var(--ouro);
+  color: var(--noite);
+}
+
+.atividade h3 {
+  margin-top: 22px;
+  font-size: 1.3rem;
+}
+
+.atividade p {
+  margin-top: 10px;
+  color: var(--texto-2);
+}
+
+@media (max-width: 900px) {
+  .atividades {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .atividades {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Ideais ---------- */
+
+.sobre-ideais {
+  overflow: hidden;
+  background:
+    radial-gradient(60% 60% at 100% 100%, color-mix(in srgb, var(--mata) 30%, transparent), transparent 70%),
+    radial-gradient(50% 50% at 0% 0%, color-mix(in srgb, var(--ouro) 10%, transparent), transparent 70%),
+    var(--noite-2);
+}
+
+.ideais {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.ideal {
+  padding: clamp(24px, 3vw, 36px);
+  border-radius: var(--raio);
+  border: 1px solid var(--linha);
+  background: rgba(11, 13, 10, 0.55);
+  backdrop-filter: blur(6px);
+}
+
+.ideal--voto {
+  grid-column: span 2;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--ouro) 22%, transparent), rgba(11, 13, 10, 0.55) 70%);
+  border-color: color-mix(in srgb, var(--ouro) 40%, transparent);
+}
+
+.ideal--lei {
+  grid-row: span 3;
+}
+
+.ideal--largo {
+  grid-column: span 2;
+}
+
+.ideal__rotulo {
+  font-size: 0.75rem;
+  font-weight: 800;
+  font-stretch: 125%;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--ouro);
+}
+
+.ideal blockquote {
+  margin: 16px 0 0;
+  font-size: clamp(1.3rem, 2.4vw, 2rem);
+  font-weight: 700;
+  font-stretch: 108%;
+  line-height: 1.3;
+}
+
+.ideal__intro {
+  margin-top: 14px;
+  color: var(--texto-2);
+}
+
+.ideal ol {
+  margin: 16px 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: lei;
+  display: grid;
+  gap: 12px;
+}
+
+.ideal ol li {
+  counter-increment: lei;
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  align-items: baseline;
+  font-weight: 600;
+}
+
+.ideal ol li::before {
+  content: counter(lei, decimal-leading-zero);
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: var(--ouro);
+}
+
+.ideal__frase {
+  margin-top: 14px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  font-stretch: 108%;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .ideais {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ideal--voto,
+  .ideal--largo {
+    grid-column: 1 / -1;
+  }
+
+  .ideal--lei {
+    grid-row: auto;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .ideais {
+    grid-template-columns: 1fr;
+  }
+}

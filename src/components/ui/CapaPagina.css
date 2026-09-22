@@ -1,0 +1,76 @@
+.capa-pagina {
+  position: relative;
+  min-height: clamp(460px, 72svh, 760px);
+  display: flex;
+  align-items: flex-end;
+  padding-top: calc(var(--cabecalho) + 40px);
+  padding-bottom: clamp(48px, 7vw, 96px);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.capa-pagina--compacta {
+  min-height: clamp(340px, 46svh, 460px);
+}
+
+.capa-pagina__fundo {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+}
+
+.capa-pagina__fundo .foto img {
+  filter: saturate(0.75) brightness(0.5);
+  transform: scale(1.06);
+  animation: capa-aproximar 18s ease-out forwards;
+}
+
+.capa-pagina__fundo .foto__vazia {
+  background: var(--noite-2);
+}
+
+.capa-pagina__fundo .foto__vazia > * {
+  display: none;
+}
+
+.capa-pagina__cores {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(70% 90% at 10% 10%, color-mix(in srgb, var(--tom) 60%, transparent), transparent 65%),
+    radial-gradient(50% 70% at 95% 30%, color-mix(in srgb, var(--tom-apoio) 30%, transparent), transparent 70%),
+    linear-gradient(180deg, rgba(11, 13, 10, 0.2) 0%, rgba(11, 13, 10, 0.35) 45%, var(--noite) 100%);
+}
+
+.capa-pagina__conteudo {
+  position: relative;
+}
+
+.capa-pagina__sobretitulo {
+  animation: capa-subir 0.9s var(--suave) both;
+}
+
+.capa-pagina__titulo {
+  margin-top: 18px;
+  font-size: clamp(2.6rem, 9vw, 7.5rem);
+  font-stretch: 125%;
+  text-transform: uppercase;
+  line-height: 0.95;
+  max-width: 14ch;
+  animation: capa-subir 0.9s 0.1s var(--suave) both;
+}
+
+.capa-pagina__texto {
+  margin-top: 22px;
+  max-width: 560px;
+  font-size: clamp(1.05rem, 1.6vw, 1.25rem);
+  color: var(--texto-2);
+  animation: capa-subir 0.9s 0.2s var(--suave) both;
+}
+
+@keyframes capa-aproximar {
+  to {
+    transform: scale(1);
+  }
+}
