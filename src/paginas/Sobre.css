@@ -302,3 +302,9 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* ---------- Diretoria (carrossel) ---------- */
+
+.sobre-diretoria__dica {
+  color: var(--texto-2);
+}

@@ -1,0 +1,622 @@
+/* =====================================================================
+   AGENDA DO ANO
+   ===================================================================== */
+
+/* ---------- Cultos de toda semana ---------- */
+
+.agenda-cultos__local {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  color: var(--texto-2);
+  line-height: 1.55;
+  max-width: 36ch;
+}
+
+.agenda-cultos__grade {
+  list-style: none;
+  margin: 0 0 24px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.agenda-culto {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: clamp(24px, 3vw, 34px);
+  border-radius: var(--raio);
+  border: 1px solid var(--linha);
+  background: var(--noite-2);
+  overflow: hidden;
+}
+
+.agenda-culto__icone {
+  display: grid;
+  place-items: center;
+  width: 52px;
+  height: 52px;
+  margin-bottom: 8px;
+  border-radius: 16px;
+  color: var(--ouro);
+  background: color-mix(in srgb, var(--ouro) 12%, transparent);
+  border: 1px solid color-mix(in srgb, var(--ouro) 30%, transparent);
+}
+
+.agenda-culto__periodo {
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-stretch: 125%;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
+
+.agenda-culto h3 {
+  font-size: clamp(1.5rem, 2.6vw, 2rem);
+  text-transform: uppercase;
+  font-stretch: 118%;
+}
+
+.agenda-culto__horario {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ouro);
+}
+
+.agenda-culto__titulo {
+  color: var(--texto-2);
+}
+
+@media (max-width: 900px) {
+  .agenda-cultos__grade {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Próximo evento ---------- */
+
+/* Vem logo depois dos cultos, sem espaço dobrado */
+.agenda-topo {
+  padding-top: 0;
+}
+
+.agenda-proximo {
+  --brilho-cor: var(--cor-tipo, var(--ouro));
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+  padding: clamp(24px, 3.4vw, 40px);
+  border-radius: var(--raio);
+  border: 1px solid var(--linha);
+  overflow: hidden;
+  background:
+    radial-gradient(120% 130% at 100% 0%, color-mix(in srgb, var(--cor-tipo, var(--ouro)) 22%, transparent), transparent 62%),
+    var(--noite-2);
+  border-color: color-mix(in srgb, var(--cor-tipo, var(--ouro)) 32%, transparent);
+}
+
+.agenda-proximo__selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.74rem;
+  font-weight: 700;
+  font-stretch: 125%;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cor-tipo, var(--ouro));
+}
+
+.agenda-proximo__pulso {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: currentColor;
+  animation: pulso 2.2s infinite;
+}
+
+.agenda-proximo__contagem {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-stretch: 112%;
+  color: var(--texto-2);
+}
+
+.agenda-proximo h2 {
+  font-size: clamp(1.7rem, 3.4vw, 2.8rem);
+  text-transform: uppercase;
+  font-stretch: 118%;
+}
+
+.agenda-proximo__dados,
+.agenda-item__dados {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+  color: var(--texto-2);
+}
+
+.agenda-proximo__dados li,
+.agenda-item__dados li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.95rem;
+}
+
+.agenda-proximo__dados svg,
+.agenda-item__dados svg {
+  color: var(--cor-tipo, var(--ouro));
+  flex-shrink: 0;
+}
+
+.agenda-proximo__semana {
+  color: var(--texto-3);
+}
+
+.agenda-proximo__texto {
+  color: var(--texto-2);
+  max-width: 52ch;
+}
+
+.agenda-proximo .botao {
+  margin-top: auto;
+  --cor-botao: var(--cor-tipo, var(--ouro));
+}
+
+/* A lista do ano vem logo depois dos cartões de cima, sem espaço dobrado */
+.agenda-lista-secao {
+  padding-top: 0;
+}
+
+/* ---------- Legenda dos tipos ---------- */
+
+.agenda-legenda {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.agenda-legenda__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--cor-tipo) 35%, transparent);
+  background: color-mix(in srgb, var(--cor-tipo) 10%, transparent);
+  color: var(--cor-tipo);
+  font-size: 0.78rem;
+  font-weight: 700;
+  font-stretch: 110%;
+  letter-spacing: 0.04em;
+}
+
+/* ---------- Aviso de agenda em montagem ---------- */
+
+.agenda-aviso {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  padding: 14px 18px;
+  border-radius: var(--raio-p);
+  border: 1px dashed color-mix(in srgb, var(--ouro) 45%, transparent);
+  background: color-mix(in srgb, var(--ouro) 7%, transparent);
+  color: var(--texto-2);
+  font-size: 0.95rem;
+}
+
+.agenda-aviso svg {
+  color: var(--ouro);
+  flex-shrink: 0;
+}
+
+/* ---------- Filtros ---------- */
+
+.agenda-filtros {
+  position: sticky;
+  top: calc(var(--cabecalho) - 8px);
+  z-index: 20;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 14px 24px;
+  margin-bottom: 36px;
+  padding-block: 12px;
+  background: color-mix(in srgb, var(--noite) 88%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--linha);
+}
+
+.agenda-meses {
+  display: flex;
+  gap: 6px;
+  flex: 1 1 320px;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
+
+.agenda-meses::-webkit-scrollbar {
+  display: none;
+}
+
+.agenda-mes {
+  flex-shrink: 0;
+  padding: 8px 15px;
+  border-radius: 999px;
+  border: 1px solid var(--linha);
+  background: none;
+  color: var(--texto-2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-stretch: 110%;
+  cursor: pointer;
+  transition: background 0.25s, color 0.25s, border-color 0.25s;
+}
+
+.agenda-mes:hover {
+  border-color: var(--linha-forte);
+  color: var(--texto);
+}
+
+.agenda-mes--ativo {
+  background: var(--ouro);
+  border-color: var(--ouro);
+  color: var(--noite);
+}
+
+/* Chavinha "esconder o que já passou" */
+
+.agenda-chave {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: var(--texto-2);
+  cursor: pointer;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* a caixinha de verdade fica escondida, mas continua funcionando pelo
+   teclado; quem aparece na tela é a chavinha desenhada abaixo */
+.agenda-chave input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.agenda-chave__trilho {
+  display: block;
+  width: 42px;
+  height: 24px;
+  padding: 3px;
+  border-radius: 999px;
+  background: var(--noite-4);
+  border: 1px solid var(--linha-forte);
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.agenda-chave__bolinha {
+  display: block;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--texto-3);
+  transition: transform 0.3s var(--suave), background 0.3s;
+}
+
+.agenda-chave input:checked + .agenda-chave__trilho {
+  background: color-mix(in srgb, var(--ouro) 35%, transparent);
+  border-color: var(--ouro);
+}
+
+.agenda-chave input:checked + .agenda-chave__trilho .agenda-chave__bolinha {
+  transform: translateX(18px);
+  background: var(--ouro);
+}
+
+.agenda-chave input:focus-visible + .agenda-chave__trilho {
+  outline: 2px solid var(--ouro);
+  outline-offset: 3px;
+}
+
+/* ---------- Blocos de mês ---------- */
+
+.agenda-mes-bloco + .agenda-mes-bloco {
+  margin-top: clamp(32px, 4vw, 52px);
+}
+
+.agenda-mes-titulo {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 18px;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  text-transform: uppercase;
+  font-stretch: 125%;
+  letter-spacing: 0.06em;
+}
+
+.agenda-mes-titulo::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--linha);
+}
+
+.agenda-mes-titulo em {
+  font-style: normal;
+  font-size: 0.8rem;
+  letter-spacing: 0.2em;
+  color: var(--texto-3);
+  order: 3;
+}
+
+/* ---------- Cada evento ---------- */
+
+.agenda-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.agenda-item {
+  --brilho-cor: var(--cor-tipo, var(--ouro));
+  position: relative;
+  display: grid;
+  grid-template-columns: 82px 1fr auto;
+  gap: 22px;
+  align-items: center;
+  padding: 20px 22px;
+  border-radius: var(--raio);
+  border: 1px solid var(--linha);
+  background: var(--noite-2);
+  overflow: hidden;
+  transition: border-color 0.35s, background 0.35s;
+}
+
+.agenda-item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: var(--cor-tipo, var(--ouro));
+  transform: scaleY(0.35);
+  transform-origin: center;
+  transition: transform 0.45s var(--suave);
+}
+
+.agenda-item:hover {
+  border-color: color-mix(in srgb, var(--cor-tipo, var(--ouro)) 40%, transparent);
+}
+
+.agenda-item:hover::after {
+  transform: scaleY(1);
+}
+
+.agenda-item--agora {
+  border-color: color-mix(in srgb, var(--cor-tipo, var(--ouro)) 55%, transparent);
+  background:
+    radial-gradient(100% 140% at 0% 50%, color-mix(in srgb, var(--cor-tipo, var(--ouro)) 14%, transparent), transparent 60%),
+    var(--noite-2);
+}
+
+.agenda-item--agora::after {
+  transform: scaleY(1);
+}
+
+.agenda-item--passou {
+  opacity: 0.45;
+}
+
+.agenda-item--passou::after {
+  background: var(--texto-3);
+}
+
+/* Bloco do dia */
+
+.agenda-item__dia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 6px;
+  border-radius: var(--raio-p);
+  background: color-mix(in srgb, var(--cor-tipo, var(--ouro)) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--cor-tipo, var(--ouro)) 22%, transparent);
+  line-height: 1;
+}
+
+.agenda-item__dia strong {
+  font-size: 1.8rem;
+  font-weight: 900;
+  font-stretch: 118%;
+  color: var(--cor-tipo, var(--ouro));
+}
+
+.agenda-item__ate {
+  margin-top: 3px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--cor-tipo, var(--ouro));
+}
+
+.agenda-item__semana {
+  margin-top: 6px;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+}
+
+/* Corpo */
+
+.agenda-item__corpo {
+  min-width: 0;
+  display: grid;
+  gap: 7px;
+  justify-items: start;
+}
+
+.agenda-item__tipo {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.68rem;
+  font-weight: 800;
+  font-stretch: 118%;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--cor-tipo, var(--ouro));
+}
+
+.agenda-item__corpo h4 {
+  font-size: clamp(1.1rem, 1.6vw, 1.35rem);
+  font-stretch: 112%;
+}
+
+.agenda-item__texto {
+  color: var(--texto-2);
+  font-size: 0.95rem;
+}
+
+/* Botão de salvar */
+
+.agenda-item__acao {
+  display: flex;
+  align-items: center;
+}
+
+.agenda-item__salvar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  border: 1px solid var(--linha-forte);
+  background: none;
+  color: var(--texto-2);
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.agenda-item__salvar:hover {
+  background: var(--cor-tipo, var(--ouro));
+  border-color: var(--cor-tipo, var(--ouro));
+  color: var(--noite);
+}
+
+.agenda-item__marca {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  white-space: nowrap;
+}
+
+/* ---------- Rodapé da agenda ---------- */
+
+.agenda-vazio {
+  padding: 40px 0;
+  color: var(--texto-3);
+  text-align: center;
+}
+
+.agenda-rodape {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 28px;
+  margin-top: clamp(36px, 5vw, 60px);
+  padding-top: 28px;
+  border-top: 1px solid var(--linha);
+}
+
+.agenda-rodape p {
+  flex: 1 1 320px;
+  color: var(--texto-3);
+  font-size: 0.92rem;
+}
+
+/* ---------- Celular ---------- */
+
+@media (max-width: 720px) {
+  .agenda-item {
+    grid-template-columns: 58px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 16px 16px 16px 18px;
+  }
+
+  .agenda-item__dia {
+    padding: 8px 4px;
+  }
+
+  .agenda-item__dia strong {
+    font-size: 1.35rem;
+  }
+
+  .agenda-item__acao {
+    grid-column: 2;
+  }
+
+  .agenda-item__salvar {
+    padding: 8px 14px;
+    font-size: 0.8rem;
+  }
+
+  .agenda-filtros {
+    top: calc(var(--cabecalho) - 12px);
+    margin-bottom: 26px;
+  }
+
+  .agenda-chave {
+    font-size: 0.82rem;
+  }
+
+  .agenda-legenda__item {
+    padding: 5px 10px;
+    font-size: 0.72rem;
+    gap: 6px;
+  }
+
+  .agenda-aviso {
+    align-items: flex-start;
+    font-size: 0.9rem;
+  }
+
+  .agenda-aviso svg {
+    margin-top: 2px;
+  }
+}

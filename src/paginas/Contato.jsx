@@ -4,12 +4,15 @@ import { deveMostrar } from '../conteudo/util'
 import { useTitulo } from '../hooks/useTitulo'
 import CapaPagina from '../components/ui/CapaPagina'
 import Icone from '../components/ui/Icone'
+import Marca from '../components/ui/Marca'
 import Revelar from '../components/ui/Revelar'
 import Texto from '../components/ui/Texto'
+import { useBrilho } from '../hooks/useBrilho'
 import './Contato.css'
 
 export default function Contato() {
   useTitulo('Contato')
+  const brilho = useBrilho()
 
   const perguntas = PERGUNTAS.filter((p) => deveMostrar(p.resposta))
 
@@ -25,18 +28,18 @@ export default function Contato() {
 
       <section className="secao contato">
         <div className="container contato__grade">
-          <Revelar className="contato-cartao contato-cartao--destaque">
-            <span className="contato-cartao__icone">
-              <Icone nome="conversa" tamanho={30} />
+          <Revelar className="contato-cartao contato-cartao--destaque brilho" onPointerMove={brilho}>
+            <span className="contato-cartao__icone contato-cartao__icone--whatsapp">
+              <Marca nome="whatsapp" tamanho={30} />
             </span>
             <h2>Fale pelo WhatsApp</h2>
             <p>O jeito mais rápido de tirar dúvidas e combinar sua visita.</p>
             <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="botao botao--verde">
-              Chamar a diretoria <Icone nome="seta" />
+              <Marca nome="whatsapp" tamanho={18} /> Chamar a diretoria
             </a>
           </Revelar>
 
-          <Revelar className="contato-cartao" atraso={100}>
+          <Revelar className="contato-cartao brilho" atraso={100} onPointerMove={brilho}>
             <span className="contato-cartao__icone">
               <Icone nome="calendario" tamanho={26} />
             </span>
@@ -56,35 +59,70 @@ export default function Contato() {
               </li>
             </ul>
             {CONTATO.reunioes.mapa && (
-              <a href={CONTATO.reunioes.mapa} target="_blank" rel="noopener noreferrer" className="link-seta">
-                Ver no mapa <Icone nome="setaDiagonal" />
+              <a href={CONTATO.reunioes.mapa} target="_blank" rel="noopener noreferrer" className="link-seta contato-mapa">
+                <Marca nome="maps" tamanho={17} comCor /> Ver no mapa <Icone nome="setaDiagonal" />
               </a>
             )}
           </Revelar>
 
-          <Revelar className="contato-cartao" atraso={200}>
-            <span className="contato-cartao__icone">
-              <Icone nome="camera" tamanho={26} />
+          <Revelar className="contato-cartao brilho" atraso={200} onPointerMove={brilho}>
+            <span className="contato-cartao__icone contato-cartao__icone--instagram">
+              <Marca nome="instagram" tamanho={26} />
             </span>
             <h2>Redes sociais</h2>
-            <ul className="contato-cartao__lista">
+            <ul className="contato-cartao__lista contato-cartao__lista--redes">
               {CONTATO.instagram && (
                 <li>
-                  <Icone nome="camera" tamanho={18} />
-                  <a href={`https://instagram.com/${CONTATO.instagram}`} target="_blank" rel="noopener noreferrer">
-                    @{CONTATO.instagram}
+                  <a
+                    href={`https://instagram.com/${CONTATO.instagram}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="contato-rede contato-rede--instagram"
+                  >
+                    <Marca nome="instagram" tamanho={20} />
+                    <span>
+                      <strong>Instagram</strong>
+                      @{CONTATO.instagram}
+                    </span>
+                    <Icone nome="setaDiagonal" tamanho={16} />
                   </a>
                 </li>
               )}
+              <li>
+                <a
+                  href={linkWhatsapp()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="contato-rede contato-rede--whatsapp"
+                >
+                  <Marca nome="whatsapp" tamanho={20} />
+                  <span>
+                    <strong>WhatsApp</strong>
+                    Diretoria do clube
+                  </span>
+                  <Icone nome="setaDiagonal" tamanho={16} />
+                </a>
+              </li>
               {CONTATO.email && (
                 <li>
-                  <Icone nome="email" tamanho={18} />
-                  <a href={`mailto:${CONTATO.email}`}>{CONTATO.email}</a>
+                  <a href={`mailto:${CONTATO.email}`} className="contato-rede">
+                    <Icone nome="email" tamanho={20} />
+                    <span>
+                      <strong>E-mail</strong>
+                      {CONTATO.email}
+                    </span>
+                    <Icone nome="setaDiagonal" tamanho={16} />
+                  </a>
                 </li>
               )}
               <li>
-                <Icone nome="local" tamanho={18} />
-                {CLUBE.cidade} · {CLUBE.regiao}
+                <span className="contato-rede contato-rede--local">
+                  <Icone nome="globo" tamanho={20} />
+                  <span>
+                    <strong>Onde estamos</strong>
+                    {CLUBE.cidade} · {CLUBE.regiao}
+                  </span>
+                </span>
               </li>
             </ul>
           </Revelar>

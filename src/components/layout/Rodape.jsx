@@ -1,8 +1,10 @@
 import { Link } from 'react-router'
 import { CLUBE, CONTATO, linkWhatsapp } from '../../conteudo/clube'
 import { UNIDADES } from '../../conteudo/unidades'
+import AcessoRestrito from './AcessoRestrito'
 import Emblema from '../ui/Emblema'
 import Icone from '../ui/Icone'
+import Marca from '../ui/Marca'
 import './Rodape.css'
 
 export default function Rodape() {
@@ -35,6 +37,7 @@ export default function Rodape() {
             <li><Link to="/">Início</Link></li>
             <li><Link to="/sobre">Nossa história</Link></li>
             <li><Link to="/unidades">Unidades</Link></li>
+            <li><Link to="/calendario">Agenda do ano</Link></li>
             <li><Link to="/galeria">Galeria</Link></li>
             <li><Link to="/contato">Contato</Link></li>
           </ul>
@@ -58,21 +61,38 @@ export default function Rodape() {
           <h2 className="rodape__titulo">Fale com a gente</h2>
           <ul className="rodape__contatos">
             <li>
-              <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer">
-                <Icone nome="conversa" tamanho={18} /> WhatsApp da diretoria
+              <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="rodape__rede rodape__rede--whatsapp">
+                <Marca nome="whatsapp" tamanho={18} /> WhatsApp da diretoria
               </a>
             </li>
             {CONTATO.instagram && (
               <li>
-                <a href={`https://instagram.com/${CONTATO.instagram}`} target="_blank" rel="noopener noreferrer">
-                  <Icone nome="camera" tamanho={18} /> @{CONTATO.instagram}
+                <a
+                  href={`https://instagram.com/${CONTATO.instagram}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rodape__rede rodape__rede--instagram"
+                >
+                  <Marca nome="instagram" tamanho={18} /> @{CONTATO.instagram}
                 </a>
               </li>
             )}
             {CONTATO.email && (
               <li>
-                <a href={`mailto:${CONTATO.email}`}>
+                <a href={`mailto:${CONTATO.email}`} className="rodape__rede">
                   <Icone nome="email" tamanho={18} /> {CONTATO.email}
+                </a>
+              </li>
+            )}
+            {CONTATO.reunioes.mapa && (
+              <li>
+                <a
+                  href={CONTATO.reunioes.mapa}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rodape__rede rodape__rede--maps"
+                >
+                  <Marca nome="maps" tamanho={18} /> {CONTATO.reunioes.igreja}
                 </a>
               </li>
             )}
@@ -91,12 +111,10 @@ export default function Rodape() {
           © {ano} {CLUBE.nome}
         </p>
         <div className="rodape__base-links">
-          <Link to="/secretaria">
-            <Icone nome="cadeado" tamanho={16} /> Área da Secretaria
-          </Link>
           <button className="rodape__topo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             Voltar ao topo <Icone nome="setaDiagonal" tamanho={16} />
           </button>
+          <AcessoRestrito />
         </div>
       </div>
     </footer>

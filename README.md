@@ -8,13 +8,15 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 
 **Portal público** (funciona bem no computador e no celular)
 - **Abertura:** animação com o logo e a #AmazôniaMeMove na primeira página da visita
-- **Início:** capa com destaques que se revezam (foto do clube apagada sob as cores da paleta, barras de progresso, setas e deslizar no celular), faixa animada com as unidades, "Quem somos", números do clube, painéis das unidades, trilha da história, galeria, Voto do Desbravador e chamada para participar
-- **Sobre:** história com linha do tempo, atividades, diretoria e os ideais (Voto, Lei, Alvo, Lema e Objetivo)
+- **Início:** capa com destaques que se revezam a cada 5 segundos (foto do clube apagada sob as cores da paleta, cortina com as cores das quatro unidades na troca, texto aparecendo do desfoque, barras de progresso, setas e deslizar no celular), faixa do próximo evento da agenda, faixa animada com as unidades, "Quem somos", números do clube, painéis das unidades, trilha da história, galeria, Voto do Desbravador e chamada para participar
+- **Sobre:** história com linha do tempo, atividades e a diretoria em carrossel (anda sozinho devagar, com setas e arraste), além dos ideais (Voto, Lei, Alvo, Lema e Objetivo)
 - **Unidades:** visão geral e uma página para cada unidade (`/unidades/surui`, `/unidades/suya`, `/unidades/xavantes`, `/unidades/yekwana`), com as cores da unidade, a tribo que a inspira, história, grito de guerra, conselheiros e galeria
+- **Calendário:** agenda do ano em `/calendario` — próximo evento com contagem, reunião de toda semana, filtro por mês, opção de esconder o que já passou e botão que salva os eventos na agenda do celular (arquivo `.ics`)
 - **Galeria:** álbuns com filtro e visualizador em tela cheia
-- **Contato:** WhatsApp, reuniões, redes e perguntas frequentes
+- **Contato:** WhatsApp, reuniões, redes (com os ícones oficiais) e perguntas frequentes
 
 **Painel da Secretaria (acesso restrito)**
+- **Não aparece no menu do site.** Chega-se até ele pelo endereço `/secretaria`, pelo atalho `Ctrl + Alt + S` em qualquer página ou pelo cadeadinho discreto no canto do rodapé
 - Login com e-mail e senha (Supabase Auth)
 - Só contas cadastradas como administradoras entram no painel
 - Cadastro, edição e exclusão de membros (nome, unidade, cargo e telefone)
@@ -39,6 +41,7 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 │   │   ├── inicio.js          #   página inicial
 │   │   ├── sobre.js           #   história, atividades, diretoria, ideais
 │   │   ├── unidades.js        #   as 4 unidades (cores, tribo, história, grito...)
+│   │   ├── calendario.js      #   agenda do ano (datas, tipos de evento)
 │   │   ├── galeria.js         #   álbuns de fotos
 │   │   └── contato.js         #   perguntas frequentes
 │   ├── paginas/               # Uma página por arquivo (Inicio, Sobre, Unidade...)
@@ -64,7 +67,8 @@ O site foi montado para que o conteúdo seja trocado **sem mexer no layout**:
 - **Fotos:** coloque os arquivos em `public/fotos/` com os nomes listados em [`public/fotos/LEIA-ME.txt`](public/fotos/LEIA-ME.txt). Enquanto uma foto não existe, o site mostra um espaço colorido no lugar.
 - **Espaços reservados:** textos entre parênteses, como `(História do clube)`, aparecem no site em cinza e itálico, mostrando o que ainda falta escrever. Textos que começam com `PREENCHER` somem do site publicado. Rodando `npm run dev`, os dois aparecem com borda tracejada, e cada espaço de foto mostra o caminho do arquivo esperado.
 - **Peso das fotos:** depois de colocar fotos novas, rode `npm run fotos`. O comando reduz e comprime tudo que está em `public/fotos` (capas até 1920 px, demais fotos até 1400 px). O site já carrega cada foto só quando ela chega na tela.
-- **Destaques da capa:** ficam em `DESTAQUES`, no arquivo `src/conteudo/inicio.js` (texto, botões, foto e enquadramento de cada um).
+- **Destaques da capa:** ficam em `DESTAQUES`, no arquivo `src/conteudo/inicio.js` (texto, botões, foto e enquadramento de cada um). O tempo de cada destaque na tela está logo abaixo, em `TEMPO_DESTAQUE`.
+- **Agenda do ano:** as datas ficam em `EVENTOS`, no arquivo `src/conteudo/calendario.js`. Cada evento tem data, título, tipo, horário, local e uma linha de explicação; o site ordena, separa por mês e marca o que já passou sozinho. Quando a diretoria confirmar a agenda, troque `AGENDA_CONFIRMADA` para `true` para tirar o aviso de "agenda em montagem".
 - **Cores:** a paleta geral (amarelo, preto, verde-petróleo e laranja do logo) fica no início de `src/index.css`; as cores de cada unidade ficam em `src/conteudo/unidades.js` e pintam a página inteira da unidade.
 - **Mais fotos numa galeria:** aumente a quantidade em `src/conteudo/unidades.js` (`fotosDaUnidade('surui', 10)`) ou adicione itens ao álbum em `src/conteudo/galeria.js`.
 

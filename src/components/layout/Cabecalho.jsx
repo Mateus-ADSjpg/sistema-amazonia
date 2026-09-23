@@ -1,18 +1,22 @@
 import { useEffect, useState } from 'react'
 import { Link, NavLink } from 'react-router'
-import { CLUBE, linkWhatsapp } from '../../conteudo/clube'
+import { CLUBE, CONTATO, linkWhatsapp } from '../../conteudo/clube'
 import { UNIDADES } from '../../conteudo/unidades'
 import { useRolagem } from '../../hooks/useRolagem'
 import Emblema from '../ui/Emblema'
 import Icone from '../ui/Icone'
+import Marca from '../ui/Marca'
 import './Cabecalho.css'
 
+// Páginas do menu. Para acrescentar uma, copie uma linha.
+// O Painel da Secretaria não entra aqui de propósito: ele é interno.
 const LINKS = [
-  { para: '/', texto: 'Início' },
-  { para: '/sobre', texto: 'Sobre' },
-  { para: '/unidades', texto: 'Unidades', submenu: true },
-  { para: '/galeria', texto: 'Galeria' },
-  { para: '/contato', texto: 'Contato' },
+  { para: '/', texto: 'Início', icone: 'casa' },
+  { para: '/sobre', texto: 'Sobre', icone: 'bussola' },
+  { para: '/unidades', texto: 'Unidades', icone: 'bandeira', submenu: true },
+  { para: '/calendario', texto: 'Calendário', icone: 'calendario' },
+  { para: '/galeria', texto: 'Galeria', icone: 'camera' },
+  { para: '/contato', texto: 'Contato', icone: 'conversa' },
 ]
 
 export default function Cabecalho() {
@@ -75,10 +79,6 @@ export default function Cabecalho() {
         </nav>
 
         <div className="cabecalho__acoes">
-          <Link to="/secretaria" className="cabecalho__secretaria" title="Área da Secretaria">
-            <Icone nome="cadeado" tamanho={18} />
-            <span>Secretaria</span>
-          </Link>
           <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="botao cabecalho__participar">
             Quero participar
           </a>
@@ -89,24 +89,38 @@ export default function Cabecalho() {
             aria-controls="menu-celular"
             aria-label={menuAberto ? 'Fechar menu' : 'Abrir menu'}
           >
-            <Icone nome={menuAberto ? 'fechar' : 'menu'} tamanho={26} />
+            <span className={`cabecalho__tracos ${menuAberto ? 'cabecalho__tracos--x' : ''}`} aria-hidden="true">
+              <span />
+              <span />
+              <span />
+            </span>
           </button>
         </div>
       </div>
 
-      {/* Menu de tela cheia (celular e tablet) */}
-      <div id="menu-celular" className="menu-celular" aria-hidden={!menuAberto}>
-        <nav className="container" aria-label="Menu">
+      {/* ---------- Menu do celular (compacto) ---------- */}
+      <div
+        id="menu-celular"
+        className="menu-celular"
+        aria-hidden={!menuAberto}
+        onClick={(e) => e.target === e.currentTarget && fechar()}
+      >
+        <nav className="container menu-celular__caixa" aria-label="Menu">
           <ul className="menu-celular__lista">
             {LINKS.map((link, i) => (
               <li key={link.para} style={{ '--i': i }}>
                 <NavLink to={link.para} end={link.para === '/'} onClick={fechar}>
-                  <span className="menu-celular__numero">{String(i + 1).padStart(2, '0')}</span>
+                  <span className="menu-celular__icone">
+                    <Icone nome={link.icone} tamanho={18} />
+                  </span>
                   {link.texto}
+                  <Icone nome="seta" tamanho={16} className="menu-celular__seta" />
                 </NavLink>
               </li>
             ))}
           </ul>
+
+          <p className="menu-celular__rotulo">As quatro unidades</p>
           <div className="menu-celular__unidades">
             {UNIDADES.map((u) => (
               <Link key={u.slug} to={`/unidades/${u.slug}`} onClick={fechar} style={{ '--cor-unidade': u.tema.claro }}>
@@ -115,13 +129,22 @@ export default function Cabecalho() {
               </Link>
             ))}
           </div>
+
           <div className="menu-celular__rodape">
-            <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="botao">
-              Quero participar <Icone nome="seta" />
+            <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="botao botao--verde">
+              <Marca nome="whatsapp" tamanho={18} /> Quero participar
             </a>
-            <Link to="/secretaria" onClick={fechar} className="botao botao--vazado">
-              <Icone nome="cadeado" /> Secretaria
-            </Link>
+            {CONTATO.instagram && (
+              <a
+                href={`https://instagram.com/${CONTATO.instagram}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="menu-celular__rede"
+                aria-label={`Instagram do clube: @${CONTATO.instagram}`}
+              >
+                <Marca nome="instagram" tamanho={20} />
+              </a>
+            )}
           </div>
         </nav>
       </div>

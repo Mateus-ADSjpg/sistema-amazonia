@@ -3,6 +3,7 @@ import { Outlet, useLocation } from 'react-router'
 import Abertura from './Abertura'
 import Cabecalho from './Cabecalho'
 import Rodape from './Rodape'
+import BarraProgresso from '../ui/BarraProgresso'
 
 // Estrutura comum a todas as páginas: cabeçalho, conteúdo e rodapé.
 export default function Layout() {
@@ -20,6 +21,7 @@ export default function Layout() {
   return (
     <>
       <Abertura />
+      <BarraProgresso />
       <a href="#conteudo" className="pular-conteudo">
         Pular para o conteúdo
       </a>

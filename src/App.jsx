@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router'
 import Layout from './components/layout/Layout'
+import Calendario from './paginas/Calendario'
 import Contato from './paginas/Contato'
 import Galeria from './paginas/Galeria'
 import Inicio from './paginas/Inicio'
@@ -18,6 +19,7 @@ export default function App() {
         <Route path="sobre" element={<Sobre />} />
         <Route path="unidades" element={<Unidades />} />
         <Route path="unidades/:slug" element={<Unidade />} />
+        <Route path="calendario" element={<Calendario />} />
         <Route path="galeria" element={<Galeria />} />
         <Route path="contato" element={<Contato />} />
         <Route path="secretaria" element={<Secretaria />} />

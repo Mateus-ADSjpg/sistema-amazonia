@@ -1,0 +1,15 @@
+.barra-progresso {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 120;
+  height: 3px;
+  pointer-events: none;
+}
+
+.barra-progresso span {
+  display: block;
+  height: 100%;
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--mata-clara), var(--ouro) 55%, var(--coroa));
+  box-shadow: 0 0 12px color-mix(in srgb, var(--ouro) 60%, transparent);
+}

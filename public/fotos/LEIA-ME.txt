@@ -1,5 +1,5 @@
 ==========================================================
- FOTOS DO SITE — onde colocar cada uma  (76 no total)
+ FOTOS DO SITE — onde colocar cada uma  (77 no total)
 ==========================================================
 
 Como funciona:
@@ -32,8 +32,9 @@ Dicas:
     responsáveis.
 
 
-public/fotos/clube/   — Fotos gerais do clube  [7 foto(s)]
+public/fotos/clube/   — Fotos gerais do clube  [8 foto(s)]
     capa.jpg                JÁ INCLUÍDA: foto do grupo
+    calendario-capa.jpg     capa da página Calendário (horizontal)
     contato-capa.jpg        capa da página Contato (horizontal)
     logo.png                JÁ INCLUÍDO: logo do clube
     quem-somos-1.jpg        colagem "Quem somos" da página inicial

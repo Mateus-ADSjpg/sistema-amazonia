@@ -1,7 +1,9 @@
 import { ATIVIDADES, CAPA_SOBRE, DIRETORIA, HISTORIA, IDEAIS } from '../conteudo/sobre'
 import { classeModelo } from '../conteudo/util'
 import { useTitulo } from '../hooks/useTitulo'
+import { useBrilho } from '../hooks/useBrilho'
 import CapaPagina from '../components/ui/CapaPagina'
+import CarrosselPessoas from '../components/ui/CarrosselPessoas'
 import Chamada from '../components/ui/Chamada'
 import Foto from '../components/ui/Foto'
 import Icone from '../components/ui/Icone'
@@ -11,6 +13,7 @@ import './Sobre.css'
 
 export default function Sobre() {
   useTitulo('Nossa história')
+  const brilho = useBrilho()
 
   return (
     <>
@@ -93,7 +96,7 @@ export default function Sobre() {
           </div>
           <div className="atividades">
             {ATIVIDADES.map((a, i) => (
-              <Revelar key={a.titulo} className="atividade" atraso={(i % 3) * 100}>
+              <Revelar key={a.titulo} className="atividade brilho" atraso={(i % 3) * 100} onPointerMove={brilho}>
                 <span className="atividade__icone">
                   <Icone nome={a.icone} tamanho={28} />
                 </span>
@@ -119,16 +122,15 @@ export default function Sobre() {
                 </h2>
               </Revelar>
             </div>
+            <Revelar className="cabeca-secao__lado" atraso={140}>
+              <p className="sobre-diretoria__dica">
+                Quem cuida do clube no dia a dia. Arraste para o lado ou use as setas para conhecer todo mundo.
+              </p>
+            </Revelar>
           </div>
-          <div className="pessoas">
-            {DIRETORIA.map((p, i) => (
-              <Revelar key={p.nome + i} className="pessoa" atraso={i * 90}>
-                <Foto src={p.foto} alt={p.nome} proporcao="quadrada" />
-                <Texto as="h3" valor={p.nome} />
-                <p>{p.cargo}</p>
-              </Revelar>
-            ))}
-          </div>
+          <Revelar>
+            <CarrosselPessoas pessoas={DIRETORIA} rotulo="Diretoria do clube" />
+          </Revelar>
         </div>
       </section>
 

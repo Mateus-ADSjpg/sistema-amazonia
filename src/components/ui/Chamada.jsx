@@ -2,6 +2,7 @@ import { Link } from 'react-router'
 import { CLUBE, CONTATO, linkWhatsapp } from '../../conteudo/clube'
 import { CHAMADA_FINAL } from '../../conteudo/inicio'
 import Icone from './Icone'
+import Marca from './Marca'
 import Revelar from './Revelar'
 import './Chamada.css'
 
@@ -27,11 +28,16 @@ export default function Chamada({ titulo = CHAMADA_FINAL.titulo, texto = CHAMADA
                 <Icone nome="local" tamanho={18} />
                 {CLUBE.cidade}
               </li>
+              <li className="chamada__infos-link">
+                <Link to="/calendario">
+                  Ver a agenda do ano <Icone nome="seta" tamanho={16} />
+                </Link>
+              </li>
             </ul>
           </div>
           <div className="chamada__botoes">
             <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="botao botao--verde">
-              <Icone nome="conversa" /> Chamar no WhatsApp
+              <Marca nome="whatsapp" tamanho={18} /> Chamar no WhatsApp
             </a>
             <Link to="/contato" className="botao botao--vazado">
               Todos os contatos

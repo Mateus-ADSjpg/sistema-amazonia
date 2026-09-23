@@ -11,20 +11,25 @@ const prefereMenosMovimento = () =>
   typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
 // Capa da página inicial: destaques que se revezam sozinhos, com barras de
-// progresso, setas, pausa e deslizar no celular. Os textos ficam em
-// src/conteudo/inicio.js (DESTAQUES).
+// progresso e deslizar no celular. Os textos ficam em
+// src/conteudo/inicio.js (DESTAQUES) e o tempo de cada um em TEMPO_DESTAQUE.
+//
+// A troca é feita por uma "cortina": quatro faixas com as cores das
+// unidades atravessam a tela enquanto a foto e o texto mudam por baixo.
 export default function CapaCarrossel() {
   const total = DESTAQUES.length
   const [atual, setAtual] = useState(0)
   const [semAutoplay] = useState(prefereMenosMovimento)
-  const [pausadoPeloUsuario, setPausadoPeloUsuario] = useState(false)
   const [mouseEmCima, setMouseEmCima] = useState(false)
   const [focoDentro, setFocoDentro] = useState(false)
   const [abaOculta, setAbaOculta] = useState(false)
   const toqueInicial = useRef(null)
 
+  // Sem botão de pausa na tela: o revezamento para sozinho quando o
+  // ponteiro está em cima, quando o teclado entra na capa, quando a aba
+  // sai da frente e quando o aparelho pede menos animação.
   const autoplay = total > 1 && !semAutoplay
-  const pausado = !autoplay || pausadoPeloUsuario || mouseEmCima || focoDentro || abaOculta
+  const pausado = !autoplay || mouseEmCima || focoDentro || abaOculta
 
   const irPara = (i) => setAtual(((i % total) + total) % total)
   const proximo = () => irPara(atual + 1)
@@ -86,6 +91,13 @@ export default function CapaCarrossel() {
         ))}
       </div>
       <div className="capa__veu" aria-hidden="true" />
+
+      {/* Cortina que atravessa a tela a cada troca de destaque */}
+      <div key={`cortina-${atual}`} className="capa__cortina" aria-hidden="true">
+        {UNIDADES.map((u, i) => (
+          <span key={u.slug} style={{ background: u.tema.principal, '--i': i }} />
+        ))}
+      </div>
 
       <h1 className="sr-only">{CLUBE.nome}</h1>
 
@@ -170,24 +182,6 @@ export default function CapaCarrossel() {
                 </span>
               </button>
             ))}
-          </div>
-
-          <div className="capa__controles">
-            {autoplay && (
-              <button
-                className="capa__controle"
-                onClick={() => setPausadoPeloUsuario((v) => !v)}
-                aria-label={pausadoPeloUsuario ? 'Continuar passando os destaques' : 'Pausar os destaques'}
-              >
-                <Icone nome={pausadoPeloUsuario ? 'tocar' : 'pausar'} tamanho={18} />
-              </button>
-            )}
-            <button className="capa__controle" onClick={anterior} aria-label="Destaque anterior">
-              <Icone nome="setaEsquerda" tamanho={18} />
-            </button>
-            <button className="capa__controle" onClick={proximo} aria-label="Próximo destaque">
-              <Icone nome="seta" tamanho={18} />
-            </button>
           </div>
         </div>
       )}

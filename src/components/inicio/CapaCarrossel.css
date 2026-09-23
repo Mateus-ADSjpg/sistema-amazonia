@@ -27,7 +27,7 @@
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 1.4s ease;
+  transition: opacity 0.85s ease;
 }
 
 .capa__fundo--ativo {
@@ -39,7 +39,7 @@
   object-position: var(--posicao, center);
   filter: grayscale(0.3) saturate(0.85) brightness(0.45) contrast(1.05);
   transform: scale(1.14);
-  transition: transform 9s ease-out;
+  transition: transform 6.5s ease-out;
 }
 
 .capa__fundo--ativo .foto img {
@@ -162,6 +162,44 @@
   animation-delay: -7s;
 }
 
+/* ---------- Cortina da troca de destaque ----------
+   Quatro faixas com as cores das unidades atravessam a tela de cima a
+   baixo a cada troca. As bordas são suavizadas com uma máscara, então
+   o efeito é de uma luz passando, não de um bloco tapando a foto. */
+
+.capa__cortina {
+  position: absolute;
+  inset: -12% -12%;
+  z-index: -1;
+  display: flex;
+  gap: 1.5vw;
+  pointer-events: none;
+  transform: skewX(-11deg);
+}
+
+.capa__cortina span {
+  flex: 1;
+  opacity: 0.9;
+  mix-blend-mode: screen;
+  transform: translateY(-115%);
+  -webkit-mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+  mask-image: linear-gradient(180deg, transparent, #000 22%, #000 78%, transparent);
+  animation: cortina-passar 0.95s var(--suave) both;
+  animation-delay: calc(var(--i) * 70ms);
+}
+
+@keyframes cortina-passar {
+  0% {
+    transform: translateY(-115%);
+  }
+  48% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(115%);
+  }
+}
+
 /* Véu escuro para garantir leitura do texto */
 .capa__veu {
   position: absolute;
@@ -234,10 +272,9 @@
   max-width: 13ch;
 }
 
-/* Palavras sobem uma a uma */
+/* Palavras aparecem uma a uma, saindo do desfoque */
 .capa__palavra {
   display: inline-block;
-  overflow: hidden;
   vertical-align: top;
   margin-right: 0.24em;
   padding-top: 0.14em;
@@ -246,7 +283,7 @@
 
 .capa__palavra > span {
   display: inline-block;
-  animation: letra-subir 0.9s calc(0.15s + var(--i) * 0.08s) var(--suave) both;
+  animation: texto-surgir 0.75s calc(0.1s + var(--i) * 0.07s) var(--suave) both;
 }
 
 /* Destaque principal: o nome do clube bem grande, letra por letra */
@@ -256,7 +293,6 @@
   margin-top: -0.08em;
   font-size: var(--titulo-xl);
   line-height: 0.9;
-  overflow: hidden;
   padding-top: 0.2em;
   padding-bottom: 0.06em;
 }
@@ -270,7 +306,7 @@
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: letra-subir 1s calc(0.15s + var(--i) * 0.06s) var(--suave) both;
+  animation: texto-surgir 0.8s calc(0.1s + var(--i) * 0.05s) var(--suave) both;
 }
 
 .capa__texto {
@@ -278,7 +314,7 @@
   max-width: 560px;
   font-size: clamp(1.05rem, 1.8vw, 1.3rem);
   color: var(--texto-2);
-  animation: capa-subir 0.9s 0.45s var(--suave) both;
+  animation: capa-subir 0.7s 0.3s var(--suave) both;
 }
 
 .capa__botoes {
@@ -286,10 +322,10 @@
   flex-wrap: wrap;
   gap: 12px;
   margin-top: clamp(22px, 3.5vw, 32px);
-  animation: capa-subir 0.9s 0.6s var(--suave) both;
+  animation: capa-subir 0.7s 0.42s var(--suave) both;
 }
 
-/* ---------- Indicadores e controles ---------- */
+/* ---------- Indicadores ---------- */
 
 .capa__rodape {
   display: flex;
@@ -371,29 +407,6 @@
   animation-fill-mode: forwards;
 }
 
-.capa__controles {
-  display: flex;
-  gap: 8px;
-}
-
-.capa__controle {
-  display: grid;
-  place-items: center;
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid var(--linha-forte);
-  background: rgba(11, 13, 10, 0.35);
-  cursor: pointer;
-  transition: background 0.3s, border-color 0.3s, color 0.3s;
-}
-
-.capa__controle:hover {
-  background: var(--ouro);
-  border-color: var(--ouro);
-  color: var(--noite);
-}
-
 .capa__faixa {
   display: flex;
   height: 6px;
@@ -439,7 +452,7 @@
 @media (max-width: 640px) {
   .capa__titulo {
     max-width: none;
-    font-size: clamp(2rem, 8.6vw, 3.4rem);
+    font-size: clamp(1.6rem, 8.6vw, 3.4rem);
   }
 
   .capa__titulo--gigante {
@@ -451,8 +464,12 @@
     flex: 1 1 auto;
   }
 
-  .capa__controle:first-child:not(:only-child) ~ .capa__controle {
-    display: none;
+  .capa__indicador {
+    padding: 12px 0;
+  }
+
+  .capa__barra {
+    height: 4px;
   }
 }
 
@@ -465,10 +482,17 @@
   }
 }
 
-@keyframes letra-subir {
+/* Entrada "saindo do desfoque" (inspirada no Blur Text do React Bits) */
+@keyframes texto-surgir {
   from {
-    transform: translateY(105%);
     opacity: 0;
+    transform: translateY(0.42em) scale(0.94);
+    filter: blur(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
   }
 }
 

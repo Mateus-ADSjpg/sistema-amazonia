@@ -41,8 +41,10 @@ export const DESTAQUES = [
   },
 ]
 
-// Tempo de cada destaque na tela (em milissegundos).
-export const TEMPO_DESTAQUE = 7000
+// Tempo de cada destaque na tela, em milissegundos.
+// 5000 = 5 segundos. Diminua para passar mais rápido, aumente para dar
+// mais tempo de leitura (abaixo de 4000 fica cansativo).
+export const TEMPO_DESTAQUE = 5000
 
 export const QUEM_SOMOS = {
   titulo: 'Mais que um clube, uma grande tribo',

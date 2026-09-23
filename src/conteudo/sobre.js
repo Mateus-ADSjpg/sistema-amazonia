@@ -52,16 +52,20 @@ export const ATIVIDADES = [
   { icone: 'coracao', titulo: 'Fé e amizade', texto: 'Valores cristãos vividos no dia a dia do clube.' },
 ]
 
-// Diretoria: troque os nomes e coloque as fotos em public/fotos/diretoria/
-// (foto quadrada, rosto centralizado). Pode acrescentar quantas pessoas quiser,
-// copiando uma linha e criando a foto com o mesmo nome de arquivo.
+// Diretoria: só a liderança principal do clube. Os conselheiros de cada
+// unidade aparecem na página da própria unidade (src/conteudo/unidades.js),
+// e os instrutores não entram nesta lista.
+//
+// Troque os nomes e coloque as fotos em public/fotos/diretoria/
+// (foto quadrada, rosto centralizado). Pode acrescentar quantas pessoas
+// quiser, copiando uma linha e criando a foto com o mesmo nome de arquivo:
+// elas viram cartões no carrossel da página "Sobre".
 export const DIRETORIA = [
   { nome: '(Nome do diretor)', cargo: 'Diretor', foto: '/fotos/diretoria/diretor.jpg' },
   { nome: '(Nome da diretora associada)', cargo: 'Diretora Associada', foto: '/fotos/diretoria/diretora-associada.jpg' },
   { nome: '(Nome da secretária)', cargo: 'Secretária', foto: '/fotos/diretoria/secretaria.jpg' },
   { nome: '(Nome do tesoureiro)', cargo: 'Tesoureiro', foto: '/fotos/diretoria/tesoureiro.jpg' },
   { nome: '(Nome do capelão)', cargo: 'Capelão', foto: '/fotos/diretoria/capelao.jpg' },
-  { nome: '(Nome do instrutor)', cargo: 'Instrutor', foto: '/fotos/diretoria/instrutor.jpg' },
 ]
 
 // Ideais oficiais dos Desbravadores (fonte: adventistas.org/pt/desbravadores/ideais).

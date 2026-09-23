@@ -1,0 +1,109 @@
+/* =====================================================================
+   CARROSSEL DE PESSOAS (diretoria)
+   ===================================================================== */
+
+.carrossel-pessoas {
+  position: relative;
+}
+
+.carrossel-pessoas__trilho {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0 18px;
+  display: flex;
+  gap: clamp(16px, 2.4vw, 28px);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: 0;
+  scrollbar-width: none;
+  cursor: grab;
+  /* deixa o dedo rolar de lado no celular sem travar a página */
+  overscroll-behavior-x: contain;
+}
+
+.carrossel-pessoas__trilho::-webkit-scrollbar {
+  display: none;
+}
+
+.carrossel-pessoas__trilho--arrastando {
+  cursor: grabbing;
+  scroll-snap-type: none;
+  scroll-behavior: auto;
+}
+
+.carrossel-pessoas__trilho--arrastando .carrossel-pessoas__item {
+  user-select: none;
+}
+
+.carrossel-pessoas__trilho--arrastando img {
+  pointer-events: none;
+}
+
+.carrossel-pessoas__item {
+  flex: 0 0 clamp(190px, 21vw, 250px);
+  scroll-snap-align: start;
+  display: flex;
+  flex-direction: column;
+}
+
+/* o cargo fica colado embaixo, então todos ficam na mesma linha mesmo
+   quando um nome ocupa duas linhas */
+.carrossel-pessoas__item p {
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+/* Fumacinha na ponta direita, sugerindo que tem mais gente para o lado */
+.carrossel-pessoas::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: -1px;
+  bottom: 18px;
+  width: clamp(40px, 8vw, 90px);
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, var(--noite));
+}
+
+/* ---------- Setas ---------- */
+
+.carrossel-pessoas__controles {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.carrossel-pessoas__seta {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  border: 1px solid var(--linha-forte);
+  background: none;
+  color: var(--texto-2);
+  cursor: pointer;
+  transition: background 0.3s, border-color 0.3s, color 0.3s, opacity 0.3s;
+}
+
+.carrossel-pessoas__seta:hover:not(:disabled) {
+  background: var(--ouro);
+  border-color: var(--ouro);
+  color: var(--noite);
+}
+
+.carrossel-pessoas__seta:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+
+@media (max-width: 560px) {
+  .carrossel-pessoas__item {
+    flex: 0 0 60%;
+  }
+
+  .carrossel-pessoas__controles {
+    justify-content: center;
+  }
+}

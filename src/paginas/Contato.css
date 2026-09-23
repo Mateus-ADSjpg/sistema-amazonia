@@ -33,10 +33,116 @@
   border: 1px solid color-mix(in srgb, var(--ouro) 28%, transparent);
 }
 
-.contato-cartao--destaque .contato-cartao__icone {
-  color: #6fe08e;
-  background: rgba(37, 162, 68, 0.15);
-  border-color: rgba(37, 162, 68, 0.4);
+.contato-cartao__icone--whatsapp {
+  color: #25d366;
+  background: rgba(37, 211, 102, 0.14);
+  border-color: rgba(37, 211, 102, 0.38);
+}
+
+.contato-cartao__icone--instagram {
+  color: #e1306c;
+  background: rgba(225, 48, 108, 0.12);
+  border-color: rgba(225, 48, 108, 0.35);
+}
+
+/* ---------- Links das redes ---------- */
+
+.contato-cartao__lista--redes {
+  width: 100%;
+  gap: 8px;
+}
+
+/* Estes itens não usam a grade "ícone + texto" da lista comum:
+   cada link tem a própria grade, então o li precisa ser bloco inteiro.
+   (a classe repetida é só para valer mais que a regra geral acima) */
+.contato-cartao__lista.contato-cartao__lista--redes > li {
+  display: block;
+  word-break: normal;
+}
+
+.contato-cartao__lista.contato-cartao__lista--redes svg {
+  margin-top: 0;
+}
+
+.contato-rede {
+  display: grid;
+  grid-template-columns: 20px 1fr auto;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: var(--raio-p);
+  border: 1px solid transparent;
+  text-decoration: none;
+  color: var(--texto-2);
+  transition: border-color 0.3s, background 0.3s, color 0.3s;
+}
+
+.contato-rede > span {
+  display: grid;
+  min-width: 0;
+  line-height: 1.35;
+}
+
+.contato-rede strong {
+  font-size: 0.72rem;
+  font-weight: 800;
+  font-stretch: 115%;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--texto-3);
+  transition: color 0.3s;
+}
+
+.contato-rede > svg:first-child {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--suave);
+}
+
+.contato-rede > svg:last-child {
+  opacity: 0.4;
+  transition: opacity 0.3s, transform 0.3s var(--suave);
+}
+
+a.contato-rede:hover {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--linha-forte);
+  color: var(--texto);
+}
+
+a.contato-rede:hover > svg:first-child {
+  transform: scale(1.12);
+}
+
+a.contato-rede:hover > svg:last-child {
+  opacity: 1;
+  transform: translate(2px, -2px);
+}
+
+.contato-rede--instagram:hover {
+  border-color: rgba(225, 48, 108, 0.5);
+  color: #ff6b9d;
+}
+
+.contato-rede--instagram:hover strong {
+  color: #e1306c;
+}
+
+.contato-rede--whatsapp:hover {
+  border-color: rgba(37, 211, 102, 0.5);
+  color: #5fe093;
+}
+
+.contato-rede--whatsapp:hover strong {
+  color: #25d366;
+}
+
+.contato-rede--local {
+  cursor: default;
+}
+
+.contato-mapa {
+  margin-top: auto;
 }
 
 .contato-cartao h2 {

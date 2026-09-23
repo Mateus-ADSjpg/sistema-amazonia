@@ -92,6 +92,31 @@
   word-break: break-word;
 }
 
+.rodape__contatos svg {
+  flex-shrink: 0;
+  transition: transform 0.3s var(--suave), color 0.3s;
+}
+
+/* Cada rede acende na sua própria cor ao passar o mouse */
+.rodape__rede:hover svg {
+  transform: scale(1.14);
+}
+
+.rodape__rede--whatsapp:hover,
+.rodape__rede--whatsapp:hover svg {
+  color: #25d366 !important;
+}
+
+.rodape__rede--instagram:hover,
+.rodape__rede--instagram:hover svg {
+  color: #e1306c !important;
+}
+
+.rodape__rede--maps:hover,
+.rodape__rede--maps:hover svg {
+  color: #4285f4 !important;
+}
+
 .rodape__base {
   display: flex;
   flex-wrap: wrap;
@@ -107,7 +132,8 @@
 .rodape__base-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  align-items: center;
+  gap: 14px;
 }
 
 .rodape__base-links a,

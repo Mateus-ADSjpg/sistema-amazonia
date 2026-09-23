@@ -33,7 +33,7 @@
   height: var(--cabecalho);
   display: flex;
   align-items: center;
-  gap: 24px;
+  gap: 20px;
 }
 
 /* ---------- Marca ---------- */
@@ -44,6 +44,14 @@
   gap: 12px;
   text-decoration: none;
   margin-right: auto;
+}
+
+.cabecalho__marca .emblema {
+  transition: transform 0.5s var(--suave);
+}
+
+.cabecalho__marca:hover .emblema {
+  transform: rotate(-6deg) scale(1.06);
 }
 
 .cabecalho__nome {
@@ -74,7 +82,7 @@
 
 .cabecalho__nav ul {
   display: flex;
-  gap: 6px;
+  gap: 2px;
   list-style: none;
   margin: 0;
   padding: 0;
@@ -86,20 +94,21 @@
 
 .cabecalho__link {
   display: block;
-  padding: 10px 14px;
-  font-size: 0.95rem;
+  padding: 10px 12px;
+  font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
   color: var(--texto-2);
   transition: color 0.3s;
   position: relative;
+  white-space: nowrap;
 }
 
 .cabecalho__link::after {
   content: '';
   position: absolute;
-  left: 14px;
-  right: 14px;
+  left: 12px;
+  right: 12px;
   bottom: 4px;
   height: 2px;
   background: var(--ouro);
@@ -149,12 +158,13 @@
   border-radius: var(--raio-p);
   text-decoration: none;
   font-weight: 600;
-  transition: background 0.25s, color 0.25s;
+  transition: background 0.25s, color 0.25s, transform 0.25s var(--suave);
 }
 
 .cabecalho__submenu a:hover {
   background: color-mix(in srgb, var(--cor-unidade) 16%, transparent);
   color: var(--cor-unidade);
+  transform: translateX(3px);
 }
 
 .cabecalho__ponto {
@@ -174,57 +184,77 @@
   gap: 12px;
 }
 
-.cabecalho__secretaria {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--texto-2);
-  border-radius: 999px;
-  transition: color 0.3s, background 0.3s;
-}
-
-.cabecalho__secretaria:hover {
-  color: var(--texto);
-  background: rgba(255, 255, 255, 0.06);
-}
-
 .cabecalho__participar {
   min-height: 44px;
   padding: 0 20px;
   font-size: 0.88rem;
 }
 
+/* Botão do menu: três tracinhos que viram um X */
+
 .cabecalho__hamburguer {
   display: none;
-  width: 48px;
-  height: 48px;
+  width: 46px;
+  height: 46px;
   place-items: center;
   border-radius: 50%;
   border: 1px solid var(--linha-forte);
   background: rgba(255, 255, 255, 0.04);
   cursor: pointer;
+  transition: border-color 0.3s, background 0.3s;
 }
 
-/* ---------- Menu de tela cheia (celular) ---------- */
+.cabecalho__hamburguer:hover {
+  border-color: var(--ouro);
+}
+
+.cabecalho__tracos {
+  display: grid;
+  gap: 5px;
+  width: 22px;
+}
+
+.cabecalho__tracos span {
+  display: block;
+  height: 2px;
+  border-radius: 2px;
+  background: currentColor;
+  transition: transform 0.4s var(--suave), opacity 0.25s;
+}
+
+.cabecalho__tracos span:last-child {
+  width: 14px;
+  justify-self: end;
+  transition: transform 0.4s var(--suave), opacity 0.25s, width 0.3s;
+}
+
+.cabecalho__tracos--x span:first-child {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.cabecalho__tracos--x span:nth-child(2) {
+  opacity: 0;
+}
+
+.cabecalho__tracos--x span:last-child {
+  width: 22px;
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Menu do celular ---------- */
 
 .menu-celular {
   position: fixed;
   inset: var(--cabecalho) 0 0;
   overflow-y: auto;
-  background:
-    radial-gradient(80% 50% at 100% 0%, color-mix(in srgb, var(--mata) 35%, transparent), transparent 70%),
-    radial-gradient(70% 40% at 0% 100%, color-mix(in srgb, var(--ouro) 18%, transparent), transparent 70%),
-    var(--noite);
-  padding-block: 24px 40px;
+  background: rgba(7, 9, 7, 0.6);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   opacity: 0;
   visibility: hidden;
   transition:
-    opacity 0.35s,
-    visibility 0.35s;
+    opacity 0.3s,
+    visibility 0.3s;
 }
 
 .cabecalho--menu-aberto .menu-celular {
@@ -232,18 +262,37 @@
   visibility: visible;
 }
 
+.menu-celular__caixa {
+  padding-block: 18px 26px;
+  background:
+    radial-gradient(90% 60% at 100% 0%, color-mix(in srgb, var(--mata) 30%, transparent), transparent 70%),
+    radial-gradient(80% 50% at 0% 100%, color-mix(in srgb, var(--ouro) 14%, transparent), transparent 70%),
+    var(--noite);
+  border-bottom: 1px solid var(--linha);
+  border-radius: 0 0 var(--raio) var(--raio);
+  transform: translateY(-12px);
+  opacity: 0;
+  transition: transform 0.4s var(--suave), opacity 0.3s;
+}
+
+.cabecalho--menu-aberto .menu-celular__caixa {
+  transform: none;
+  opacity: 1;
+}
+
 .menu-celular__lista {
   list-style: none;
   margin: 0;
   padding: 0;
+  display: grid;
+  gap: 2px;
 }
 
 .menu-celular__lista li {
-  border-bottom: 1px solid var(--linha);
   opacity: 0;
-  transform: translateY(20px);
-  transition: all 0.5s var(--suave);
-  transition-delay: calc(var(--i) * 60ms + 80ms);
+  transform: translateY(12px);
+  transition: all 0.4s var(--suave);
+  transition-delay: calc(var(--i) * 45ms + 60ms);
 }
 
 .cabecalho--menu-aberto .menu-celular__lista li {
@@ -253,60 +302,117 @@
 
 .menu-celular__lista a {
   display: flex;
-  align-items: baseline;
-  gap: 16px;
-  padding: 14px 0;
-  font-size: clamp(2rem, 9vw, 3.2rem);
-  font-weight: 800;
-  font-stretch: 125%;
-  text-transform: uppercase;
+  align-items: center;
+  gap: 14px;
+  padding: 11px 12px;
+  border-radius: var(--raio-p);
+  font-size: 1.05rem;
+  font-weight: 700;
+  font-stretch: 108%;
   text-decoration: none;
-  line-height: 1.05;
+  transition: background 0.25s, color 0.25s;
+}
+
+.menu-celular__lista a:hover,
+.menu-celular__lista a.active {
+  background: rgba(255, 255, 255, 0.05);
 }
 
 .menu-celular__lista a.active {
   color: var(--ouro);
 }
 
-.menu-celular__numero {
-  font-size: 0.8rem;
-  font-weight: 700;
+.menu-celular__icone {
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  border-radius: 11px;
+  border: 1px solid var(--linha);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--texto-2);
+  transition: color 0.25s, border-color 0.25s, background 0.25s;
+}
+
+.menu-celular__lista a.active .menu-celular__icone {
   color: var(--ouro);
-  letter-spacing: 0.1em;
+  border-color: color-mix(in srgb, var(--ouro) 40%, transparent);
+  background: color-mix(in srgb, var(--ouro) 12%, transparent);
+}
+
+.menu-celular__seta {
+  margin-left: auto;
+  opacity: 0.35;
+}
+
+.menu-celular__rotulo {
+  margin: 20px 0 10px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  font-stretch: 125%;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--texto-3);
 }
 
 .menu-celular__unidades {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 10px;
-  margin-top: 28px;
+  gap: 8px;
 }
 
 .menu-celular__unidades a {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 12px 14px;
+  gap: 9px;
+  padding: 10px 12px;
   border-radius: var(--raio-p);
   border: 1px solid var(--linha);
   text-decoration: none;
+  font-size: 0.92rem;
   font-weight: 600;
+  transition: border-color 0.25s, color 0.25s;
+}
+
+.menu-celular__unidades a:hover {
+  border-color: color-mix(in srgb, var(--cor-unidade) 55%, transparent);
+  color: var(--cor-unidade);
 }
 
 .menu-celular__rodape {
   display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 28px;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .menu-celular__rodape .botao {
-  flex: 1 1 200px;
+  flex: 1;
+  min-height: 48px;
 }
 
-@media (max-width: 1080px) {
-  .cabecalho__nav,
-  .cabecalho__secretaria {
+.menu-celular__rede {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--linha-forte);
+  color: var(--texto-2);
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.menu-celular__rede:hover {
+  color: #e1306c;
+  border-color: #e1306c;
+}
+
+/* ---------- Pontos de quebra ---------- */
+
+@media (max-width: 1140px) {
+  .cabecalho__nav {
     display: none;
   }
 
@@ -315,13 +421,21 @@
   }
 }
 
-@media (max-width: 560px) {
+@media (max-width: 640px) {
+  :root {
+    --cabecalho: 64px;
+  }
+
   .cabecalho__participar {
     display: none;
   }
+
+  .cabecalho__nome strong {
+    font-size: 1.05rem;
+  }
 }
 
-@media (min-width: 1081px) {
+@media (min-width: 1141px) {
   .menu-celular {
     display: none;
   }

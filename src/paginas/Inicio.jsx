@@ -1,4 +1,5 @@
 import { Link } from 'react-router'
+import { escreverData, eventosOrganizados, proximoEvento } from '../conteudo/calendario'
 import { ALBUM_FOTOS_URL, CLUBE } from '../conteudo/clube'
 import { FOTOS_DESTAQUE } from '../conteudo/galeria'
 import { NUMEROS, QUEM_SOMOS } from '../conteudo/inicio'
@@ -20,6 +21,7 @@ export default function Inicio() {
   useTitulo(null)
 
   const numeros = NUMEROS.filter((n) => n.valor > 0 || MODO_DESENVOLVIMENTO)
+  const proximo = proximoEvento(eventosOrganizados())
 
   return (
     <>
@@ -31,6 +33,25 @@ export default function Inicio() {
           { texto: CLUBE.hashtag, cor: 'var(--ouro)' },
         ]}
       />
+
+      {/* ============ PRÓXIMO EVENTO (vem da agenda) ============ */}
+      {proximo && (
+        <section className="inicio-proximo" aria-label="Próximo evento do clube">
+          <div className="container inicio-proximo__caixa">
+            <span className="inicio-proximo__rotulo">
+              <Icone nome="calendario" tamanho={16} />
+              Próximo no calendário
+            </span>
+            <p className="inicio-proximo__evento">
+              <strong>{proximo.titulo}</strong>
+              <span>{escreverData(proximo)}</span>
+            </p>
+            <Link to="/calendario" className="link-seta inicio-proximo__link">
+              Ver a agenda do ano <Icone nome="seta" />
+            </Link>
+          </div>
+        </section>
+      )}
 
       {/* ================= QUEM SOMOS ================= */}
       <section id="quem-somos" className="secao inicio-sobre">

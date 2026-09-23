@@ -334,9 +334,48 @@ p {
   transform: scale(0.94);
 }
 
+.revelar--desfoque {
+  transform: translateY(18px);
+  filter: blur(10px);
+}
+
 .revelar.visivel {
   opacity: 1;
   transform: none;
+  filter: none;
+}
+
+/* ---------- Brilho que segue o mouse (cartões) ----------
+   Use a classe "brilho" junto com o hook useBrilho:
+     <div className="cartao brilho" onPointerMove={brilho}>
+   No celular não acontece nada — é um detalhe só do computador. */
+
+.brilho {
+  position: relative;
+}
+
+.brilho::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    300px circle at var(--bx, 50%) var(--by, 0%),
+    color-mix(in srgb, var(--brilho-cor, var(--ouro)) 15%, transparent),
+    transparent 68%
+  );
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.brilho:hover::before {
+  opacity: 1;
+}
+
+/* o conteúdo precisa ficar acima do brilho */
+.brilho > * {
+  position: relative;
 }
 
 /* ---------- Textura de grão (usada sobre fotos e fundos) ---------- */
@@ -456,5 +495,11 @@ p {
   .revelar {
     opacity: 1;
     transform: none;
+    filter: none;
+  }
+
+  .barra-progresso,
+  .capa__cortina {
+    display: none;
   }
 }
