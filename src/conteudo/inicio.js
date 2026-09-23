@@ -4,7 +4,7 @@
 
 // Destaques da capa: eles se revezam sozinhos (como no site da FIAP).
 // Adicione, remova ou reordene à vontade. O primeiro é o principal.
-//   foto:    imagem de fundo (fica apagada, com as cores do clube por cima)
+//   foto:    imagem de fundo (fica escurecida para o texto ler bem)
 //   posicao: qual parte da foto aparece (ex.: 'center 60%', '30% 80%')
 //   botoes:  para: endereço dentro do site | whatsapp: true abre o WhatsApp
 export const DESTAQUES = [
@@ -22,7 +22,6 @@ export const DESTAQUES = [
   {
     foto: '/fotos/clube/capa.jpg',
     posicao: '20% 75%',
-    cores: true, // mostra as faixas com as cores das 4 unidades
     chamada: "Suruí · Suyá · Xavantes · Ye'kwana",
     titulo: 'Quatro tribos, um só clube',
     texto: 'Cada unidade tem suas cores, sua história e seu grito de guerra.',

@@ -1,27 +1,7 @@
-/* Cadeadinho quase invisível no rodapé: só aparece de verdade quando o
-   ponteiro passa por cima ou quando o teclado chega nele. */
+/* O símbolo © do rodapé também é a entrada do painel da secretaria.
+   Ele precisa parecer texto comum: sem cor diferente e sem mãozinha. */
 
 .acesso-restrito {
-  display: inline-grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: none;
-  color: var(--texto-3);
-  opacity: 0.22;
-  cursor: pointer;
-  transition:
-    opacity 0.3s,
-    color 0.3s,
-    background 0.3s;
-}
-
-.acesso-restrito:hover,
-.acesso-restrito:focus-visible {
-  opacity: 1;
-  color: var(--ouro);
-  background: color-mix(in srgb, var(--ouro) 12%, transparent);
+  cursor: text;
+  user-select: none;
 }

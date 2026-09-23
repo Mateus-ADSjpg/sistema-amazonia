@@ -1,3 +1,4 @@
+import { useId, useState } from 'react'
 import { CLUBE, CONTATO, linkWhatsapp } from '../conteudo/clube'
 import { CAPA_CONTATO, PERGUNTAS } from '../conteudo/contato'
 import { deveMostrar } from '../conteudo/util'
@@ -137,21 +138,21 @@ export default function Contato() {
                 <span className="sobretitulo">Dúvidas</span>
               </Revelar>
               <Revelar atraso={80}>
-                <h2 className="titulo-secao">
-                  Perguntas <em>frequentes</em>
-                </h2>
+                <h2 className="titulo-secao">Perguntas frequentes</h2>
+              </Revelar>
+              <Revelar atraso={160}>
+                <p className="perguntas__apoio">
+                  Não achou sua dúvida?{' '}
+                  <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="link-seta">
+                    Chame a diretoria no WhatsApp <Icone nome="setaDiagonal" />
+                  </a>
+                </p>
               </Revelar>
             </div>
             <div className="perguntas__lista">
               {perguntas.map((p, i) => (
-                <Revelar as="details" key={p.pergunta} className="pergunta" atraso={i * 70}>
-                  <summary>
-                    {p.pergunta}
-                    <span className="pergunta__icone" aria-hidden="true">
-                      <Icone nome="mais" tamanho={20} />
-                    </span>
-                  </summary>
-                  <Texto as="p" valor={p.resposta} />
+                <Revelar key={p.pergunta} atraso={i * 70}>
+                  <Pergunta pergunta={p.pergunta} resposta={p.resposta} />
                 </Revelar>
               ))}
             </div>
@@ -159,5 +160,36 @@ export default function Contato() {
         </section>
       )}
     </>
+  )
+}
+
+// Uma pergunta que abre e fecha deslizando. Não usa <details> porque a
+// abertura dele não dá para animar em todos os navegadores.
+function Pergunta({ pergunta, resposta }) {
+  const [aberta, setAberta] = useState(false)
+  const id = useId()
+
+  return (
+    <div className={`pergunta ${aberta ? 'pergunta--aberta' : ''}`}>
+      <h3 className="pergunta__titulo">
+        <button
+          type="button"
+          className="pergunta__botao"
+          aria-expanded={aberta}
+          aria-controls={id}
+          onClick={() => setAberta((v) => !v)}
+        >
+          {pergunta}
+          <span className="pergunta__icone" aria-hidden="true">
+            <Icone nome="mais" tamanho={20} />
+          </span>
+        </button>
+      </h3>
+      <div id={id} className="pergunta__resposta" inert={aberta ? undefined : ''}>
+        <div>
+          <Texto as="p" valor={resposta} />
+        </div>
+      </div>
+    </div>
   )
 }

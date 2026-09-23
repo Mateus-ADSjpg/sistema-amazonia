@@ -143,11 +143,20 @@
   transition: all 0.3s var(--suave);
 }
 
+/* Abre com o mouse em cima ou navegando pelo teclado. Depois de um
+   clique ele fecha e só volta quando o mouse sai e entra de novo. */
 .cabecalho__com-submenu:hover .cabecalho__submenu,
-.cabecalho__com-submenu:focus-within .cabecalho__submenu {
+.cabecalho__com-submenu:has(:focus-visible) .cabecalho__submenu {
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0);
+}
+
+.cabecalho__com-submenu--fechado .cabecalho__submenu,
+.cabecalho__com-submenu--fechado:hover .cabecalho__submenu {
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, 10px);
 }
 
 .cabecalho__submenu a {

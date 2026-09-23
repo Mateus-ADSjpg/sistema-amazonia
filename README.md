@@ -16,7 +16,7 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 - **Contato:** WhatsApp, reuniões, redes (com os ícones oficiais) e perguntas frequentes
 
 **Painel da Secretaria (acesso restrito)**
-- **Não aparece no menu do site.** Chega-se até ele pelo endereço `/secretaria`, pelo atalho `Ctrl + Alt + S` em qualquer página ou pelo cadeadinho discreto no canto do rodapé
+- **Não aparece no menu do site.** Chega-se até ele pelo endereço `/secretaria`, pelo atalho `Ctrl + Alt + S` em qualquer página ou clicando no símbolo © do rodapé
 - Login com e-mail e senha (Supabase Auth)
 - Só contas cadastradas como administradoras entram no painel
 - Cadastro, edição e exclusão de membros (nome, unidade, cargo e telefone)

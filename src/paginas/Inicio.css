@@ -15,76 +15,23 @@
   margin-block: 28px 32px;
 }
 
+/* Uma foto grande e duas menores, sem sobreposição */
 .inicio-sobre__colagem {
-  position: relative;
-  aspect-ratio: 1 / 1.02;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 12px;
+  aspect-ratio: 1 / 0.95;
 }
 
 .inicio-sobre__foto {
-  position: absolute;
+  position: relative;
   overflow: hidden;
   border-radius: var(--raio);
-  box-shadow: 0 30px 60px -30px rgba(0, 0, 0, 0.8);
 }
 
 .inicio-sobre__foto--1 {
-  inset: 0 22% 22% 0;
-}
-
-.inicio-sobre__foto--2 {
-  width: 46%;
-  height: 50%;
-  right: 0;
-  top: 28%;
-  border: 6px solid var(--noite);
-}
-
-.inicio-sobre__foto--3 {
-  width: 40%;
-  height: 34%;
-  left: 12%;
-  bottom: 0;
-  border: 6px solid var(--noite);
-}
-
-.inicio-sobre__selo {
-  position: absolute;
-  right: 4%;
-  top: 2%;
-  width: clamp(110px, 13vw, 150px);
-  aspect-ratio: 1;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--noite);
-  border: 2px solid var(--ouro);
-  box-shadow: 0 20px 40px -18px rgba(0, 0, 0, 0.8);
-}
-
-.inicio-sobre__logo {
-  width: 52%;
-  height: auto;
-}
-
-.inicio-sobre__selo svg {
-  position: absolute;
-  inset: 0;
-  animation: girar 22s linear infinite;
-}
-
-.inicio-sobre__selo text {
-  font-size: 9.5px;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  fill: var(--ouro);
-}
-
-@supports (animation-timeline: view()) {
-  .inicio-sobre__foto--2 .foto > *,
-  .inicio-sobre__foto--3 .foto > * {
-    animation: parallax linear both;
-    animation-timeline: view();
-  }
+  grid-row: 1 / -1;
 }
 
 @media (max-width: 900px) {
@@ -103,9 +50,7 @@
 
 .inicio-numeros {
   border-block: 1px solid var(--linha);
-  background:
-    linear-gradient(90deg, color-mix(in srgb, var(--mata) 14%, transparent), transparent 40%, transparent 60%, color-mix(in srgb, var(--ouro) 10%, transparent)),
-    var(--noite-2);
+  background: var(--noite-2);
 }
 
 .inicio-numeros__grade {
@@ -186,7 +131,7 @@
 }
 
 .painel-unidade .foto img {
-  filter: grayscale(0.6) brightness(0.55);
+  filter: saturate(0.8) brightness(0.7);
 }
 
 .painel-unidade .foto__vazia > * {
@@ -198,7 +143,7 @@
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(180deg, transparent 20%, color-mix(in srgb, var(--u1) 55%, transparent) 65%, color-mix(in srgb, var(--u1) 92%, black) 100%);
+    linear-gradient(180deg, transparent 30%, rgba(11, 13, 10, 0.55) 60%, rgba(11, 13, 10, 0.92) 100%);
   transition: opacity 0.6s;
 }
 
@@ -208,9 +153,9 @@
   top: 0;
   left: 0;
   right: 0;
-  height: 5px;
+  height: 4px;
   z-index: 1;
-  background: linear-gradient(90deg, var(--u1), var(--u2), var(--u3));
+  background: var(--u1);
 }
 
 .painel-unidade__numero {
@@ -316,7 +261,7 @@
   .painel-unidade:hover .foto img,
   .painel-unidade:focus-visible .foto img {
     filter: none;
-    transform: scale(1.05);
+    transform: scale(1.03);
   }
 
   .painel-unidade:hover .painel-unidade__cta svg {
@@ -378,9 +323,7 @@
 /* ---------- História (trilha) ---------- */
 
 .inicio-historia {
-  background:
-    radial-gradient(60% 50% at 100% 0%, color-mix(in srgb, var(--mata) 16%, transparent), transparent 70%),
-    var(--noite-2);
+  background: var(--noite-2);
 }
 
 .trilha {
@@ -400,7 +343,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--ouro), color-mix(in srgb, var(--ouro) 10%, transparent));
+  background: var(--linha-forte);
 }
 
 .trilha__marco {
@@ -481,11 +424,7 @@
 /* ---------- Ideais ---------- */
 
 .inicio-ideais {
-  overflow: hidden;
-  background:
-    radial-gradient(70% 70% at 50% 120%, color-mix(in srgb, var(--mata) 45%, transparent), transparent 70%),
-    radial-gradient(40% 40% at 50% 0%, color-mix(in srgb, var(--ouro) 12%, transparent), transparent 70%),
-    var(--noite);
+  border-top: 1px solid var(--linha);
   text-align: center;
 }
 
@@ -496,24 +435,14 @@
 }
 
 .inicio-ideais__voto {
-  position: relative;
   margin: 28px 0 0;
-  max-width: 1000px;
-  font-size: clamp(1.6rem, 3.6vw, 3rem);
-  font-weight: 700;
-  font-stretch: 110%;
-  line-height: 1.25;
+  max-width: 900px;
+  font-size: clamp(1.4rem, 3vw, 2.4rem);
+  font-weight: 600;
+  font-stretch: 105%;
+  line-height: 1.3;
   letter-spacing: -0.01em;
   text-wrap: balance;
-}
-
-.inicio-ideais__aspas {
-  display: block;
-  font-size: 5em;
-  line-height: 0.6;
-  height: 0.45em;
-  color: var(--ouro);
-  font-weight: 900;
 }
 
 .inicio-ideais__lema {
@@ -537,28 +466,11 @@
   color: var(--ouro-claro);
 }
 
-/* ---------- Animações ---------- */
-
-@keyframes girar {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@keyframes parallax {
-  from {
-    transform: translateY(6%) scale(1.15);
-  }
-  to {
-    transform: translateY(-6%) scale(1.15);
-  }
-}
-
 /* ---------- Faixa do próximo evento ---------- */
 
 .inicio-proximo {
   border-bottom: 1px solid var(--linha);
-  background: linear-gradient(90deg, color-mix(in srgb, var(--mata) 22%, transparent), transparent 60%);
+  background: var(--noite-2);
 }
 
 .inicio-proximo__caixa {

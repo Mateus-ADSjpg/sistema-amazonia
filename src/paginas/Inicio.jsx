@@ -34,6 +34,7 @@ export default function Inicio() {
         ]}
       />
 
+
       {/* ============ PRÓXIMO EVENTO (vem da agenda) ============ */}
       {proximo && (
         <section className="inicio-proximo" aria-label="Próximo evento do clube">
@@ -58,7 +59,7 @@ export default function Inicio() {
         <div className="container inicio-sobre__grade">
           <div className="inicio-sobre__texto">
             <Revelar>
-              <span className="sobretitulo">01 — Quem somos</span>
+              <span className="sobretitulo">Quem somos</span>
             </Revelar>
             <Revelar atraso={80}>
               <h2 className="titulo-secao">{QUEM_SOMOS.titulo}</h2>
@@ -81,26 +82,12 @@ export default function Inicio() {
             {QUEM_SOMOS.fotos.slice(0, 3).map((foto, i) => (
               <Revelar
                 key={foto.src}
-                efeito={i === 0 ? 'zoom' : i === 1 ? 'direita' : 'subir'}
-                atraso={i * 140}
+                atraso={i * 80}
                 className={`inicio-sobre__foto inicio-sobre__foto--${i + 1}`}
               >
-                <Foto src={foto.src} alt={foto.alt} preencher tom={i === 1 ? 'var(--ouro-escuro)' : 'var(--mata)'} />
+                <Foto src={foto.src} alt={foto.alt} preencher tom="var(--mata)" />
               </Revelar>
             ))}
-            <div className="inicio-sobre__selo" aria-hidden="true">
-              <svg viewBox="0 0 120 120">
-                <defs>
-                  <path id="circulo-selo" d="M60 60 m-44 0 a44 44 0 1 1 88 0 a44 44 0 1 1 -88 0" />
-                </defs>
-                <text>
-                  <textPath href="#circulo-selo" textLength="272" lengthAdjust="spacing">
-                    DESBRAVADORES · {CLUBE.hashtag.toUpperCase()} ·
-                  </textPath>
-                </text>
-              </svg>
-              <img src={CLUBE.logo} alt="" className="inicio-sobre__logo" />
-            </div>
           </div>
         </div>
       </section>
@@ -127,11 +114,11 @@ export default function Inicio() {
           <div className="cabeca-secao">
             <div>
               <Revelar>
-                <span className="sobretitulo">02 — Unidades</span>
+                <span className="sobretitulo">Unidades</span>
               </Revelar>
               <Revelar atraso={80}>
                 <h2 className="titulo-secao">
-                  Quatro unidades, <em>uma só tribo</em>
+                  Quatro unidades, uma só tribo
                 </h2>
               </Revelar>
             </div>
@@ -140,7 +127,7 @@ export default function Inicio() {
             </Revelar>
           </div>
 
-          <Revelar className="paineis-unidades" efeito="zoom">
+          <Revelar className="paineis-unidades">
             {UNIDADES.map((u, i) => (
               <Link
                 key={u.slug}
@@ -180,11 +167,11 @@ export default function Inicio() {
           <div className="cabeca-secao">
             <div>
               <Revelar>
-                <span className="sobretitulo">03 — Nossa história</span>
+                <span className="sobretitulo">Nossa história</span>
               </Revelar>
               <Revelar atraso={80}>
                 <h2 className="titulo-secao">
-                  Uma trilha feita <em>de gente</em>
+                  Uma trilha feita de gente
                 </h2>
               </Revelar>
             </div>
@@ -197,7 +184,7 @@ export default function Inicio() {
 
           <ol className="trilha">
             {HISTORIA.marcos.slice(0, 4).map((m, i) => (
-              <Revelar as="li" key={i} className="trilha__marco" atraso={i * 120}>
+              <Revelar as="li" key={i} className="trilha__marco" atraso={i * 80}>
                 <span className="trilha__ano">{m.ano}</span>
                 <h3>{m.titulo}</h3>
                 <p>{m.texto}</p>
@@ -213,11 +200,11 @@ export default function Inicio() {
           <div className="cabeca-secao">
             <div>
               <Revelar>
-                <span className="sobretitulo">04 — Momentos</span>
+                <span className="sobretitulo">Momentos</span>
               </Revelar>
               <Revelar atraso={80}>
                 <h2 className="titulo-secao">
-                  Aventuras que <em>viram memória</em>
+                  Aventuras que viram memória
                 </h2>
               </Revelar>
             </div>
@@ -235,13 +222,12 @@ export default function Inicio() {
       </section>
 
       {/* ================= IDEAIS ================= */}
-      <section className="secao inicio-ideais grao">
+      <section className="secao inicio-ideais">
         <div className="container inicio-ideais__conteudo">
           <Revelar>
             <span className="sobretitulo">O Voto do Desbravador</span>
           </Revelar>
           <Revelar as="blockquote" atraso={100} className="inicio-ideais__voto">
-            <span className="inicio-ideais__aspas" aria-hidden="true">“</span>
             {IDEAIS.voto}
           </Revelar>
           <Revelar atraso={200} className="inicio-ideais__lema">

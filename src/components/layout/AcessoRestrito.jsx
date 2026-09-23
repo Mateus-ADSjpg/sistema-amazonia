@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router'
-import Icone from '../ui/Icone'
 import './AcessoRestrito.css'
 
 // =====================================================================
@@ -11,7 +10,7 @@ import './AcessoRestrito.css'
 //
 //   1. Digitar o endereço:  seusite.com/secretaria
 //   2. Apertar Ctrl + Alt + S em qualquer página
-//   3. Clicar no cadeadinho quase invisível no rodapé
+//   3. Clicar no símbolo © do rodapé (parece texto comum)
 //
 // Isso não é segurança de verdade (a segurança está no login e nas
 // regras do banco, em supabase/seguranca.sql) — é só para não ficar
@@ -35,15 +34,11 @@ export default function AcessoRestrito() {
     return () => window.removeEventListener('keydown', aoTeclar)
   }, [navegar])
 
+  // Fica fora do Tab e sem cara de link de propósito; pelo teclado a
+  // entrada é o atalho acima.
   return (
-    <button
-      type="button"
-      className="acesso-restrito"
-      onClick={() => navegar(ENDERECO)}
-      aria-label="Acesso restrito da secretaria"
-      title="Acesso restrito"
-    >
-      <Icone nome="cadeado" tamanho={15} />
-    </button>
+    <span className="acesso-restrito" onClick={() => navegar(ENDERECO)}>
+      ©
+    </span>
   )
 }

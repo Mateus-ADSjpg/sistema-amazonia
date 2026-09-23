@@ -11,11 +11,7 @@ export default function Chamada({ titulo = CHAMADA_FINAL.titulo, texto = CHAMADA
   return (
     <section className="secao secao-chamada">
       <div className="container">
-        <Revelar efeito="zoom" className="chamada grao" style={tom ? { '--tom-chamada': tom } : undefined}>
-          <div className="chamada__aurora" aria-hidden="true">
-            <span />
-            <span />
-          </div>
+        <Revelar className="chamada" style={tom ? { '--tom-chamada': tom } : undefined}>
           <div className="chamada__texto">
             <h2>{titulo}</h2>
             <p>{texto}</p>

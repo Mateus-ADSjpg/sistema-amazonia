@@ -108,13 +108,12 @@ export default function Rodape() {
 
       <div className="container rodape__base">
         <p>
-          © {ano} {CLUBE.nome}
+          <AcessoRestrito /> {ano} {CLUBE.nome}
         </p>
         <div className="rodape__base-links">
           <button className="rodape__topo" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
             Voltar ao topo <Icone nome="setaDiagonal" tamanho={16} />
           </button>
-          <AcessoRestrito />
         </div>
       </div>
     </footer>

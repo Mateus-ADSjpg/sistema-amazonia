@@ -12,39 +12,9 @@
   align-items: end;
   gap: 40px;
   padding: clamp(32px, 6vw, 80px);
-  border-radius: clamp(20px, 3vw, 32px);
-  background: linear-gradient(135deg, color-mix(in srgb, var(--tom-chamada) 70%, var(--noite)) 0%, var(--noite-2) 75%);
+  border-radius: var(--raio);
+  background: color-mix(in srgb, var(--tom-chamada) 45%, var(--noite));
   border: 1px solid var(--linha);
-}
-
-.chamada__aurora {
-  position: absolute;
-  inset: 0;
-  z-index: -1;
-}
-
-.chamada__aurora span {
-  position: absolute;
-  width: 60%;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  filter: blur(70px);
-  opacity: 0.55;
-  animation: aurora-flutuar 16s ease-in-out infinite alternate;
-}
-
-.chamada__aurora span:first-child {
-  background: var(--ouro);
-  top: -40%;
-  right: -15%;
-  opacity: 0.35;
-}
-
-.chamada__aurora span:last-child {
-  background: var(--tom-chamada);
-  bottom: -50%;
-  left: -10%;
-  animation-delay: -6s;
 }
 
 /* O tamanho é limitado para "DESBRAVADOR" caber inteiro na coluna,

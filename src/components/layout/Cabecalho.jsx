@@ -22,6 +22,7 @@ const LINKS = [
 export default function Cabecalho() {
   const { rolou, descendo } = useRolagem()
   const [menuAberto, setMenuAberto] = useState(false)
+  const [submenuFechado, setSubmenuFechado] = useState(false)
 
   useEffect(() => {
     document.body.classList.toggle('menu-aberto', menuAberto)
@@ -35,6 +36,12 @@ export default function Cabecalho() {
   }, [menuAberto])
 
   const fechar = () => setMenuAberto(false)
+
+  // Depois de clicar num link do submenu, ele some mesmo com o mouse em cima
+  const fecharSubmenu = (e) => {
+    setSubmenuFechado(true)
+    e.currentTarget.querySelector(':focus')?.blur()
+  }
 
   const classes = [
     'cabecalho',
@@ -59,7 +66,16 @@ export default function Cabecalho() {
         <nav className="cabecalho__nav" aria-label="Principal">
           <ul>
             {LINKS.map((link) => (
-              <li key={link.para} className={link.submenu ? 'cabecalho__com-submenu' : undefined}>
+              <li
+                key={link.para}
+                className={
+                  link.submenu
+                    ? `cabecalho__com-submenu ${submenuFechado ? 'cabecalho__com-submenu--fechado' : ''}`
+                    : undefined
+                }
+                onClick={link.submenu ? fecharSubmenu : undefined}
+                onMouseLeave={link.submenu ? () => setSubmenuFechado(false) : undefined}
+              >
                 <NavLink to={link.para} end={link.para === '/'} className="cabecalho__link">
                   {link.texto}
                 </NavLink>
