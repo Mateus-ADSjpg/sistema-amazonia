@@ -69,11 +69,12 @@ export const EVENTOS = [
 //
 // Aparecem na página do calendário toda semana, independentemente da
 // agenda do ano. Para mudar um horário, troque o texto de "horario".
+// "desenho" escolhe a ilustração: igreja, fe (Bíblia) ou oracao (mãos).
 // ---------------------------------------------------------------------
 export const CULTOS = [
-  { dia: 'Sábado', periodo: 'Manhã', horario: '9h', titulo: 'Culto de sábado', icone: 'livro' },
-  { dia: 'Domingo', periodo: 'Noite', horario: '19h', titulo: 'Culto de domingo', icone: 'estrela' },
-  { dia: 'Quarta-feira', periodo: 'Noite', horario: '19h30', titulo: 'Culto de quarta', icone: 'maos' },
+  { dia: 'Sábado', periodo: 'Manhã', horario: '9h', titulo: 'Culto de sábado', desenho: 'igreja' },
+  { dia: 'Domingo', periodo: 'Noite', horario: '19h', titulo: 'Culto de domingo', desenho: 'fe' },
+  { dia: 'Quarta-feira', periodo: 'Noite', horario: '19h30', titulo: 'Culto de quarta', desenho: 'oracao' },
 ]
 
 // ---------------------------------------------------------------------

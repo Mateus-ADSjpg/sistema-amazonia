@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { supabase } from '../../supabase'
-import { aviso, botao, campo, cartao, cores } from './estilosPainel'
+import { aviso, campo, cartao, cores } from './estilosPainel'
 
 function traduzirErro(error) {
   if (error.code === 'invalid_credentials' || /invalid login credentials/i.test(error.message)) {
@@ -44,7 +44,7 @@ export default function LoginSecretaria() {
 
   return (
     <form onSubmit={entrar} style={{ ...cartao, maxWidth: '400px', margin: '30px auto' }}>
-      <h3 style={{ color: '#fff', marginTop: 0, marginBottom: '5px' }}>Acesso restrito</h3>
+      <h2 style={{ color: 'var(--texto)', margin: '0 0 6px', fontSize: '1.4rem' }}>Entrar no painel</h2>
       <p style={{ color: cores.textoSecundario, marginBottom: '20px' }}>
         Entre com a conta da secretaria para gerenciar os membros.
       </p>
@@ -81,11 +81,11 @@ export default function LoginSecretaria() {
         </div>
       )}
 
-      <button type="submit" disabled={entrando} style={{ ...botao(), width: '100%', opacity: entrando ? 0.7 : 1 }}>
+      <button type="submit" disabled={entrando} className="botao" style={{ width: '100%', opacity: entrando ? 0.7 : 1 }}>
         {entrando ? 'Entrando…' : 'Entrar'}
       </button>
 
-      <p style={{ color: '#777', fontSize: '0.85rem', marginTop: '15px', marginBottom: 0 }}>
+      <p style={{ color: cores.textoSecundario, fontSize: '0.9rem', marginTop: '16px', marginBottom: 0 }}>
         Esqueceu a senha? Fale com o responsável pelo sistema.
       </p>
     </form>

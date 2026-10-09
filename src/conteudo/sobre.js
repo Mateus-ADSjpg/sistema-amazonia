@@ -41,15 +41,18 @@ export const HISTORIA = {
   ],
 }
 
-// Ícones disponíveis: barraca, bussola, estrela, maos, coracao, livro,
-// fogueira, medalha, bandeira, folha.
+// O que fazemos (página Sobre). "desenho" escolhe a ilustração:
+// acampamento, especialidade, classes, servico, ordem ou fe.
+// Para usar uma imagem oficial no lugar (ex.: o emblema de uma
+// especialidade), coloque o arquivo em public/fotos/clube/ e acrescente
+// imagem: '/fotos/clube/nome-do-arquivo.png' na atividade.
 export const ATIVIDADES = [
-  { icone: 'barraca', titulo: 'Acampamentos', texto: 'Aventuras ao ar livre, técnicas de campo e muita convivência.' },
-  { icone: 'medalha', titulo: 'Especialidades', texto: 'Aprender habilidades novas em natureza, ciência, artes e muito mais.' },
-  { icone: 'livro', titulo: 'Classes', texto: 'Etapas de crescimento pessoal, físico e espiritual para cada idade.' },
-  { icone: 'maos', titulo: 'Serviço comunitário', texto: 'Ações que levam ajuda e esperança para a comunidade.' },
-  { icone: 'bandeira', titulo: 'Ordem unida', texto: 'Disciplina, trabalho em equipe e apresentações.' },
-  { icone: 'coracao', titulo: 'Fé e amizade', texto: 'Valores cristãos vividos no dia a dia do clube.' },
+  { desenho: 'acampamento', titulo: 'Acampamentos', texto: 'Aventuras ao ar livre, técnicas de campo e muita convivência.' },
+  { desenho: 'especialidade', titulo: 'Especialidades', texto: 'Aprender habilidades novas em natureza, ciência, artes e muito mais.' },
+  { desenho: 'classes', titulo: 'Classes', texto: 'Da Amigo à Guia: etapas de crescimento pessoal, físico e espiritual para cada idade.' },
+  { desenho: 'servico', titulo: 'Serviço comunitário', texto: 'Ações que levam ajuda e esperança para a comunidade.' },
+  { desenho: 'ordem', titulo: 'Ordem unida', texto: 'Disciplina, trabalho em equipe e apresentações.' },
+  { desenho: 'fe', titulo: 'Fé e amizade', texto: 'Valores cristãos vividos no dia a dia do clube.' },
 ]
 
 // Diretoria: só a liderança principal do clube. Os conselheiros de cada

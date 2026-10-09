@@ -25,12 +25,17 @@
 .contato-cartao__icone {
   display: grid;
   place-items: center;
-  width: 58px;
-  height: 58px;
-  border-radius: 16px;
+  width: 64px;
+  height: 64px;
+  border-radius: 18px;
   color: var(--ouro);
-  background: color-mix(in srgb, var(--ouro) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ouro) 28%, transparent);
+  background: var(--noite-2);
+  border: 1px solid var(--linha);
+}
+
+.contato-cartao__icone > svg[viewBox='0 0 64 64'] {
+  width: 50px;
+  height: 50px;
 }
 
 .contato-cartao__icone--whatsapp {

@@ -16,6 +16,7 @@ import { useTitulo } from '../hooks/useTitulo'
 import { useBrilho } from '../hooks/useBrilho'
 import CapaPagina from '../components/ui/CapaPagina'
 import Chamada from '../components/ui/Chamada'
+import EmblemaAtividade from '../components/ui/EmblemaAtividade'
 import Icone from '../components/ui/Icone'
 import Marca from '../components/ui/Marca'
 import Revelar from '../components/ui/Revelar'
@@ -94,7 +95,7 @@ export default function Calendario() {
             {CULTOS.map((culto, i) => (
               <Revelar as="li" key={culto.dia} className="agenda-culto brilho" atraso={i * 90} onPointerMove={brilho}>
                 <span className="agenda-culto__icone">
-                  <Icone nome={culto.icone} tamanho={24} />
+                  <EmblemaAtividade nome={culto.desenho} />
                 </span>
                 <span className="agenda-culto__periodo">{culto.periodo}</span>
                 <h3>{culto.dia}</h3>

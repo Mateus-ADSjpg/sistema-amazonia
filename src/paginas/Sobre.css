@@ -152,19 +152,24 @@
 .atividade__icone {
   display: grid;
   place-items: center;
+  width: 76px;
+  height: 76px;
+  border-radius: 20px;
+  background: var(--noite-2);
+  border: 1px solid var(--linha);
+  transition: transform 0.5s var(--suave), border-color 0.4s;
+}
+
+.atividade__icone svg,
+.atividade__icone img {
   width: 60px;
   height: 60px;
-  border-radius: 16px;
-  color: var(--ouro);
-  background: color-mix(in srgb, var(--ouro) 12%, transparent);
-  border: 1px solid color-mix(in srgb, var(--ouro) 30%, transparent);
-  transition: transform 0.5s var(--suave), background 0.4s, color 0.4s;
+  object-fit: contain;
 }
 
 .atividade:hover .atividade__icone {
-  transform: rotate(-8deg) scale(1.08);
-  background: var(--ouro);
-  color: var(--noite);
+  transform: translateY(-3px) rotate(-4deg);
+  border-color: color-mix(in srgb, var(--ouro) 45%, transparent);
 }
 
 .atividade h3 {

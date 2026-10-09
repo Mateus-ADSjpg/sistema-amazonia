@@ -5,8 +5,8 @@ import { useBrilho } from '../hooks/useBrilho'
 import CapaPagina from '../components/ui/CapaPagina'
 import CarrosselPessoas from '../components/ui/CarrosselPessoas'
 import Chamada from '../components/ui/Chamada'
+import EmblemaAtividade from '../components/ui/EmblemaAtividade'
 import Foto from '../components/ui/Foto'
-import Icone from '../components/ui/Icone'
 import Revelar from '../components/ui/Revelar'
 import Texto from '../components/ui/Texto'
 import './Sobre.css'
@@ -98,7 +98,7 @@ export default function Sobre() {
             {ATIVIDADES.map((a, i) => (
               <Revelar key={a.titulo} className="atividade brilho" atraso={(i % 3) * 100} onPointerMove={brilho}>
                 <span className="atividade__icone">
-                  <Icone nome={a.icone} tamanho={28} />
+                  <EmblemaAtividade nome={a.desenho} imagem={a.imagem} />
                 </span>
                 <h3>{a.titulo}</h3>
                 <p>{a.texto}</p>

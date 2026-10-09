@@ -87,22 +87,21 @@ export default function PainelSecretaria({ onVoltar }) {
 
   return (
     <div>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', flexWrap: 'wrap', borderBottom: `1px solid ${cores.borda}`, paddingBottom: '10px' }}>
-        <h2 style={{ color: cores.dourado, margin: 0, fontSize: '1.4rem' }}>Painel da Secretaria</h2>
-        <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
-          {sessao && (
-            <>
-              <span style={{ color: cores.textoSecundario, fontSize: '0.9rem' }}>{sessao.user.email}</span>
-              <button onClick={sair} style={botaoPequeno('#6d2828')}>
-                Sair
-              </button>
-            </>
-          )}
-          <button onClick={onVoltar} style={botaoPequeno(cores.borda)}>
-            Voltar ao Site
-          </button>
+      {/* a barra do painel só aparece depois de entrar; antes, fica só o formulário */}
+      {sessao && (
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: '10px', flexWrap: 'wrap', borderBottom: `1px solid ${cores.borda}`, paddingBottom: '10px' }}>
+          <h2 style={{ color: cores.dourado, margin: 0, fontSize: '1.4rem' }}>Painel da Secretaria</h2>
+          <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <span style={{ color: cores.textoSecundario, fontSize: '0.9rem' }}>{sessao.user.email}</span>
+            <button onClick={sair} style={botaoPequeno('#6d2828')}>
+              Sair
+            </button>
+            <button onClick={onVoltar} style={botaoPequeno(cores.borda)}>
+              Voltar ao site
+            </button>
+          </div>
         </div>
-      </div>
+      )}
       {statusAdmin === 'sim' && sessao && (
         <p style={{ color: cores.textoSecundario, marginTop: '10px', textAlign: 'left' }}>
           Gerencie rapidamente os membros, unidades e contatos do clube.

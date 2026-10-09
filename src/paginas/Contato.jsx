@@ -4,6 +4,7 @@ import { CAPA_CONTATO, PERGUNTAS } from '../conteudo/contato'
 import { deveMostrar } from '../conteudo/util'
 import { useTitulo } from '../hooks/useTitulo'
 import CapaPagina from '../components/ui/CapaPagina'
+import EmblemaAtividade from '../components/ui/EmblemaAtividade'
 import Icone from '../components/ui/Icone'
 import Marca from '../components/ui/Marca'
 import Revelar from '../components/ui/Revelar'
@@ -42,7 +43,7 @@ export default function Contato() {
 
           <Revelar className="contato-cartao brilho" atraso={100} onPointerMove={brilho}>
             <span className="contato-cartao__icone">
-              <Icone nome="calendario" tamanho={26} />
+              <EmblemaAtividade nome="agenda" />
             </span>
             <h2>Reuniões</h2>
             <ul className="contato-cartao__lista">
