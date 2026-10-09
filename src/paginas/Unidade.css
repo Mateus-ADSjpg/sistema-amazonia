@@ -89,6 +89,13 @@
   overflow: hidden;
 }
 
+/* no celular, um fato por linha (com 3 fatos em 2 colunas sobrava um buraco) */
+@media (max-width: 560px) {
+  .unidade-fatos {
+    grid-template-columns: 1fr;
+  }
+}
+
 .unidade-fatos > div {
   padding: 18px 20px;
   background: var(--noite);

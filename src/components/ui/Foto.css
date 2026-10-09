@@ -32,12 +32,15 @@
   justify-content: center;
   gap: 10px;
   padding: 16px;
+  isolation: isolate;
   color: color-mix(in srgb, var(--texto) 55%, transparent);
   background:
     radial-gradient(120% 90% at 15% 0%, color-mix(in srgb, var(--tom) 55%, transparent), transparent 60%),
-    radial-gradient(90% 80% at 100% 100%, color-mix(in srgb, var(--ouro) 22%, transparent), transparent 60%),
-    repeating-linear-gradient(135deg, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 14px),
     linear-gradient(160deg, color-mix(in srgb, var(--tom) 30%, var(--noite-3)), var(--noite-2));
+  /* o sol nasce no canto de baixo, como no emblema */
+  --raios-x: 100%;
+  --raios-y: 100%;
+  --raios-forca: 0.18;
 }
 
 .foto__caminho {

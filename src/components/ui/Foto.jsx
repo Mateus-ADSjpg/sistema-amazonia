@@ -44,8 +44,11 @@ export default function Foto({
       style={{ aspectRatio: proporcaoFixa ?? proporcaoProvisoria, '--tom': tom, ...style }}
     >
       {semFoto ? (
+        // Sem a foto, fica o sol de raios do emblema na cor do lugar. O ícone
+        // de câmera e o caminho do arquivo só aparecem no seu computador.
         <div className="foto__vazia" role="img" aria-label={alt || 'Foto a adicionar'}>
-          <Icone nome="camera" tamanho={30} />
+          <span className="raios" aria-hidden="true" />
+          {MODO_DESENVOLVIMENTO && <Icone nome="camera" tamanho={30} />}
           {MODO_DESENVOLVIMENTO && src && <span className="foto__caminho">public{src}</span>}
         </div>
       ) : (
@@ -54,7 +57,8 @@ export default function Foto({
           alt={alt}
           loading={prioridade ? 'eager' : 'lazy'}
           decoding="async"
-          fetchPriority={prioridade ? 'high' : undefined}
+          // minúsculo: o React 18 ainda não conhece "fetchPriority"
+          fetchpriority={prioridade ? 'high' : undefined}
           onError={() => setSrcComErro(src)}
         />
       )}

@@ -85,3 +85,44 @@
   opacity: 1;
   transform: none;
 }
+
+/* Enquanto confere quais fotos existem (só no site publicado) */
+.galeria-fotos--conferindo {
+  min-height: 240px;
+}
+
+/* ---------- Sem nenhuma foto ainda ---------- */
+
+.galeria-vazia {
+  --tom: var(--mata);
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px 40px;
+  padding: clamp(28px, 5vw, 56px);
+  border-radius: var(--raio);
+  border: 1px solid var(--linha);
+  background: linear-gradient(120deg, color-mix(in srgb, var(--tom) 32%, var(--noite-2)), var(--noite-2) 70%);
+  --raios-x: 100%;
+  --raios-y: 100%;
+  --raios-forca: 0.16;
+}
+
+.galeria-vazia__texto {
+  flex: 1 1 320px;
+  max-width: 560px;
+}
+
+.galeria-vazia h3 {
+  font-size: clamp(1.3rem, 2.4vw, 1.8rem);
+  font-stretch: 115%;
+}
+
+.galeria-vazia p {
+  margin-top: 10px;
+  color: var(--texto-2);
+}

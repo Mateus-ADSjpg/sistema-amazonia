@@ -2,45 +2,66 @@
   padding-top: 0;
 }
 
+/* Bloco amarelo, como a camisa do clube, com o emblema e o sol de raios.
+   O tamanho e a posição do emblema ficam nas variáveis abaixo, e os raios
+   saem do centro dele. */
 .chamada {
-  --tom-chamada: var(--mata);
+  --emblema: clamp(150px, 17vw, 230px);
+  --emblema-direita: clamp(28px, 5vw, 72px);
+  --emblema-topo: clamp(-36px, -2vw, -16px);
   position: relative;
   overflow: hidden;
   isolation: isolate;
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
   align-items: end;
   gap: 40px;
   padding: clamp(32px, 6vw, 80px);
+  padding-top: clamp(40px, 7vw, 96px);
   border-radius: var(--raio);
-  background: color-mix(in srgb, var(--tom-chamada) 45%, var(--noite));
-  border: 1px solid var(--linha);
+  background:
+    radial-gradient(90% 120% at 0% 100%, color-mix(in srgb, var(--ouro) 80%, #000), transparent 65%),
+    var(--ouro);
+  color: var(--noite);
+}
+
+.chamada__raios {
+  --raios-cor: #fff;
+  --raios-forca: 0.32;
+  --raios-x: calc(100% - var(--emblema-direita) - var(--emblema) / 2);
+  --raios-y: calc(var(--emblema-topo) + var(--emblema) / 2);
+}
+
+.chamada__emblema {
+  position: absolute;
+  z-index: -1;
+  top: var(--emblema-topo);
+  right: var(--emblema-direita);
+  width: var(--emblema);
+  height: auto;
+  filter: drop-shadow(0 18px 30px rgba(11, 13, 10, 0.25));
+}
+
+.chamada :focus-visible {
+  outline-color: var(--noite);
 }
 
 /* O tamanho é limitado para "DESBRAVADOR" caber inteiro na coluna,
    sem quebrar no meio da palavra. */
 .chamada h2 {
-  font-size: clamp(1.6rem, 3.4vw, 3.2rem);
+  font-size: clamp(1.6rem, 3.6vw, 3.4rem);
   text-transform: uppercase;
   font-stretch: 125%;
-}
-
-@media (max-width: 560px) {
-  .chamada {
-    padding: 28px 22px;
-  }
-
-  .chamada h2 {
-    font-size: clamp(1.6rem, 7vw, 2.4rem);
-    font-stretch: 110%;
-  }
+  line-height: 0.98;
+  max-width: 13ch;
 }
 
 .chamada p {
   margin-top: 18px;
   max-width: 520px;
-  color: color-mix(in srgb, var(--texto) 80%, transparent);
+  color: rgba(11, 13, 10, 0.78);
   font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .chamada__infos {
@@ -58,27 +79,10 @@
   gap: 8px;
   padding: 8px 14px;
   border-radius: 999px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid var(--linha);
+  background: rgba(11, 13, 10, 0.07);
+  border: 1px solid rgba(11, 13, 10, 0.16);
   font-size: 0.9rem;
-  font-weight: 600;
-}
-
-.chamada__infos-link a {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  color: var(--ouro);
-  text-decoration: none;
   font-weight: 700;
-}
-
-.chamada__infos-link svg {
-  transition: transform 0.3s var(--suave);
-}
-
-.chamada__infos-link a:hover svg {
-  transform: translateX(3px);
 }
 
 .chamada__botoes {
@@ -87,8 +91,46 @@
   gap: 12px;
 }
 
+.chamada__whatsapp {
+  --cor-botao: var(--noite);
+  color: var(--texto);
+  min-height: 56px;
+}
+
+.chamada__whatsapp:hover {
+  background: var(--noite-3);
+}
+
+.chamada__secundario {
+  background: transparent;
+  color: var(--noite);
+  border-color: rgba(11, 13, 10, 0.3);
+}
+
+.chamada__secundario:hover {
+  background: rgba(11, 13, 10, 0.08);
+  border-color: var(--noite);
+}
+
 @media (max-width: 860px) {
   .chamada {
     grid-template-columns: 1fr;
+    /* no celular o emblema fica no alto, à direita, sem cobrir o título */
+    --emblema: 112px;
+    --emblema-direita: -18px;
+    --emblema-topo: -22px;
+    padding-top: 104px;
+  }
+}
+
+@media (max-width: 560px) {
+  .chamada {
+    padding-inline: 22px;
+    padding-bottom: 28px;
+  }
+
+  .chamada h2 {
+    font-size: clamp(1.6rem, 7.4vw, 2.4rem);
+    font-stretch: 112%;
   }
 }

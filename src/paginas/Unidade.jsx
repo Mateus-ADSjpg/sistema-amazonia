@@ -216,7 +216,7 @@ export default function Unidade() {
         </div>
       </section>
 
-      <Chamada tom={u.tema.principal} titulo={`Venha fazer parte da ${u.nome}`} />
+      <Chamada titulo={`Venha fazer parte da ${u.nome}`} />
     </div>
   )
 }

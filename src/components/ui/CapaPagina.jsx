@@ -11,6 +11,7 @@ export default function CapaPagina({ foto, sobretitulo, titulo, texto, tom, tomA
       <div className="capa-pagina__fundo" aria-hidden="true">
         <Foto src={foto} preencher prioridade tom={tom} />
       </div>
+      <span className="raios raios--girando capa-pagina__raios" aria-hidden="true" />
       <div className="capa-pagina__cores" aria-hidden="true" />
 
       <div className="container capa-pagina__conteudo">

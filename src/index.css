@@ -35,7 +35,7 @@
   /* Espaços e medidas */
   --largura: 1240px;
   --margem: clamp(16px, 4vw, 48px);
-  --secao: clamp(72px, 11vw, 150px);
+  --secao: clamp(64px, 9vw, 128px);
   --raio: 18px;
   --raio-p: 10px;
   --cabecalho: 76px;
@@ -387,6 +387,59 @@ p {
   opacity: 0.09;
   mix-blend-mode: overlay;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* ---------- Raios do logo ----------
+   O sol de raios amarelos do emblema do clube, usado como marca do site
+   nas capas, na chamada final e nos espaços de foto.
+   Use <span className="raios" aria-hidden="true" /> dentro de um elemento
+   com position: relative e isolation: isolate. Ajustes por variável:
+     --raios-cor          cor dos raios (padrão: amarelo do clube)
+     --raios-x, --raios-y de onde os raios saem
+     --raios-forca        opacidade (0 a 1)
+   A classe "raios--girando" faz o sol girar bem devagar. */
+
+@property --raios-giro {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.raios {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--raios-forca, 0.14);
+  background: repeating-conic-gradient(
+    from var(--raios-giro) at var(--raios-x, 85%) var(--raios-y, 100%),
+    var(--raios-cor, var(--ouro)) 0deg 2.4deg,
+    transparent 2.4deg 9deg
+  );
+  -webkit-mask-image: radial-gradient(
+    circle at var(--raios-x, 85%) var(--raios-y, 100%),
+    transparent 0 6%,
+    #000 7%,
+    #000 22%,
+    transparent 72%
+  );
+  mask-image: radial-gradient(
+    circle at var(--raios-x, 85%) var(--raios-y, 100%),
+    transparent 0 6%,
+    #000 7%,
+    #000 22%,
+    transparent 72%
+  );
+}
+
+.raios--girando {
+  animation: raios-girar 120s linear infinite;
+}
+
+@keyframes raios-girar {
+  to {
+    --raios-giro: 360deg;
+  }
 }
 
 /* ---------- Faixa com as cores das 4 unidades ---------- */

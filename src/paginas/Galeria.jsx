@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { ALBUM_FOTOS_URL } from '../conteudo/clube'
 import { ALBUNS, CAPA_GALERIA } from '../conteudo/galeria'
+import { useFotosExistentes } from '../hooks/useFotosExistentes'
 import { useTitulo } from '../hooks/useTitulo'
 import CapaPagina from '../components/ui/CapaPagina'
 import Chamada from '../components/ui/Chamada'
@@ -13,6 +14,16 @@ const TODOS = 'todos'
 export default function Galeria() {
   useTitulo('Galeria')
   const [filtro, setFiltro] = useState(TODOS)
+
+  // No site publicado, só contam as fotos que já estão em public/fotos;
+  // álbum sem nenhuma foto ainda não vira filtro.
+  const existentes = useFotosExistentes(ALBUNS.flatMap((a) => a.fotos))
+  const albuns = ALBUNS.map((a) => ({
+    ...a,
+    fotos: existentes ? a.fotos.filter((f) => existentes.includes(f)) : a.fotos,
+  })).filter((a) => a.fotos.length > 0)
+  const total = albuns.reduce((t, a) => t + a.fotos.length, 0)
+  const mostrarFiltros = existentes !== null && albuns.length > 1
 
   const fotos = filtro === TODOS ? ALBUNS.flatMap((a) => a.fotos) : ALBUNS.find((a) => a.id === filtro)?.fotos ?? []
 
@@ -29,22 +40,27 @@ export default function Galeria() {
       <section className="secao">
         <div className="container">
           <div className="galeria-barra">
-            <div className="galeria-filtros" role="group" aria-label="Filtrar por álbum">
-              {[{ id: TODOS, titulo: 'Todos' }, ...ALBUNS].map((a) => (
-                <button
-                  key={a.id}
-                  className={`galeria-filtro ${filtro === a.id ? 'galeria-filtro--ativo' : ''}`}
-                  aria-pressed={filtro === a.id}
-                  onClick={() => setFiltro(a.id)}
-                >
-                  {a.titulo}
-                  <span>{a.id === TODOS ? ALBUNS.reduce((t, x) => t + x.fotos.length, 0) : a.fotos.length}</span>
-                </button>
-              ))}
-            </div>
-            <a href={ALBUM_FOTOS_URL} target="_blank" rel="noopener noreferrer" className="link-seta">
-              Álbum completo no Google Fotos <Icone nome="setaDiagonal" />
-            </a>
+            {mostrarFiltros && (
+              <div className="galeria-filtros" role="group" aria-label="Filtrar por álbum">
+                {[{ id: TODOS, titulo: 'Todos' }, ...albuns].map((a) => (
+                  <button
+                    key={a.id}
+                    className={`galeria-filtro ${filtro === a.id ? 'galeria-filtro--ativo' : ''}`}
+                    aria-pressed={filtro === a.id}
+                    onClick={() => setFiltro(a.id)}
+                  >
+                    {a.titulo}
+                    <span>{a.id === TODOS ? total : a.fotos.length}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+            {/* sem nenhuma foto, o convite da galeria já leva ao álbum */}
+            {total > 0 && (
+              <a href={ALBUM_FOTOS_URL} target="_blank" rel="noopener noreferrer" className="link-seta">
+                Álbum completo no Google Fotos <Icone nome="setaDiagonal" />
+              </a>
+            )}
           </div>
 
           <GaleriaFotos key={filtro} fotos={fotos} />

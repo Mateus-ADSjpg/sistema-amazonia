@@ -12,7 +12,8 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 - **Sobre:** história com linha do tempo, atividades e a diretoria em carrossel (anda sozinho devagar, com setas e arraste), além dos ideais (Voto, Lei, Alvo, Lema e Objetivo)
 - **Unidades:** visão geral e uma página para cada unidade (`/unidades/surui`, `/unidades/suya`, `/unidades/xavantes`, `/unidades/yekwana`), com as cores da unidade, a tribo que a inspira, história, grito de guerra, conselheiros e galeria
 - **Calendário:** agenda do ano em `/calendario` — próximo evento com contagem, reunião de toda semana, filtro por mês, opção de esconder o que já passou e botão que salva os eventos na agenda do celular (arquivo `.ics`)
-- **Galeria:** álbuns com filtro e visualizador em tela cheia
+- **Galeria:** álbuns com filtro e visualizador em tela cheia. No site publicado, só entram as fotos que já existem; álbum vazio não vira filtro e, sem nenhuma foto, aparece um convite para o álbum do Google Fotos
+- **Identidade visual:** o sol de raios do emblema do clube aparece nas capas das páginas (girando bem devagar), na chamada final amarela ("Venha ser um desbravador", com o emblema) e nos espaços de foto que ainda estão vazios
 - **Contato:** WhatsApp, reuniões, redes (com os ícones oficiais) e perguntas frequentes
 
 **Painel da Secretaria (acesso restrito)**
@@ -64,7 +65,7 @@ Portal institucional e painel administrativo do **Clube de Desbravadores Amazôn
 O site foi montado para que o conteúdo seja trocado **sem mexer no layout**:
 
 - **Textos:** edite os arquivos de `src/conteudo/`. Cada campo tem um comentário explicando onde aparece.
-- **Fotos:** coloque os arquivos em `public/fotos/` com os nomes listados em [`public/fotos/LEIA-ME.txt`](public/fotos/LEIA-ME.txt). Enquanto uma foto não existe, o site mostra um espaço colorido no lugar.
+- **Fotos:** coloque os arquivos em `public/fotos/` com os nomes listados em [`public/fotos/LEIA-ME.txt`](public/fotos/LEIA-ME.txt). Enquanto uma foto não existe, o site mostra no lugar um espaço na cor da seção com o sol de raios do emblema (nas galerias, a foto que falta simplesmente não aparece).
 - **Espaços reservados:** textos entre parênteses, como `(História do clube)`, aparecem no site em cinza e itálico, mostrando o que ainda falta escrever. Textos que começam com `PREENCHER` somem do site publicado. Rodando `npm run dev`, os dois aparecem com borda tracejada, e cada espaço de foto mostra o caminho do arquivo esperado.
 - **Peso das fotos:** depois de colocar fotos novas, rode `npm run fotos`. O comando reduz e comprime tudo que está em `public/fotos` (capas até 1920 px, demais fotos até 1400 px). O site já carrega cada foto só quando ela chega na tela.
 - **Destaques da capa:** ficam em `DESTAQUES`, no arquivo `src/conteudo/inicio.js` (texto, botões, foto e enquadramento de cada um). O tempo de cada destaque na tela está logo abaixo, em `TEMPO_DESTAQUE`.

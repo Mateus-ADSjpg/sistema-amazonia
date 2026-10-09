@@ -7,11 +7,16 @@ import Revelar from './Revelar'
 import './Chamada.css'
 
 // Bloco "Venha ser um desbravador", usado no fim das páginas.
-export default function Chamada({ titulo = CHAMADA_FINAL.titulo, texto = CHAMADA_FINAL.texto, tom }) {
+// Fica no amarelo do clube; dentro da página de uma unidade, pega a cor
+// clara da unidade (lá o "--ouro" é trocado pela cor dela).
+export default function Chamada({ titulo = CHAMADA_FINAL.titulo, texto = CHAMADA_FINAL.texto }) {
   return (
     <section className="secao secao-chamada">
       <div className="container">
-        <Revelar className="chamada" style={tom ? { '--tom-chamada': tom } : undefined}>
+        <Revelar className="chamada">
+          <span className="raios chamada__raios" aria-hidden="true" />
+          <img className="chamada__emblema" src="/fotos/clube/logo.png" alt="" aria-hidden="true" loading="lazy" />
+
           <div className="chamada__texto">
             <h2>{titulo}</h2>
             <p>{texto}</p>
@@ -24,19 +29,14 @@ export default function Chamada({ titulo = CHAMADA_FINAL.titulo, texto = CHAMADA
                 <Icone nome="local" tamanho={18} />
                 {CLUBE.cidade}
               </li>
-              <li className="chamada__infos-link">
-                <Link to="/calendario">
-                  Ver a agenda do ano <Icone nome="seta" tamanho={16} />
-                </Link>
-              </li>
             </ul>
           </div>
           <div className="chamada__botoes">
-            <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="botao botao--verde">
-              <Marca nome="whatsapp" tamanho={18} /> Chamar no WhatsApp
+            <a href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className="botao chamada__whatsapp">
+              <Marca nome="whatsapp" tamanho={20} comCor /> Chamar no WhatsApp
             </a>
-            <Link to="/contato" className="botao botao--vazado">
-              Todos os contatos
+            <Link to="/calendario" className="botao chamada__secundario">
+              Ver a agenda do ano <Icone nome="seta" />
             </Link>
           </div>
         </Revelar>

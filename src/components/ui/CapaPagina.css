@@ -43,6 +43,25 @@
     linear-gradient(180deg, rgba(11, 13, 10, 0.2) 0%, rgba(11, 13, 10, 0.35) 45%, var(--noite) 100%);
 }
 
+/* Sol de raios saindo do canto direito, na cor de apoio da página
+   (amarelo do clube ou a cor da unidade). Fica embaixo das cores, que
+   apagam os raios perto do fim da capa. */
+.capa-pagina__raios {
+  z-index: -1;
+  --raios-cor: var(--tom-apoio);
+  --raios-x: 88%;
+  --raios-y: 82%;
+  --raios-forca: 0.16;
+}
+
+@media (max-width: 700px) {
+  .capa-pagina__raios {
+    --raios-x: 100%;
+    --raios-y: 30%;
+    --raios-forca: 0.14;
+  }
+}
+
 .capa-pagina__conteudo {
   position: relative;
 }
