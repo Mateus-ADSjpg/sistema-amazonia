@@ -27,7 +27,6 @@ export default function Unidade() {
   if (!unidade) return <NaoEncontrada />
 
   const u = unidade
-  const posicao = UNIDADES.indexOf(u) + 1
   const outras = UNIDADES.filter((x) => x.slug !== u.slug)
   const fatos = u.tribo.fatos.filter((f) => deveMostrar(f.valor))
 
@@ -37,7 +36,7 @@ export default function Unidade() {
       <CapaPagina
         key={u.slug}
         foto={u.capa}
-        sobretitulo={`Unidade ${String(posicao).padStart(2, '0')}`}
+        sobretitulo="Unidade do Clube Amazônia"
         titulo={u.nome}
         texto={u.resumo}
         tom={u.tema.principal}
@@ -47,7 +46,7 @@ export default function Unidade() {
           <Emblema src={u.emblema} alt={`Emblema da unidade ${u.nome}`} letra={u.nome[0]} cor={u.tema.claro} tamanho={72} />
           <ul className="unidade-capa__valores">
             <li className="unidade-capa__publico">
-              {u.publico} · {u.idade}
+              {u.publico}, {u.idade}
             </li>
             {u.valores.map((v) => (
               <li key={v}>{v}</li>

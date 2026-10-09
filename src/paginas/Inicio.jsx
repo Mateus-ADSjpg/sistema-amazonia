@@ -128,7 +128,7 @@ export default function Inicio() {
           </div>
 
           <Revelar className="paineis-unidades">
-            {UNIDADES.map((u, i) => (
+            {UNIDADES.map((u) => (
               <Link
                 key={u.slug}
                 to={`/unidades/${u.slug}`}
@@ -137,11 +137,10 @@ export default function Inicio() {
               >
                 <Foto src={u.capa} preencher tom={u.tema.principal} />
                 <span className="painel-unidade__veu" />
-                <span className="painel-unidade__numero">{String(i + 1).padStart(2, '0')}</span>
                 <div className="painel-unidade__conteudo">
                   <h3 className="painel-unidade__nome">{u.nome}</h3>
                   <p className="painel-unidade__publico">
-                    {u.publico} · {u.idade}
+                    {u.publico}, {u.idade}
                   </p>
                   <div className="painel-unidade__detalhes">
                     <p>{u.resumo}</p>
@@ -210,7 +209,7 @@ export default function Inicio() {
             </div>
             <Revelar atraso={160} className="cabeca-secao__lado inicio-galeria__botoes">
               <Link to="/galeria" className="botao botao--vazado">
-                Ver galeria <Icone nome="seta" />
+                Ver galeria
               </Link>
               <a href={ALBUM_FOTOS_URL} target="_blank" rel="noopener noreferrer" className="link-seta">
                 Álbum no Google Fotos <Icone nome="setaDiagonal" />

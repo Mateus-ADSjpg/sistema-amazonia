@@ -36,7 +36,7 @@ export default function Chamada({ titulo = CHAMADA_FINAL.titulo, texto = CHAMADA
               <Marca nome="whatsapp" tamanho={20} comCor /> Chamar no WhatsApp
             </a>
             <Link to="/calendario" className="botao chamada__secundario">
-              Ver a agenda do ano <Icone nome="seta" />
+              Ver a agenda do ano
             </Link>
           </div>
         </Revelar>

@@ -121,7 +121,7 @@ export default function Contato() {
                   <Icone nome="globo" tamanho={20} />
                   <span>
                     <strong>Onde estamos</strong>
-                    {CLUBE.cidade} · {CLUBE.regiao}
+                    {CLUBE.cidade}, {CLUBE.regiao}
                   </span>
                 </span>
               </li>

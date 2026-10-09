@@ -3,8 +3,8 @@ import { Link } from 'react-router'
 import { CLUBE, linkWhatsapp } from '../../conteudo/clube'
 import { DESTAQUES, TEMPO_DESTAQUE } from '../../conteudo/inicio'
 import { UNIDADES } from '../../conteudo/unidades'
+import { useCaberNaLargura } from '../../hooks/useCaberNaLargura'
 import Foto from '../ui/Foto'
-import Icone from '../ui/Icone'
 import './CapaCarrossel.css'
 
 const prefereMenosMovimento = () =>
@@ -20,6 +20,7 @@ export default function CapaCarrossel() {
   const [tecladoDentro, setTecladoDentro] = useState(false)
   const [abaOculta, setAbaOculta] = useState(false)
   const toqueInicial = useRef(null)
+  const tituloRef = useCaberNaLargura(atual)
 
   // O revezamento segue mesmo com o mouse em cima. Ele só para quando
   // alguém navega pela capa com o teclado, quando a aba sai da frente e
@@ -88,24 +89,19 @@ export default function CapaCarrossel() {
           aria-live={pausado ? 'polite' : 'off'}
         >
           <span className="capa__chamada">{destaque.chamada}</span>
-          <h2 className={`capa__titulo ${atual === 0 ? 'capa__titulo--principal' : ''}`}>{destaque.titulo}</h2>
+          <h2 ref={tituloRef} className={`capa__titulo ${atual === 0 ? 'capa__titulo--principal' : ''}`}>{destaque.titulo}</h2>
           {destaque.texto && <p className="capa__texto">{destaque.texto}</p>}
           {destaque.botoes?.length > 0 && (
             <div className="capa__botoes">
               {destaque.botoes.map((b) => {
                 const classe = `botao ${b.vazado ? 'botao--vazado' : ''}`
-                const conteudo = (
-                  <>
-                    {b.texto} {!b.vazado && <Icone nome="seta" />}
-                  </>
-                )
                 return b.whatsapp ? (
                   <a key={b.texto} href={linkWhatsapp()} target="_blank" rel="noopener noreferrer" className={classe}>
-                    {conteudo}
+                    {b.texto}
                   </a>
                 ) : (
                   <Link key={b.texto} to={b.para} className={classe}>
-                    {conteudo}
+                    {b.texto}
                   </Link>
                 )
               })}
@@ -144,7 +140,7 @@ export default function CapaCarrossel() {
           </div>
         )}
         <span className="capa__local">
-          {CLUBE.cidade} · {CLUBE.regiao}
+          {CLUBE.cidade}, {CLUBE.regiao}
         </span>
       </div>
 

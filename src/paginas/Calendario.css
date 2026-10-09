@@ -49,11 +49,9 @@
 }
 
 .agenda-culto__periodo {
-  font-size: 0.74rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  font-stretch: 125%;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--texto-3);
 }
 
@@ -110,11 +108,9 @@
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.74rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  font-stretch: 125%;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--cor-tipo, var(--ouro));
 }
 
@@ -200,7 +196,7 @@
   border: 1px solid color-mix(in srgb, var(--cor-tipo) 35%, transparent);
   background: color-mix(in srgb, var(--cor-tipo) 10%, transparent);
   color: var(--cor-tipo);
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
   font-stretch: 110%;
   letter-spacing: 0.04em;
@@ -369,7 +365,7 @@
 .agenda-mes-titulo em {
   font-style: normal;
   font-size: 0.8rem;
-  letter-spacing: 0.2em;
+  letter-spacing: 0;
   color: var(--texto-3);
   order: 3;
 }
@@ -462,17 +458,16 @@
 
 .agenda-item__ate {
   margin-top: 3px;
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 700;
   color: var(--cor-tipo, var(--ouro));
 }
 
 .agenda-item__semana {
   margin-top: 6px;
-  font-size: 0.66rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--texto-3);
 }
 
@@ -489,11 +484,9 @@
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 800;
-  font-stretch: 118%;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--cor-tipo, var(--ouro));
 }
 
@@ -537,10 +530,9 @@
 }
 
 .agenda-item__marca {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--texto-3);
   white-space: nowrap;
 }
@@ -607,7 +599,7 @@
 
   .agenda-legenda__item {
     padding: 5px 10px;
-    font-size: 0.72rem;
+    font-size: 0.8rem;
     gap: 6px;
   }
 

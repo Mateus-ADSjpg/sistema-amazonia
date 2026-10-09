@@ -10,7 +10,7 @@ export const CLUBE = {
   slogan: 'Todos juntos por um só objetivo!',
   cidade: 'Barueri - SP',
   regiao: 'R10', // Décima Região
-  associacao: 'Associação Paulistana · UCB',
+  associacao: 'Associação Paulistana (UCB)',
   hashtag: '#AmazôniaMeMove',
   // Logo do clube (PNG quadrado com fundo transparente).
   logo: '/fotos/clube/logo.png',

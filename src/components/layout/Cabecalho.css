@@ -357,11 +357,9 @@
 
 .menu-celular__rotulo {
   margin: 20px 0 10px;
-  font-size: 0.68rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  font-stretch: 125%;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--texto-3);
 }
 

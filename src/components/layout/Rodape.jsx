@@ -24,7 +24,7 @@ export default function Rodape() {
           <p className="rodape__nome">{CLUBE.nome}</p>
           <p className="rodape__slogan">{CLUBE.slogan}</p>
           <p className="rodape__local">
-            {CLUBE.cidade} · {CLUBE.regiao}
+            {CLUBE.cidade}, {CLUBE.regiao}
             <br />
             {CLUBE.associacao}
           </p>

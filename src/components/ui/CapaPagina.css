@@ -72,6 +72,8 @@
 
 .capa-pagina__titulo {
   margin-top: 18px;
+  /* palavra grande não quebra no meio: a letra diminui até caber (useCaberNaLargura) */
+  overflow-wrap: normal;
   font-size: clamp(2rem, 9.5vw, 7.5rem);
   font-stretch: 125%;
   text-transform: uppercase;

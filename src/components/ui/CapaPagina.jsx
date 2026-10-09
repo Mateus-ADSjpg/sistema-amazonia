@@ -1,8 +1,11 @@
+import { useCaberNaLargura } from '../../hooks/useCaberNaLargura'
 import Foto from './Foto'
 import './CapaPagina.css'
 
 // Capa do topo das páginas internas: foto apagada + cores + título grande.
 export default function CapaPagina({ foto, sobretitulo, titulo, texto, tom, tomApoio, compacta = false, children }) {
+  const tituloRef = useCaberNaLargura(titulo)
+
   return (
     <header
       className={`capa-pagina grao ${compacta ? 'capa-pagina--compacta' : ''}`}
@@ -16,7 +19,7 @@ export default function CapaPagina({ foto, sobretitulo, titulo, texto, tom, tomA
 
       <div className="container capa-pagina__conteudo">
         {sobretitulo && <span className="sobretitulo capa-pagina__sobretitulo">{sobretitulo}</span>}
-        <h1 className="capa-pagina__titulo">{titulo}</h1>
+        <h1 ref={tituloRef} className="capa-pagina__titulo">{titulo}</h1>
         {texto && <p className="capa-pagina__texto">{texto}</p>}
         {children}
       </div>

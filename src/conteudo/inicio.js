@@ -22,7 +22,7 @@ export const DESTAQUES = [
   {
     foto: '/fotos/clube/capa.jpg',
     posicao: '20% 75%',
-    chamada: "Suruí · Suyá · Xavantes · Ye'kwana",
+    chamada: "Suruí, Suyá, Xavantes e Ye'kwana",
     titulo: 'Quatro tribos, um só clube',
     texto: 'Cada unidade tem suas cores, sua história e seu grito de guerra.',
     botoes: [{ texto: 'Conhecer as unidades', para: '/unidades' }],

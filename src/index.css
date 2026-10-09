@@ -167,34 +167,23 @@ p {
 
 /* ---------- Textos de apoio ---------- */
 
+/* Frase curta acima do título: escrita normal, só na cor do clube */
 .sobretitulo {
-  display: inline-flex;
-  align-items: center;
-  gap: 12px;
-  font-size: 0.8rem;
+  display: inline-block;
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
   font-weight: 700;
-  font-stretch: 125%;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
   color: var(--ouro);
-}
-
-.sobretitulo::before {
-  content: '';
-  width: 28px;
-  height: 2px;
-  background: currentColor;
 }
 
 .titulo-secao {
   font-size: var(--titulo-l);
   text-transform: uppercase;
-  margin-top: 18px;
+  margin-top: 12px;
 }
 
+/* O título inteiro fica numa cor só (sem pintar uma palavra de amarelo) */
 .titulo-secao em {
   font-style: normal;
-  color: var(--ouro);
 }
 
 .texto-grande {
@@ -510,9 +499,7 @@ p {
   margin-top: 4px;
   font-size: 0.85rem;
   font-weight: 700;
-  font-stretch: 115%;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--ouro);
 }
 

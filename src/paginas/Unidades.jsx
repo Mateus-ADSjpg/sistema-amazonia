@@ -5,7 +5,6 @@ import CapaPagina from '../components/ui/CapaPagina'
 import Chamada from '../components/ui/Chamada'
 import Emblema from '../components/ui/Emblema'
 import Foto from '../components/ui/Foto'
-import Icone from '../components/ui/Icone'
 import Revelar from '../components/ui/Revelar'
 import './Unidades.css'
 
@@ -49,13 +48,12 @@ export default function Unidades() {
               <Revelar className="linha-unidade__texto" atraso={120}>
                 <div className="linha-unidade__topo">
                   <Emblema src={u.emblema} alt={`Emblema da unidade ${u.nome}`} letra={u.nome[0]} cor={u.tema.claro} tamanho={56} />
-                  <span className="linha-unidade__numero">Unidade {String(i + 1).padStart(2, '0')}</span>
+                  <span className="linha-unidade__numero">Inspirada no povo {u.povo}</span>
                 </div>
                 <h2 className="linha-unidade__nome">{u.nome}</h2>
                 <p className="linha-unidade__publico">
-                  {u.publico} · {u.idade}
+                  {u.publico}, {u.idade}
                 </p>
-                <p className="linha-unidade__povo">Inspirada no povo {u.povo}</p>
                 <p className="linha-unidade__resumo">{u.resumo}</p>
                 <div className="linha-unidade__cores" aria-label="Cores da unidade">
                   {u.cores.map((c) => (
@@ -63,7 +61,7 @@ export default function Unidades() {
                   ))}
                 </div>
                 <Link to={`/unidades/${u.slug}`} className="botao linha-unidade__botao">
-                  Conhecer a {u.nome} <Icone nome="seta" />
+                  Conhecer a {u.nome}
                 </Link>
               </Revelar>
             </article>

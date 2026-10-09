@@ -228,11 +228,9 @@
 }
 
 .ideal__rotulo {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 800;
-  font-stretch: 125%;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--ouro);
 }
 

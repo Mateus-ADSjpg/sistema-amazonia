@@ -32,8 +32,6 @@
   line-height: 1.6;
   color: var(--texto-3);
   font-size: 0.9rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .rodape__hashtag {
@@ -46,11 +44,9 @@
 }
 
 .rodape__titulo {
-  font-size: 0.78rem;
+  font-size: 0.875rem;
   font-weight: 700;
-  font-stretch: 125%;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--texto-3);
   margin-bottom: 18px;
 }

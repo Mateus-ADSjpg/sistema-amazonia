@@ -85,11 +85,9 @@
 }
 
 .contato-rede strong {
-  font-size: 0.72rem;
+  font-size: 0.875rem;
   font-weight: 800;
-  font-stretch: 115%;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--texto-3);
   transition: color 0.3s;
 }

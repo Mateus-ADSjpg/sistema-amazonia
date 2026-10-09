@@ -86,9 +86,7 @@
 .linha-unidade__numero {
   font-size: 0.8rem;
   font-weight: 800;
-  font-stretch: 125%;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
+  letter-spacing: 0;
   color: var(--u2);
 }
 
