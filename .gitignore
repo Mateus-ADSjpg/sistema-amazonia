@@ -29,4 +29,8 @@ dist-ssr
 .env
 .env.*
 !.env.example
+<<<<<<< HEAD
 .claude/
+=======
+.claude/
+>>>>>>> a19ee88 (Atualizar .gitignore)
